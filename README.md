@@ -2,3 +2,4 @@
 
 ## Groepsleden
  - Thomas Lissens @ThomasLissens
+ - Maurice Cantaert @Skerath
