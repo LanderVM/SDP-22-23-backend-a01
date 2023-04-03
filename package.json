@@ -1,0 +1,20 @@
+{
+  "name": "2023-backend-a01",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/HoGentProjectenII/2023-backend-a01.git",
+  "author": "LanderVM <lander.vanmolle@student.hogent.be>",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^3.3.9",
+    "env-cmd": "^10.1.0",
+    "koa": "^2.14.1"
+  },
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.7"
+  }
+}
