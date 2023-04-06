@@ -5,6 +5,7 @@ const config = require("config");
 const { initializeLogger, getLogger } = require("./core/logging");
 const requestLogger = require("./core/requestLogger");
 const errorHandler = require("./core/errorHandler");
+const corsMiddleware = require("./core/corsMiddleware");
 const installRest = require("./rest/index");
 
 const app = new Koa();
@@ -26,6 +27,7 @@ app.use(router.routes()).use(router.allowedMethods());
 
 app.use(requestLogger);
 app.use(errorHandler);
+app.use(corsMiddleware);
 
 app.listen(PORT);
 installRest(app);
