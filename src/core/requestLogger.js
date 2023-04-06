@@ -1,4 +1,5 @@
 const emoji = require("node-emoji");
+const { getLogger } = require("./logging");
 
 const requestLogger = async (ctx, next) => {
   const logger = getLogger();

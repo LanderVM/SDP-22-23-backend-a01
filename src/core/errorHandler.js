@@ -1,3 +1,5 @@
+const { getLogger } = require("./logging");
+
 const errorHandler = async (ctx, next) => {
   try {
     await next();
