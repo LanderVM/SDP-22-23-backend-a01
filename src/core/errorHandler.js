@@ -1,4 +1,7 @@
 const { getLogger } = require("./logging");
+const { serializeError } = require("serialize-error"); //v8.1.0
+const ServiceError = require("./serviceError");
+const NODE_ENV = process.env.NODE_ENV;
 
 const errorHandler = async (ctx, next) => {
   try {

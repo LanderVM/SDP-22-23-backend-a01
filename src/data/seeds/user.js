@@ -20,6 +20,23 @@ module.exports = {
         phone_number: "02 70 25 25",
         SUPPLIER_supplier_id: 1,
       },
+      {
+        user_id: 2,
+        email: "testAdmin@mail.com",
+        street: "doeStreet",
+        box: "B2",
+        city: "Aalst",
+        country: "Belgium",
+        house_number: 23,
+        is_admin: 1,
+        mobile_phone_number: "0470 25 25 25",
+        name: "Admin",
+        password: "testAdmin",
+        postal_code: 9300,
+        surname: "Test",
+        phone_number: "02 70 25 25",
+        SUPPLIER_supplier_id: 2,
+      },
     ]);
   },
 };

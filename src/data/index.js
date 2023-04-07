@@ -161,7 +161,6 @@ const tables = {
   user: "user",
 };
 
-console.log(tables.carrier);
 module.exports = {
   tables,
   getKnex,
