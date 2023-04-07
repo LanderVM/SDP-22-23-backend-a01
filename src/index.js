@@ -7,6 +7,7 @@ const requestLogger = require("./core/requestLogger");
 const errorHandler = require("./core/errorHandler");
 const corsMiddleware = require("./core/corsMiddleware");
 const installRest = require("./rest/index");
+const { initializeDatabase, shutdownData } = require("./data/index");
 
 const app = new Koa();
 const router = new Router();
@@ -21,6 +22,8 @@ initializeLogger({
   defaultMeta: { NODE_ENV },
 });
 const logger = getLogger();
+
+initializeDatabase();
 
 app.use(bodyParser());
 app.use(router.routes()).use(router.allowedMethods());

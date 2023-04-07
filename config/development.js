@@ -14,6 +14,6 @@ module.exports = {
     client: "mysql2",
     host: "localhost",
     port: 3306,
-    name: "lokale_db_sdp2",
+    name: "lokale_db_sdp2_js",
   },
 };
