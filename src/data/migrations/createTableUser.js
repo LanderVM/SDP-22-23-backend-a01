@@ -10,7 +10,7 @@ module.exports = {
       table.string("city", 255).notNullable();
       table.string("country", 255).notNullable();
       table.integer("house_number").notNullable();
-      table.boolean("is_admin").defaultTo(0);
+      table.boolean("is_admin").defaultTo(0).notNullable();
       table.string("mobile_phone_number", 255).notNullable();
       table.string("name", 255).notNullable();
       table.string("password", 255).notNullable();

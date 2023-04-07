@@ -4,6 +4,7 @@ module.exports = {
   seed: async (knex) => {
     await knex(tables.user).insert([
       {
+        user_id: 1,
         email: "testMagazijnier@mail.com",
         street: "gentStreet",
         box: "A1",
