@@ -13,9 +13,13 @@
 Om de API te starten maak je een `.env` bestand aan met volgende gegevens, vervang de gegevens tussen `* *` met de correcte data:
 
 ```
-NODE_ENV=development
-DATABASE_USERNAME=*username*
-DATABASE_PASSWORD=*password*
+NODE_ENV=*development/production*
+
+DATABASE_USERNAME_LOCAL=*local_username*
+DATABASE_PASSWORD_LOCAL=*local_password*
+
+DATABASE_USERNAME_HOST=*host_username*
+DATABASE_PASSWORD_HOST=*host_password*
 ```
 
 Installeer yarn met behulp van <code>yarn install</code>
