@@ -20,6 +20,11 @@ DATABASE_PASSWORD_LOCAL=*local_password*
 
 DATABASE_USERNAME_HOST=*host_username*
 DATABASE_PASSWORD_HOST=*host_password*
+
+AUTH_JWKS_URI=*tenant*/.well-known/jwks.json
+AUTH_AUDIENCE=*API_ID*
+AUTH_ISSUER=*tenant*
+AUTH_USER_INFO=*tenant*/userinfo
 ```
 
 Installeer yarn met behulp van <code>yarn install</code>

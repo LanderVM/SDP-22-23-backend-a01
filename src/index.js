@@ -8,6 +8,8 @@ const errorHandler = require("./core/errorHandler");
 const corsMiddleware = require("./core/corsMiddleware");
 const installRest = require("./rest/index");
 const { initializeDatabase, shutdownData } = require("./data/index");
+const { checkJwtToken } = require("./core/auth");
+const { logAuth } = require("./core/auth");
 
 const app = new Koa();
 const router = new Router();
@@ -24,6 +26,9 @@ initializeLogger({
 const logger = getLogger();
 
 initializeDatabase();
+
+app.use(checkJwtToken());
+app.use(logAuth);
 
 app.use(bodyParser());
 app.use(router.routes()).use(router.allowedMethods());
