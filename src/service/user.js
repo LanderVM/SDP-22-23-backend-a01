@@ -11,6 +11,21 @@ const getByEmail = async (email) => {
     count: user.length,
   };
 };
+
+const getBySupplierId = async (supplierId) => {
+  const user = await userRepository.getBySupplierId(supplierId);
+  if (!user[0]) {
+    throw ServiceError.notFound(
+      `There is no user with supplier id: ${supplierId}`
+    );
+  }
+  return {
+    items: user,
+    count: user.length,
+  };
+};
+
 module.exports = {
   getByEmail,
+  getBySupplierId,
 };
