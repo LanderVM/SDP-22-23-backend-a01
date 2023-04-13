@@ -3,10 +3,13 @@ const productService = require("../service/product");
 const Joi = require("joi");
 const validate = require("./_validation.js");
 
+const getAllProducts = async(ctx) => {
+  ctx.body = await productService.getAll();
+}
+
 const getProductById = async (ctx) => {
   ctx.body = await productService.getById(ctx.params.productId);
 };
-
 getProductById.validationScheme = {
   params: {
     productId: Joi.number().integer().positive(),
@@ -16,6 +19,7 @@ getProductById.validationScheme = {
 module.exports = (app) => {
   const router = new Router({ prefix: "/product" });
 
+  router.get("/", getAllProducts)
   router.get(
     "/productId/:productId",
     validate(getProductById.validationScheme),

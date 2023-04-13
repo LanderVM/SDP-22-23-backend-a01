@@ -6,6 +6,10 @@ module.exports = {
       table.increments("product_id");
       table.string("name", 255).notNullable();
       table.integer("price").notNullable();
+      table.integer("stock").notNullable();
+      table.string("description").notNullable();
+      table.longText("photo").notNullable();
+      table.dateTime("age");
     });
   },
   down: (knex) => {

@@ -9,10 +9,11 @@ const DATABASE_CLIENT = config.get("database.client");
 const DATABASE_NAME = config.get("database.name");
 const DATABASE_HOST = config.get("database.host");
 const DATABASE_PORT = config.get("database.port");
+
 let DATABASE_USERNAME;
 let DATABASE_PASSWORD;
 
-if (isDevelopment) {
+if (isDevelopment || NODE_ENV === "test") {
   DATABASE_USERNAME = config.get("database.username_local");
   DATABASE_PASSWORD = config.get("database.password_local");
 } else {
