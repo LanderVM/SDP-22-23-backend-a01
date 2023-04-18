@@ -12,7 +12,21 @@ const getById = async (id) => {
   return product;
 };
 
+const getFilteredProducts = async ({price, inStock}) => {
+  let products
+  inStock ? 
+  products = await getKnex()(tables.product)
+    
+    .whereBetween("price", [1, price])
+    .whereNot("stock", 0) : 
+  products = await getKnex()(tables.product)
+    .select("*")
+    .whereBetween("price", [1, price])
+  return products;
+}
+
 module.exports = {
   getAll,
   getById,
+  getFilteredProducts,
 };

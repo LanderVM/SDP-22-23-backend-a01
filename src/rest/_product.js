@@ -17,6 +17,16 @@ getProductById.validationScheme = {
   },
 };
 
+const getFilteredProducts = async (ctx) => {
+  ctx.body = await productService.getFilteredProducts(ctx.params.price, ctx.params.inStock)
+}
+getFilteredProducts.validationScheme = {
+  params: {
+    price: Joi.number().integer().greater(0),
+    inStock : Joi.boolean()
+  }
+}
+
 module.exports = (app) => {
   const router = new Router({ prefix: "/product" });
 
@@ -25,6 +35,11 @@ module.exports = (app) => {
     "/:productId",
     validate(getProductById.validationScheme),
     getProductById
+  );
+  router.get(
+    "/filtered/:price/:inStock", 
+    validate(getFilteredProducts.validationScheme),
+    getFilteredProducts
   );
 
   app.use(router.routes()).use(router.allowedMethods());
