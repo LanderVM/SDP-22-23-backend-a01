@@ -6,7 +6,7 @@ const validate = require("./_validation.js");
 const getAllProducts = async (ctx) => {
   ctx.body = await productService.getAll();
 };
-getAllProducts.validationScheme = {};
+getAllProducts.validationScheme = null;
 
 const getProductById = async (ctx) => {
   ctx.body = await productService.getById(ctx.params.productId);
@@ -18,14 +18,17 @@ getProductById.validationScheme = {
 };
 
 const getFilteredProducts = async (ctx) => {
-  ctx.body = await productService.getFilteredProducts(ctx.params.price, ctx.params.inStock)
-}
+  ctx.body = await productService.getFilteredProducts(
+    ctx.params.price,
+    ctx.params.inStock
+  );
+};
 getFilteredProducts.validationScheme = {
   params: {
     price: Joi.number().integer().greater(0),
-    inStock : Joi.boolean()
-  }
-}
+    inStock: Joi.boolean(),
+  },
+};
 
 module.exports = (app) => {
   const router = new Router({ prefix: "/product" });
@@ -36,8 +39,10 @@ module.exports = (app) => {
     validate(getProductById.validationScheme),
     getProductById
   );
+
+  //TO DO//
   router.get(
-    "/filtered/:price/:inStock", 
+    "/filtered/:price/:inStock",
     validate(getFilteredProducts.validationScheme),
     getFilteredProducts
   );

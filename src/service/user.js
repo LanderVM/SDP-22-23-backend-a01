@@ -3,7 +3,7 @@ const ServiceError = require("../core/serviceError");
 
 const getByEmail = async (email) => {
   const user = await userRepository.getByEmail(email);
-  if (!user[0]) {
+  if (!user) {
     throw ServiceError.notFound(`There is no user with email ${email}`);
   }
   return {
@@ -14,7 +14,7 @@ const getByEmail = async (email) => {
 
 const getBySupplierId = async (supplierId) => {
   const user = await userRepository.getBySupplierId(supplierId);
-  if (!user[0]) {
+  if (!user) {
     throw ServiceError.notFound(
       `There is no user with supplier id: ${supplierId}`
     );
