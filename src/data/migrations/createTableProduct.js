@@ -9,7 +9,7 @@ module.exports = {
       table.integer("stock").notNullable();
       table.string("description").notNullable();
       table.longText("photo").notNullable();
-      table.dateTime("age");
+      table.string("deliveryTime").notNullable();
     });
   },
   down: (knex) => {

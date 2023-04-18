@@ -3,9 +3,10 @@ const productService = require("../service/product");
 const Joi = require("joi");
 const validate = require("./_validation.js");
 
-const getAllProducts = async(ctx) => {
+const getAllProducts = async (ctx) => {
   ctx.body = await productService.getAll();
-}
+};
+getAllProducts.validationScheme = {};
 
 const getProductById = async (ctx) => {
   ctx.body = await productService.getById(ctx.params.productId);
@@ -19,9 +20,9 @@ getProductById.validationScheme = {
 module.exports = (app) => {
   const router = new Router({ prefix: "/product" });
 
-  router.get("/", getAllProducts)
+  router.get("/", validate(getAllProducts.validationScheme), getAllProducts);
   router.get(
-    "/productId/:productId",
+    "/:productId",
     validate(getProductById.validationScheme),
     getProductById
   );

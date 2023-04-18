@@ -17,7 +17,10 @@ const getById = async (id) => {
   if (!product) {
     throw ServiceError.notFound(`There is no product with id ${id}`);
   }
-  return await product
+  return {
+    items: product,
+    count: product.length,
+  };
 };
 
 module.exports = {
