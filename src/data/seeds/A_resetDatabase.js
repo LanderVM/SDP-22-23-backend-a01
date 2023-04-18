@@ -4,5 +4,6 @@ module.exports = {
   seed: async (knex) => {
     await knex(tables.product).delete();
     await knex(tables.user).delete();
+    await knex(tables.customer_order).delete();
   },
 };
