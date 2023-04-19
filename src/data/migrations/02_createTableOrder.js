@@ -9,10 +9,15 @@ module.exports = {
       table.decimal("original_acquisition_price").notNullable();
       table.integer("order_status").notNullable();
       table.string("tracking_code", 255);
-      table.integer("CARRIER_carrier_id").unsigned();
+      table
+        .integer("CARRIER_carrier_id")
+        .unsigned()
+        .references("carrier.carrier_id");
       table.integer("CUSTOMER_supplier_id").notNullable();
       table.integer("PACKAGING_packaging_id").notNullable();
       table.integer("SUPPLIER_supplier_id").notNullable();
+
+      //table.foreign("CARRIER_carrier_id").references("carrier.carrier_id");
     });
   },
   down: (knex) => {
