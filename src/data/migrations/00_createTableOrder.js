@@ -8,11 +8,11 @@ module.exports = {
       table.date("order_date").notNullable();
       table.decimal("original_acquisition_price").notNullable();
       table.integer("order_status").notNullable();
-      table.string("tracking_code");
-      table.string("CARRIER_carrier_id");
-      table.string("CUSTOMER_supplier_id").notNullable();
-      table.string("PACKAGING_packaging_id").notNullable();
-      table.string("SUPPLIER_supplier_id").notNullable();
+      table.string("tracking_code", 255);
+      table.integer("CARRIER_carrier_id").unsigned();
+      table.integer("CUSTOMER_supplier_id").notNullable();
+      table.integer("PACKAGING_packaging_id").notNullable();
+      table.integer("SUPPLIER_supplier_id").notNullable();
     });
   },
   down: (knex) => {
