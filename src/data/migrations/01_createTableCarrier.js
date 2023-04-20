@@ -10,7 +10,7 @@ module.exports = {
       table
         .integer("TRACKINGCODEDETAILS_tracking_code_details_id")
         .unsigned()
-        .references("tracking_code_details.tracking_code_details_id");
+        .references(`${tables.tracking_code_details}.tracking_code_details_id`);
     });
   },
   down: (knex) => {

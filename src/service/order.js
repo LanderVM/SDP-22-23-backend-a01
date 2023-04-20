@@ -1,11 +1,35 @@
 const orderRepository = require("../repository/order");
 const ServiceError = require("../core/serviceError");
 
-const getByTrackAndTraceCode = async (code) => {
-  const order = await orderRepository.getByTrackAndTraceCode(code);
+const getByCodes = async (trackAndTraceCode, verificatiecode) => {
+  const verificationType =
+    await orderRepository.getVerificationTypeByTrackAndTraceCode(
+      trackAndTraceCode
+    );
+
+  if (!verificationType) {
+    throw ServiceError.notFound(
+      `There is no order with track and trace code "${trackAndTraceCode}" and verification code "${verificatiecode}"`
+    );
+  }
+
+  switch (verificationType.verification_type) {
+    case "POST_CODE":
+      order = await orderRepository.getBypostalCode(
+        trackAndTraceCode,
+        verificatiecode
+      );
+      break;
+    case "ORDER_ID":
+      order = await orderRepository.getByOrderId(
+        trackAndTraceCode,
+        verificatiecode
+      );
+  }
+
   if (!order) {
     throw ServiceError.notFound(
-      `There is no order with track and trace code ${code}`
+      `There is no order with track and trace code "${trackAndTraceCode}" and verification code "${verificatiecode}"`
     );
   }
   return {
@@ -15,5 +39,5 @@ const getByTrackAndTraceCode = async (code) => {
 };
 
 module.exports = {
-  getByTrackAndTraceCode,
+  getByCodes,
 };

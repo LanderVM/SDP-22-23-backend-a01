@@ -8,14 +8,14 @@ module.exports = {
         character_count: 13,
         is_integers_only: false,
         tracking_code_prefix: "testprefix",
-        verification_type: true,
+        verification_type: "POST_CODE",
       },
       {
         tracking_code_details_id: 2,
         character_count: 10,
         is_integers_only: true,
         tracking_code_prefix: "32",
-        verification_type: false,
+        verification_type: "ORDER_ID",
       },
     ]);
   },

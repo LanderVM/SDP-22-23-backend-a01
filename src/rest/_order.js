@@ -3,13 +3,13 @@ const orderService = require("../service/order");
 const Joi = require("joi");
 const validate = require("./_validation.js");
 
-const getOrderByTrackAndTraceCode = async (ctx) => {
-  ctx.body = await orderService.getByTrackAndTraceCode(
-    ctx.params.trackAndTraceCode
-  );
+const getOrderByCodes = async (ctx) => {
+  const { trackAndTraceCode, verificatiecode } = ctx.query;
+  ctx.body = await orderService.getByCodes(trackAndTraceCode, verificatiecode);
 };
-getOrderByTrackAndTraceCode.validationScheme = {
-  params: {
+getOrderByCodes.validationScheme = {
+  query: {
+    verificatiecode: Joi.number().positive(),
     trackAndTraceCode: Joi.string(),
   },
 };
@@ -17,11 +17,7 @@ getOrderByTrackAndTraceCode.validationScheme = {
 module.exports = (app) => {
   const router = new Router({ prefix: "/order" });
 
-  router.get(
-    "/:trackAndTraceCode",
-    validate(getOrderByTrackAndTraceCode.validationScheme),
-    getOrderByTrackAndTraceCode
-  );
+  router.get("/", validate(getOrderByCodes.validationScheme), getOrderByCodes);
 
   app.use(router.routes()).use(router.allowedMethods());
 };

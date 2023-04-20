@@ -7,7 +7,7 @@ module.exports = {
       table.integer("character_count").notNullable();
       table.boolean("is_integers_only").notNullable();
       table.string("tracking_code_prefix", 255).notNullable();
-      table.boolean("verification_type").notNullable();
+      table.string("verification_type", 255).notNullable();
     });
   },
   down: (knex) => {
