@@ -74,9 +74,11 @@ function hasPermission(permission) {
 const logAuth = async (ctx, next) => {
   const logger = getLogger();
   logger.debug(`Token: ${ctx.headers.authorization}`);
-  logger.debug(`Current user: ${JSON.stringify(ctx.state.user)}`);
-  if (ctx.state.jwtOriginalError) {
-    logger.error(`Error in token | ${ctx.state.jwtOriginalError}`);
+  if (ctx.headers.authorization) {
+    logger.debug(`Current user: ${JSON.stringify(ctx.state.user)}`);
+    if (ctx.state.jwtOriginalError) {
+      logger.error(`Error in token | ${ctx.state.jwtOriginalError}`);
+    }
   }
   await next();
 };
