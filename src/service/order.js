@@ -1,7 +1,7 @@
 const orderRepository = require("../repository/order");
 const ServiceError = require("../core/serviceError");
 
-const getByCodes = async (trackAndTraceCode, verificatiecode) => {
+const getByTrackingCodes = async (trackAndTraceCode, verificatiecode) => {
   const verificationType =
     await orderRepository.getVerificationTypeByTrackAndTraceCode(
       trackAndTraceCode
@@ -39,5 +39,5 @@ const getByCodes = async (trackAndTraceCode, verificatiecode) => {
 };
 
 module.exports = {
-  getByCodes,
+  getByTrackingCodes,
 };
