@@ -160,6 +160,7 @@ const tables = {
   supplier_contact_person: "supplier_contact_person",
   tracking_code_details: "tracking_code_details",
   user: "user",
+  customer: "customer",
 };
 
 module.exports = {

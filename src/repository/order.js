@@ -1,6 +1,6 @@
 const { getKnex, tables } = require("../data/index");
 
-const getVerificationTypeByTrackAndTraceCode = async (code) => {
+const getVerificationTypeByTrackAndTraceCode = async (trackAndTraceCode) => {
   const product = await getKnex()(tables.customer_order)
     .select("verification_type")
     .join(
@@ -13,7 +13,7 @@ const getVerificationTypeByTrackAndTraceCode = async (code) => {
       `${tables.tracking_code_details}.tracking_code_details_id`,
       `${tables.carrier}.TRACKINGCODEDETAILS_tracking_code_details_id`
     )
-    .where("tracking_code", code)
+    .where("tracking_code", trackAndTraceCode)
     .first();
   return product;
 };
