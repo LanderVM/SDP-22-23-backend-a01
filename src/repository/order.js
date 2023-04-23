@@ -56,8 +56,25 @@ const getBypostalCode = async (trackAndTraceCode, verificatiecode) => {
   return product;
 };
 
+const findById = async (orderId) => {
+  const order = await getKnex()(tables.customer_order).where('order_id',orderId).first();
+  return order;
+}
+
+const create = async (supplierCustomerId,address,date,supplierId) => {
+  const [id] =  await getKnex()(tables.customer_order).insert({
+    delivery_address:address,order_date:date,original_acquisition_price:0,order_status:0,
+    tracking_code:null,CARRIER_carrier_id:null,CUSTOMER_supplier_id:supplierCustomerId,
+    PACKAGING_packaging_id:1,SUPPLIER_supplier_id:supplierId,
+  })
+  return id;
+}
+
+
 module.exports = {
   getVerificationTypeByTrackAndTraceCode,
   getByOrderId,
   getBypostalCode,
+  findById,
+  create,
 };
