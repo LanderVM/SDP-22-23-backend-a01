@@ -4,14 +4,18 @@ module.exports = {
   seed: async (knex) => {
     await knex(tables.customer).insert([
       {
-        email_id: "erik@janInc.com",
+        email: "erik@janInc.com",
         username: "jan",
         SUPPLIER_supplier_id: 1,
       },
       {
-        email_id: "bert@timCo.com",
+        email: "bert@timCo.com",
         username: "bert",
         SUPPLIER_supplier_id: 2,
+      },{
+        email: "testOrderPlaatsen@mail.com",
+        username: "bert",
+        SUPPLIER_supplier_id: 3,
       },
     ]);
   },

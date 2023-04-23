@@ -18,9 +18,11 @@ module.exports = {
         .integer("CARRIER_carrier_id")
         .unsigned()
         .references(`${tables.carrier}.carrier_id`);
-      table.integer("CUSTOMER_supplier_id").notNullable();
+      table.integer("CUSTOMER_supplier_id").unsigned();
+      table.foreign("CUSTOMER_supplier_id").references(`${tables.supplier}.supplier_id`);
       table.integer("PACKAGING_packaging_id").notNullable();
-      table.integer("SUPPLIER_supplier_id").notNullable();
+      table.integer("SUPPLIER_supplier_id").unsigned();
+      table.foreign("SUPPLIER_supplier_id").references(`${tables.supplier}.supplier_id`);
     });
   },
   down: (knex) => {
