@@ -1,3 +1,11 @@
+
+const getByQuery = async (query) => {
+  const result = await productRepository.getByQuery(query);
+  if (result.length === 0)
+    throw ServiceError.notFound(`There were no products matching the query provided in details.`, {query});
+  return result;
+};
+
 const productRepository = require("../repository/product");
 const ServiceError = require("../core/serviceError");
 
@@ -41,4 +49,5 @@ module.exports = {
   getAll,
   getById,
   getFilteredProducts,
+  getByQuery
 };

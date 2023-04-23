@@ -30,22 +30,27 @@ getFilteredProducts.validationScheme = {
   },
 };
 
+const getByQuery = async (ctx) => {
+  const query = ctx.query;
+  ctx.body = await productService.getByQuery(query);
+};
+
 module.exports = (app) => {
   const router = new Router({ prefix: "/product" });
 
-  router.get("/", validate(getAllProducts.validationScheme), getAllProducts);
+  router.get("/", /*validate(getAllProducts.validationScheme),*/ getByQuery);
   router.get(
     "/:productId",
     validate(getProductById.validationScheme),
     getProductById
   );
 
-  //TO DO//
-  router.get(
-    "/filtered/:price/:inStock",
-    validate(getFilteredProducts.validationScheme),
-    getFilteredProducts
-  );
+  // //TO DO//
+  // router.get(
+  //   "/filtered/:price/:inStock",
+  //   validate(getFilteredProducts.validationScheme),
+  //   getFilteredProducts
+  // );
 
   app.use(router.routes()).use(router.allowedMethods());
 };
