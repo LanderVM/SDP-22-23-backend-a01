@@ -18,19 +18,31 @@ getOrderByTrackingCodes.validationScheme = {
 };
 
 const createOrder = async (ctx) => {
-  console.log(ctx.request.body);
-  newOrders =  await orderService.create(ctx.request.body);
-  ctx.body = newOrders;
-  ctx.status = 201;
-}
+  ctx.body = await orderService.getByTrackingCodes(ctx.request.body);
+};
 createOrder.validationScheme = {
-  body : Joi.object({
+  body: {
+    delivery_country: Joi.string(),
+    delivery_city: Joi.string(),
+    delivery_postal_code: Joi.number().integer().positive().allow(0),
+    delivery_street: Joi.string().allow(0),
+    delivery_house_number: Joi.number().integer().positive().allow(0),
+    delivery_box: Joi.string().optional(),
+    order_date: Joi.date(),
+    order_status: Joi.number().integer().positive().allow(0),
+    tracking_code: Joi.string().optional(),
+    CARRIER_carrier_id: Joi.number().integer().positive().optional(),
+    CUSTOMER_supplier_id: Joi.number().integer().positive().optional(),
+    PACKAGING_packaging_id: Joi.number().integer().positive().optional(),
+  },
+};
+createOrder.validationScheme = {
+  body: Joi.object({
     email: Joi.string(),
     products: Joi.array(),
     address: Joi.object(),
-  })
-}
-
+  }),
+};
 
 module.exports = (app) => {
   const router = new Router({ prefix: "/order" });
@@ -40,7 +52,7 @@ module.exports = (app) => {
     validate(getOrderByTrackingCodes.validationScheme),
     getOrderByTrackingCodes
   );
-  router.post("/",createOrder);
+  router.post("/", createOrder);
 
   app.use(router.routes()).use(router.allowedMethods());
 };

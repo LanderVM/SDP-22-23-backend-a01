@@ -13,7 +13,7 @@ const getById = async (id) => {
 };
 
 //-----TO DO------//
-const getFilteredProducts = async ({ price, inStock }) => {
+const getFilteredProducts = async ({ startPrice, endPrice, inStock }) => {
   let products;
   inStock
     ? (products = await getKnex()(tables.product)
@@ -27,17 +27,19 @@ const getFilteredProducts = async ({ price, inStock }) => {
 };
 
 const getByQuery = async (query) => {
-  const result = await getKnex()(tables.product)
-      .where((builder) => {
-        builder.whereBetween("price", [query.min_price ? query.min_price : 0, query.max_price ? query.max_price : 99999]);
-        builder.where("stock", ">=", query.in_stock === true ? 1 : 0);
-      });
+  const result = await getKnex()(tables.product).where((builder) => {
+    builder.whereBetween("price", [
+      query.min_price ? query.min_price : 0,
+      query.max_price ? query.max_price : 99999,
+    ]);
+    builder.where("stock", ">=", query.in_stock === true ? 1 : 0);
+  });
   return result;
-}
+};
 
 module.exports = {
   getAll,
   getById,
   getFilteredProducts,
-  getByQuery
+  getByQuery,
 };

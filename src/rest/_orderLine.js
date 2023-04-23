@@ -8,10 +8,10 @@ const postOrderLine = async (ctx) => {
 };
 postOrderLine.validationScheme = {
   body: {
-    productCount: Joi.number(),
-    orderId: Joi.number(),
-    productId: Joi.number(),
-    originalAcquisitionPrice: Joi.number(),
+    productCount: Joi.number().integer().positive(),
+    orderId: Joi.number().integer().positive(),
+    productId: Joi.number().integer().positive(),
+    originalAcquisitionPrice: Joi.number().positive(),
   },
 };
 

@@ -18,15 +18,13 @@ getProductById.validationScheme = {
 };
 
 const getFilteredProducts = async (ctx) => {
-  ctx.body = await productService.getFilteredProducts(
-    ctx.params.price,
-    ctx.params.inStock
-  );
+  ctx.body = await productService.getFilteredProducts(ctx.query);
 };
 getFilteredProducts.validationScheme = {
-  params: {
-    price: Joi.number().integer().greater(0),
-    inStock: Joi.boolean(),
+  query: {
+    startPrice: Joi.number().integer().positive().allow(0).optional(),
+    endPrice: Joi.number().integer().positive().optional(),
+    inStock: Joi.boolean().optional(),
   },
 };
 
@@ -38,19 +36,12 @@ const getByQuery = async (ctx) => {
 module.exports = (app) => {
   const router = new Router({ prefix: "/product" });
 
-  router.get("/", /*validate(getAllProducts.validationScheme),*/ getByQuery);
+  router.get("/", validate(getAllProducts.validationScheme), getAllProducts);
   router.get(
-    "/:productId",
-    validate(getProductById.validationScheme),
-    getProductById
+    "/filter",
+    validate(getFilteredProducts.validationScheme),
+    getFilteredProducts
   );
-
-  // //TO DO//
-  // router.get(
-  //   "/filtered/:price/:inStock",
-  //   validate(getFilteredProducts.validationScheme),
-  //   getFilteredProducts
-  // );
 
   app.use(router.routes()).use(router.allowedMethods());
 };
