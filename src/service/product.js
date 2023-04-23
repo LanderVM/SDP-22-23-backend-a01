@@ -19,7 +19,7 @@ const getById = async (id) => {
   }
   return {
     items: product,
-    count: product.length,
+    count: product.length || 1,
   };
 };
 

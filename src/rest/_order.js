@@ -4,19 +4,20 @@ const Joi = require("joi");
 const validate = require("./_validation.js");
 
 const getOrderByTrackingCodes = async (ctx) => {
-  const { trackAndTraceCode, verificatiecode } = ctx.query;
+  const { trackAndTraceCode, verificationCode } = ctx.query;
   ctx.body = await orderService.getByTrackingCodes(
     trackAndTraceCode,
-    verificatiecode
+    verificationCode
   );
 };
 getOrderByTrackingCodes.validationScheme = {
   query: {
-    verificatiecode: Joi.number().positive(),
+    verificationCode: Joi.number().positive(),
     trackAndTraceCode: Joi.string(),
   },
 };
 
+//-------- TO DO------------//
 const createOrder = async (ctx) => {
   ctx.body = await orderService.getByTrackingCodes(ctx.request.body);
 };

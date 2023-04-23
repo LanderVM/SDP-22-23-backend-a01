@@ -8,7 +8,7 @@ const getById = async (id) => {
   }
   return {
     items: orderLine,
-    count: orderLine.length,
+    count: orderLine.length || 1,
   };
 };
 

@@ -8,7 +8,7 @@ const getByEmail = async (email) => {
   }
   return {
     items: customer,
-    count: customer.length,
+    count: customer.length || 1,
   };
 };
 
@@ -21,7 +21,7 @@ const getBySupplierId = async (supplierId) => {
   }
   return {
     items: customer,
-    count: customer.length,
+    count: customer.length || 1,
   };
 };
 

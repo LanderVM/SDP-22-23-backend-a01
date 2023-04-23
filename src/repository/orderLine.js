@@ -20,15 +20,7 @@ const getById = async (id) => {
   return formatOrderLine(orderLine);
 };
 
-const create = async (orderId,productId,amount,totalPrice) => {
-  const [id] = await getKnex()(tables.order_line).insert({
-    ORDER_order_id:orderId,PRODUCT_product_id:productId,product_count:amount,total_price:totalPrice,
-  });
-  return id;
-}
-
-
-const create2 = async ({
+const create = async ({
   productCount,
   orderId,
   productId,
@@ -54,5 +46,4 @@ const create2 = async ({
 module.exports = {
   getById,
   create,
-  create2,
 };

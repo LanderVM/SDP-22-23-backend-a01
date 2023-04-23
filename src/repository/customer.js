@@ -2,7 +2,7 @@ const { getKnex, tables } = require("../data/index");
 
 const getByEmail = async (email) => {
   const customer = await getKnex()(tables.customer)
-    .where("email", email)
+    .where("email_id", email)
     .first();
   return customer;
 };
