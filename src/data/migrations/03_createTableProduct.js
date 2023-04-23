@@ -10,6 +10,8 @@ module.exports = {
       table.string("description").notNullable();
       table.longText("photo").notNullable();
       table.string("deliveryTime").notNullable();
+      table.integer("supplier_id").unsigned();
+      table.foreign("supplier_id").references(`${tables.supplier}.supplier_id`)
     });
   },
   down: (knex) => {
