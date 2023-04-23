@@ -1,6 +1,7 @@
 const { getKnex, tables } = require("../data/index");
 
 const getByEmail = async (email) => {
+  console.log(email);
   const customer = await getKnex()(tables.customer)
     .where("email_id", email)
     .first();
