@@ -12,34 +12,25 @@ const getById = async (id) => {
   return product;
 };
 
-//-----TO DO------//
-const getFilteredProducts = async ({ startPrice, endPrice, inStock }) => {
-  let products;
-  inStock
-    ? (products = await getKnex()(tables.product)
-
-        .whereBetween("price", [1, price])
-        .whereNot("stock", 0))
-    : (products = await getKnex()(tables.product)
-        .select("*")
-        .whereBetween("price", [1, price]));
+const getFilteredProducts = async (startPrice, endPrice, inStock) => {
+  const products = getKnex()(tables.product);
+  if (inStock) {
+    products.where("stock", ">", 0);
+  } else {
+    products.where("stock", "=", 0);
+  }
+  if (startPrice != null && endPrice != null) {
+    products.whereBetween("price", [startPrice, endPrice]);
+  } else if (startPrice != null) {
+    products.where("price", ">=", startPrice);
+  } else if (endPrice != null) {
+    products.where("price", "<=", endPrice);
+  }
   return products;
-};
-
-const getByQuery = async (query) => {
-  const result = await getKnex()(tables.product).where((builder) => {
-    builder.whereBetween("price", [
-      query.min_price ? query.min_price : 0,
-      query.max_price ? query.max_price : 99999,
-    ]);
-    builder.where("stock", ">=", query.in_stock === true ? 1 : 0);
-  });
-  return result;
 };
 
 module.exports = {
   getAll,
   getById,
   getFilteredProducts,
-  getByQuery,
 };

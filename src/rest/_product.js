@@ -28,11 +28,6 @@ getFilteredProducts.validationScheme = {
   },
 };
 
-const getByQuery = async (ctx) => {
-  const query = ctx.query;
-  ctx.body = await productService.getByQuery(query);
-};
-
 module.exports = (app) => {
   const router = new Router({ prefix: "/product" });
 

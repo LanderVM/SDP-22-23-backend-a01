@@ -1,16 +1,5 @@
-const getByQuery = async (query) => {
-  const result = await productRepository.getByQuery(query);
-  if (result.length === 0)
-    throw ServiceError.notFound(
-      `There were no products matching the query provided in details.`,
-      { query }
-    );
-  return result;
-};
-
 const productRepository = require("../repository/product");
 const ServiceError = require("../core/serviceError");
-const { query } = require("winston");
 
 const getAll = async () => {
   const products = await productRepository.getAll();
@@ -34,8 +23,16 @@ const getById = async (id) => {
   };
 };
 
-const getFilteredProducts = async (query) => {
-  const products = await productRepository.getFilteredProducts(query);
+const getFilteredProducts = async ({
+  startPrice = 0,
+  endPrice = Number.MAX_SAFE_INTEGER,
+  inStock = true,
+}) => {
+  const products = await productRepository.getFilteredProducts(
+    Number(startPrice),
+    Number(endPrice),
+    Boolean(JSON.parse(inStock))
+  );
   if (!products) {
     throw ServiceError.notFound(`There are no products with the given filter.`);
   }
@@ -49,5 +46,4 @@ module.exports = {
   getAll,
   getById,
   getFilteredProducts,
-  getByQuery,
 };
