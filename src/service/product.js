@@ -23,6 +23,17 @@ const getById = async (id) => {
   };
 };
 
+const getByName = async (name) => {
+  const product = await productRepository.getByName(name);
+  if (!product) {
+    throw ServiceError.notFound(`There is no product with name ${name}`);
+  }
+  return {
+    items: product,
+    count: product.length || 1,
+  };
+};
+
 const getFilteredProducts = async ({
   startPrice = 0,
   endPrice = Number.MAX_SAFE_INTEGER,
@@ -46,5 +57,7 @@ const getFilteredProducts = async ({
 module.exports = {
   getAll,
   getById,
+  getByName,
   getFilteredProducts,
 };
+

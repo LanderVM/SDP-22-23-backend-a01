@@ -17,6 +17,15 @@ getProductById.validationScheme = {
   },
 };
 
+const getProductByName = async (ctx) => {
+  ctx.body = await productService.getByName(ctx.params.productName);
+};
+getProductByName.validationScheme = {
+  params: {
+    productName: Joi.string(),
+  },
+};
+
 const getFilteredProducts = async (ctx) => {
   ctx.body = await productService.getFilteredProducts(ctx.query);
 };
@@ -38,6 +47,11 @@ module.exports = (app) => {
     getProductById
   );
   router.get(
+    "/name/:productName",
+    validate(getProductByName.validationScheme),
+    getProductByName
+  );
+  router.get(
     "/filter",
     validate(getFilteredProducts.validationScheme),
     getFilteredProducts
@@ -45,3 +59,4 @@ module.exports = (app) => {
 
   app.use(router.routes()).use(router.allowedMethods());
 };
+
