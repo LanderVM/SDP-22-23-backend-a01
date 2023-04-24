@@ -1,6 +1,7 @@
 const supertest = require('supertest');
 const createServer = require('../../src/createServer');
 const {getKnex,tables} = require('../../src/data/index');
+const { withServer } = require('../helpers');
 
 const data = {customers:[{
   email_id: "erik@janInc.com",
@@ -22,11 +23,11 @@ const dataToDelete = {
 
 describe('customers', () =>{
 
-  let server;
+  //let server;
   let request;
   let knex;
 
-  beforeAll(async () => {
+  /*beforeAll(async () => {
 		server = await createServer();
 		request = supertest(server.getApp().callback());
 		knex = getKnex();
@@ -34,17 +35,41 @@ describe('customers', () =>{
 
   afterAll(async () => {
 		await server.stop();
-	});
+	});*/
 
-  const url = '/api/customers';
+  withServer(({ knex: k, request: r, authHeader: a}) => {
+    knex = k;
+    request = r;
+    authHeader = a;
+  })
+
+  const url = '/api/customer';
 
   describe('GET api/customers',()=>{
     beforeAll( async ()=>{
       await knex(tables.customer).insert(data.customers);
 
     });
+    
     afterAll(async () =>{
       await knex(tables.customer).whereIn('email_id',dataToDelete.customers).delete();
     });
+
+    it('should 200 and return the requested customer by email',async ()=>{
+      const email = "erik@janInc.com";
+      const response = await request.get(`${url}/email/${email}`);
+      expect(response.status).toBe(200);
+      expect(response.body.count).toBe(1);
+      expect(response.body.items).toMatchObject(data.customers[0]);
+    });
+
+    it('should 200 and return the requested customer by supplierId',async ()=>{
+      const supId = 1;
+      const response = await request.get(`${url}/supplierId/${supId}`);
+      expect(response.status).toBe(200);
+      expect(response.body.count).toBe(1);
+      expect(response.body.items).toMatchObject(data.customers[0]);
+    });
+
   })
 })
