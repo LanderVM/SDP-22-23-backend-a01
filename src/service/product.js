@@ -3,9 +3,9 @@ const ServiceError = require("../core/serviceError");
 
 const getAll = async () => {
   const products = await productRepository.getAll();
-  if (!products) {
+  /*if (!products) {
     throw ServiceError.notFound(`There are no products.`);
-  }
+  }*/
   return {
     items: products,
     count: products.length,
@@ -33,9 +33,10 @@ const getFilteredProducts = async ({
     Number(endPrice),
     Boolean(JSON.parse(inStock))
   );
-  if (!products) {
+  //Komt niet in
+  /*if (!products) {
     throw ServiceError.notFound(`There are no products with the given filter.`);
-  }
+  }*/
   return {
     items: products,
     count: products.length,

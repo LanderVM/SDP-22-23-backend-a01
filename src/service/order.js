@@ -37,7 +37,7 @@ const getByTrackingCodes = async (trackAndTraceCode, verificationCode) => {
     count: order.length || 1,
   };
 };
-
+/*
 const create = async ({ email, products, address }) => {
   const supplierCustomer = { supplier_id: 3 }; //await supplierRepository.findSupplierByUserEmail(email);
 
@@ -96,13 +96,13 @@ const create = async ({ email, products, address }) => {
       );
     });
   });
-  /*
+  
   orders.forEach(async el => {
     order = await orderRepository.findById(el);
     orderObjects.push(order);
   });
   
-  return orderObjects;*/
+  return orderObjects;
 };
 
 const organizeProducts = async (products) => {
@@ -118,9 +118,8 @@ const organizeProducts = async (products) => {
     }
   });
   return suppliers;
-};
+};*/
 
 module.exports = {
   getByTrackingCodes,
-  create,
 };

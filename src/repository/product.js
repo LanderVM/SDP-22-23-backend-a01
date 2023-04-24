@@ -21,10 +21,6 @@ const getFilteredProducts = async (startPrice, endPrice, inStock) => {
   }
   if (startPrice != null && endPrice != null) {
     products.whereBetween("price", [startPrice, endPrice]);
-  } else if (startPrice != null) {
-    products.where("price", ">=", startPrice);
-  } else if (endPrice != null) {
-    products.where("price", "<=", endPrice);
   }
   return products;
 };

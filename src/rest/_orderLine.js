@@ -5,6 +5,7 @@ const validate = require("./_validation.js");
 
 const postOrderLine = async (ctx) => {
   ctx.body = await orderLineService.create(ctx.request.body);
+  ctx.status = 201;
 };
 postOrderLine.validationScheme = {
   body: {

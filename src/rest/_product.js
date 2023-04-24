@@ -33,6 +33,11 @@ module.exports = (app) => {
 
   router.get("/", validate(getAllProducts.validationScheme), getAllProducts);
   router.get(
+    "/id/:productId",
+    validate(getProductById.validationScheme),
+    getProductById
+  );
+  router.get(
     "/filter",
     validate(getFilteredProducts.validationScheme),
     getFilteredProducts
