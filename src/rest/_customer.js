@@ -12,28 +12,16 @@ getcustomerByEmail.validationScheme = {
   },
 };
 
-const getcustomerBySupplierId = async (ctx) => {
-  ctx.body = await customerService.getBySupplierId(ctx.params.supplierId);
-};
-getcustomerBySupplierId.validationScheme = {
-  params: {
-    supplierId: Joi.number().integer().positive(),
-  },
-};
 
 module.exports = (app) => {
   const router = new Router({ prefix: "/customers" });
 
   router.get(
-    "/email/:email",
+    "/:email",
     validate(getcustomerByEmail.validationScheme),
     getcustomerByEmail
   );
-  router.get(
-    "/supplierId/:supplierId",
-    validate(getcustomerBySupplierId.validationScheme),
-    getcustomerBySupplierId
-  );
+  
 
   app.use(router.routes()).use(router.allowedMethods());
 };
