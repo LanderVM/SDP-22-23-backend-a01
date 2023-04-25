@@ -13,9 +13,7 @@ const getById = async (id) => {
 };
 
 const getByName = async (name) => {
-  const product = await getKnex()(tables.product)
-    .where("name", name)
-    .first();
+  const product = await getKnex()(tables.product).where("name", name).first();
   return product;
 };
 
@@ -24,7 +22,7 @@ const getFilteredProducts = async (startPrice, endPrice, inStock) => {
   if (inStock) {
     products.where("stock", ">", 0);
   } else {
-    products.where("stock", ">=", 0);
+    products.where("stock", "=", 0);
   }
   if (startPrice != null && endPrice != null) {
     products.whereBetween("price", [startPrice, endPrice]);

@@ -219,5 +219,19 @@ describe("order", () => {
       };
       expect(throws).toThrow(new ServiceError());
     });*/
+
+    it("should return 401", async () => {
+      const response = await request.get(
+        `${url}/?trackAndTraceCode=error&verificationCode=2`
+      );
+      expect(response.status).toBe(401);
+    });
+
+    it("should return 401", async () => {
+      const response = await request.get(
+        `${url}/?trackAndTraceCode=322228968778&verificationCode=420`
+      );
+      expect(response.status).toBe(401);
+    });
   });
 });
