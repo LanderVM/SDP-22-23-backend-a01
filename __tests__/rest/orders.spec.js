@@ -117,10 +117,6 @@ const data = {
   ],
 };
 
-const dataToDelete = {
-  orders: [1, 2, 3, 4],
-};
-
 describe("order", () => {
   let request;
   let knex;
@@ -147,7 +143,7 @@ describe("order", () => {
       await knex(tables.tracking_code_details).delete();
     });
 
-    it("Zou een 200 code moeten geven en de correcte order", async () => {
+    it("should be 200 and return order with order_id 4", async () => {
       const response = await request.get(
         `${url}/?trackAndTraceCode=testprefixS0CYTUZ6AA8MM&verificationCode=9000`
       );
@@ -179,7 +175,7 @@ describe("order", () => {
         verification_type: "POST_CODE",
       });
     });
-    it("Zou een 200 code moeten geven en de correcte order", async () => {
+    it("should be 200 and return order with order_id 2", async () => {
       const response = await request.get(
         `${url}/?trackAndTraceCode=322228968778&verificationCode=2`
       );
@@ -211,23 +207,15 @@ describe("order", () => {
         verification_type: "ORDER_ID",
       });
     });
-    /*it("should throw error", async () => {
-      const throws = async () => {
-        await request.get(
-          `${url}/?trackAndTraceCode=fout&verificationCode=9000`
-        );
-      };
-      expect(throws).toThrow(new ServiceError());
-    });*/
 
-    it("should return 401", async () => {
+    it("should be 401 and return nothing", async () => {
       const response = await request.get(
         `${url}/?trackAndTraceCode=error&verificationCode=2`
       );
       expect(response.status).toBe(401);
     });
 
-    it("should return 401", async () => {
+    it("should be 401 and return order nothing", async () => {
       const response = await request.get(
         `${url}/?trackAndTraceCode=322228968778&verificationCode=420`
       );

@@ -38,11 +38,13 @@ const getFilteredProducts = async ({
   startPrice = 0,
   endPrice = Number.MAX_SAFE_INTEGER,
   inStock = true,
+  limit,
 }) => {
   const products = await productRepository.getFilteredProducts(
     Number(startPrice),
     Number(endPrice),
-    Boolean(JSON.parse(inStock))
+    Boolean(JSON.parse(inStock)),
+    Number(limit)
   );
   //Komt niet in
   /*if (!products) {

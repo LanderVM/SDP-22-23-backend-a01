@@ -17,7 +17,7 @@ const getByName = async (name) => {
   return product;
 };
 
-const getFilteredProducts = async (startPrice, endPrice, inStock) => {
+const getFilteredProducts = async (startPrice, endPrice, inStock, limit) => {
   const products = getKnex()(tables.product);
   if (inStock) {
     products.where("stock", ">", 0);
@@ -26,6 +26,9 @@ const getFilteredProducts = async (startPrice, endPrice, inStock) => {
   }
   if (startPrice != null && endPrice != null) {
     products.whereBetween("price", [startPrice, endPrice]);
+  }
+  if (limit > 0) {
+    products.limit(limit).offset(0);
   }
   return products;
 };

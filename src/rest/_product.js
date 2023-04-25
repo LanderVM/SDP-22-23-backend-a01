@@ -32,8 +32,9 @@ const getFilteredProducts = async (ctx) => {
 getFilteredProducts.validationScheme = {
   query: {
     startPrice: Joi.number().integer().positive().allow(0).optional(),
-    endPrice: Joi.number().integer().positive().optional(),
+    endPrice: Joi.number().integer().positive().allow(0).optional(),
     inStock: Joi.boolean().optional(),
+    limit: Joi.number().integer().positive().optional(),
   },
 };
 
@@ -59,4 +60,3 @@ module.exports = (app) => {
 
   app.use(router.routes()).use(router.allowedMethods());
 };
-

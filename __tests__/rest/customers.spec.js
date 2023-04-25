@@ -28,19 +28,9 @@ const dataToDelete = {
 };
 
 describe("customers", () => {
-  //let server;
+  let server;
   let request;
   let knex;
-
-  /*beforeAll(async () => {
-		server = await createServer();
-		request = supertest(server.getApp().callback());
-		knex = getKnex();
-	})
-
-  afterAll(async () => {
-		await server.stop();
-	});*/
 
   withServer(({ knex: k, request: r, authHeader: a }) => {
     knex = k;
@@ -66,24 +56,32 @@ describe("customers", () => {
       const response = await request.get(`${url}/email/${email}`);
       expect(response.status).toBe(200);
       expect(response.body.count).toBe(1);
-      expect(response.body.items).toMatchObject(data.customers[0]);
+      expect(response.body.items).toEqual({
+        email_id: "erik@janInc.com",
+        username: "jan",
+        SUPPLIER_supplier_id: 1,
+      });
     });
 
-    it("should 401", async () => {
+    it("should 401 and return nothing", async () => {
       const email = "error";
       const response = await request.get(`${url}/email/${email}`);
       expect(response.status).toBe(401);
     });
 
-    it("should 200 and return the requested customer by supplierId", async () => {
+    it("should 200 and return customer with email_id ", async () => {
       const supId = 1;
       const response = await request.get(`${url}/supplierId/${supId}`);
       expect(response.status).toBe(200);
       expect(response.body.count).toBe(1);
-      expect(response.body.items).toMatchObject(data.customers[0]);
+      expect(response.body.items).toEqual({
+        email_id: "erik@janInc.com",
+        username: "jan",
+        SUPPLIER_supplier_id: 1,
+      });
     });
 
-    it("should 401", async () => {
+    it("should 401 and return nothing", async () => {
       const supId = 419;
       const response = await request.get(`${url}/supplierId/${supId}`);
       expect(response.status).toBe(401);

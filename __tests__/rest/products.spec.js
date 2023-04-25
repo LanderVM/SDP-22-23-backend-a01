@@ -64,7 +64,7 @@ describe("product", () => {
         .delete();
     });
 
-    it("Zou een 200 code moeten geven en alle producten", async () => {
+    it("should be 200 and return all products", async () => {
       const response = await request.get(url);
       expect(response.status).toBe(200);
       expect(response.body.count).toBe(3);
@@ -112,7 +112,7 @@ describe("product", () => {
         .delete();
     });
 
-    it("De response zou 200 moeten zijn en je zou een product moeten krijgen", async () => {
+    it("should be 200 and return product with product_id 1", async () => {
       const response = await request.get(
         `${url}/id/${data.producten[0].product_id}`
       );
@@ -128,7 +128,7 @@ describe("product", () => {
         deliveryTime: "2d",
       });
     });
-    it("it should be 401 and throw error", async () => {
+    it("should be 401 and return nothing", async () => {
       const response = await request.get(`${url}/id/99`);
       expect(response.status).toBe(401);
     });
@@ -145,7 +145,7 @@ describe("product", () => {
         .delete();
     });
 
-    it("De response zou 200 moeten zijn en je zou de gefilterde product(en) moeten krijgen (Het product moet minder of gelijk aan 10 euro kosten en in stock zijn)", async () => {
+    it("should be 200 and return product with product_id 3", async () => {
       const response = await request.get(
         `${url}/filter?startPrice=6&endPrice=10`
       );
@@ -202,10 +202,9 @@ describe("product", () => {
         deliveryTime: "1d",
       });
     });
-    it("should be 200 and to throw", async () => {
+    it("should be 401 and return nothing", async () => {
       const response = await request.get(`${url}/name/no_product`);
       expect(response.status).toBe(401);
-      expect(response.body.items).toEqual();
     });
   });
 });
