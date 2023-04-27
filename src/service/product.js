@@ -56,9 +56,22 @@ const getFilteredProducts = async ({
   };
 };
 
+const getFilteredByIdProducts = async(
+  product_id
+) => {
+  const products = await productRepository.getFilteredByIdProducts(
+    product_id,
+  );
+  return {
+    items: products,
+    count: products.length,
+  };
+}
+
 module.exports = {
   getAll,
   getById,
   getByName,
   getFilteredProducts,
+  getFilteredByIdProducts
 };
