@@ -38,16 +38,6 @@ getFilteredProducts.validationScheme = {
   },
 };
 
-const getFilteredByIdProducts = async (ctx) => {
-  console.log(ctx.query)
-  ctx.body = await productService.getFilteredByIdProducts(ctx.query);
-}
-getFilteredByIdProducts.validationScheme = {
-  query: {
-    product_id: [Joi.array().items(), Joi.number()]
-  },
-}
-
 module.exports = (app) => {
   const router = new Router({ prefix: "/product" });
 
@@ -66,11 +56,6 @@ module.exports = (app) => {
     "/filter",
     validate(getFilteredProducts.validationScheme),
     getFilteredProducts
-  );
-  router.get(
-    "/filter/id",
-    validate(getFilteredByIdProducts.validationScheme),
-    getFilteredByIdProducts
   );
 
   app.use(router.routes()).use(router.allowedMethods());

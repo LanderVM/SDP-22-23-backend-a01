@@ -33,21 +33,9 @@ const getFilteredProducts = async (startPrice, endPrice, inStock, limit) => {
   return products;
 };
 
-const getFilteredByIdProducts = async ({ product_id }) => {
-  console.log(product_id)
-  const products = getKnex()(tables.product);
-  if (product_id.length > 1) {
-    products.whereIn("product_id", product_id);
-  } else {
-    products.where("product_id", product_id);
-  }
-  return products;
-}
-
 module.exports = {
   getAll,
   getById,
   getByName,
   getFilteredProducts,
-  getFilteredByIdProducts,
 };
