@@ -8,8 +8,9 @@ module.exports = {
       table.integer("price").notNullable();
       table.integer("stock").notNullable();
       table.string("description").notNullable();
-      table.longText("photo").notNullable();
-      table.string("deliveryTime").notNullable();
+      table.string("brand").notNullable();
+      table.string("category").notNullable();
+      table.longText("image_URL").notNullable();
     });
   },
   down: (knex) => {

@@ -1,6 +1,4 @@
-const supertest = require("supertest");
-const createServer = require("../../src/createServer");
-const { getKnex, tables } = require("../../src/data/index");
+const { tables } = require("../../src/data/index");
 const { withServer } = require("../helpers");
 
 const data = {
@@ -38,7 +36,7 @@ describe("customers", () => {
     authHeader = a;
   });
 
-  const url = "/api/customer";
+  const url = "/api/customers";
 
   describe("GET api/customers", () => {
     beforeAll(async () => {

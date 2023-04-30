@@ -1,4 +1,3 @@
-const ServiceError = require("../../src/core/serviceError");
 const { tables } = require("../../src/data");
 const { withServer } = require("../helpers");
 
@@ -117,7 +116,7 @@ const data = {
   ],
 };
 
-describe("order", () => {
+describe("orders", () => {
   let request;
   let knex;
   let authHeader;
@@ -128,9 +127,9 @@ describe("order", () => {
     authHeader = a;
   });
 
-  const url = "/api/order";
+  const url = "/api/orders";
 
-  describe("GET /api/order", () => {
+  describe("GET /api/orders", () => {
     beforeAll(async () => {
       await knex(tables.tracking_code_details).insert(data.trackingCodeDetails);
       await knex(tables.carrier).insert(data.carriers);

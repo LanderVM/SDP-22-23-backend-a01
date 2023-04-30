@@ -39,12 +39,14 @@ const getFilteredProducts = async ({
   endPrice = Number.MAX_SAFE_INTEGER,
   inStock = true,
   limit,
+  skip = 0,
 }) => {
   const products = await productRepository.getFilteredProducts(
     Number(startPrice),
     Number(endPrice),
     Boolean(JSON.parse(inStock)),
-    Number(limit)
+    Number(limit),
+    Number(skip)
   );
   //Komt niet in
   /*if (!products) {
@@ -56,9 +58,45 @@ const getFilteredProducts = async ({
   };
 };
 
+const getCategories = async () => {
+  const categories = await productRepository.getCategories();
+  if (!categories) {
+    throw ServiceError.notFound(`There are no products with categories`);
+  }
+  return {
+    items: categories,
+    count: categories.length,
+  };
+};
+
+const getBrands = async () => {
+  const brands = await productRepository.getBrands();
+  if (!brands) {
+    throw ServiceError.notFound(`There are no products with brands`);
+  }
+  return {
+    items: brands,
+    count: brands.length,
+  };
+};
+
+const getHighestPrice = async () => {
+  const highestPrice = await productRepository.getHighestPrice();
+  if (!highestPrice) {
+    throw ServiceError.notFound(`There are no products`);
+  }
+  return {
+    items: highestPrice,
+    count: highestPrice.length || 1,
+  };
+};
+
 module.exports = {
   getAll,
   getById,
   getByName,
   getFilteredProducts,
+  getCategories,
+  getBrands,
+  getHighestPrice,
 };

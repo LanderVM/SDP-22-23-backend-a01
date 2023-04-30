@@ -2,45 +2,47 @@ const { tables } = require("../../src/data");
 const { withServer } = require("../helpers");
 
 const data = {
-  producten: [
+  products: [
     {
       product_id: 1,
-      name: "test_product vijf",
-      price: 11,
-      stock: 5,
-      description: "omschrijning test_product 5",
-      photo:
-        "https://cloudfront.alterego-design.com/media/catalog/product/cache/6/image/9df78eab33525d08d6e5fb8d27136e95/s/p/spano_black_newsite_01_4.jpg?_gl=1*51oyrg*_ga*MTM2NTk4Mjg3OC4xNjgxMjI0MDM5*_ga_Q3T21C0ST5*MTY4MTIyNDAzOC4xLjAuMTY4MTIyNDAzOC42MC4wLjA.&_ga=2.26334013.1693298657.1681224039-1365982878.1681224039",
-      deliveryTime: "2d",
+      name: "iPhone 9",
+      description: "An apple mobile which is nothing like apple",
+      price: 549,
+      stock: 94,
+      brand: "Apple",
+      category: "smartphones",
+      image_URL: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
     },
     {
       product_id: 2,
-      name: "test_product drie",
-      price: 5,
-      stock: 3,
-      description: "omschrijning test_product 3",
-      photo:
-        "https://cloudfront.alterego-design.com/media/catalog/product/cache/6/image/9df78eab33525d08d6e5fb8d27136e95/s/p/spano_black_newsite_01_4.jpg?_gl=1*51oyrg*_ga*MTM2NTk4Mjg3OC4xNjgxMjI0MDM5*_ga_Q3T21C0ST5*MTY4MTIyNDAzOC4xLjAuMTY4MTIyNDAzOC42MC4wLjA.&_ga=2.26334013.1693298657.1681224039-1365982878.1681224039",
-      deliveryTime: "12h",
+      name: "iPhone X",
+      description:
+        "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      price: 899,
+      stock: 34,
+      brand: "Apple",
+      category: "smartphones",
+      image_URL: "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
     },
     {
       product_id: 3,
-      name: "test_product vier",
-      price: 9,
-      stock: 6,
-      description: "omschrijning test_product 3",
-      photo:
-        "https://cloudfront.alterego-design.com/media/catalog/product/cache/6/image/9df78eab33525d08d6e5fb8d27136e95/s/p/spano_black_newsite_01_4.jpg?_gl=1*51oyrg*_ga*MTM2NTk4Mjg3OC4xNjgxMjI0MDM5*_ga_Q3T21C0ST5*MTY4MTIyNDAzOC4xLjAuMTY4MTIyNDAzOC42MC4wLjA.&_ga=2.26334013.1693298657.1681224039-1365982878.1681224039",
-      deliveryTime: "1d",
+      name: "Samsung Universe 9",
+      description:
+        "Samsung's new variant which goes beyond Galaxy to the Universe",
+      price: 1249,
+      stock: 36,
+      brand: "Samsung",
+      category: "smartphones",
+      image_URL: "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
     },
   ],
 };
 
 const dataToDelete = {
-  producten: [1, 2, 3],
+  products: [1, 2, 3],
 };
 
-describe("product", () => {
+describe("products", () => {
   let request;
   let knex;
   let authHeader;
@@ -51,16 +53,16 @@ describe("product", () => {
     authHeader = a;
   });
 
-  const url = "/api/product";
+  const url = "/api/products";
 
-  describe("GET /api/product", () => {
+  describe("GET /api/products", () => {
     beforeAll(async () => {
-      await knex(tables.product).insert(data.producten);
+      await knex(tables.product).insert(data.products);
     });
 
     afterAll(async () => {
       await knex(tables.product)
-        .whereIn("product_id", dataToDelete.producten)
+        .whereIn("product_id", dataToDelete.products)
         .delete();
     });
 
@@ -70,62 +72,62 @@ describe("product", () => {
       expect(response.body.count).toBe(3);
       expect(response.body.items[0]).toEqual({
         product_id: 1,
-        name: "test_product vijf",
-        price: 11,
-        stock: 5,
-        description: "omschrijning test_product 5",
-        photo:
-          "https://cloudfront.alterego-design.com/media/catalog/product/cache/6/image/9df78eab33525d08d6e5fb8d27136e95/s/p/spano_black_newsite_01_4.jpg?_gl=1*51oyrg*_ga*MTM2NTk4Mjg3OC4xNjgxMjI0MDM5*_ga_Q3T21C0ST5*MTY4MTIyNDAzOC4xLjAuMTY4MTIyNDAzOC42MC4wLjA.&_ga=2.26334013.1693298657.1681224039-1365982878.1681224039",
-        deliveryTime: "2d",
+        name: "iPhone 9",
+        description: "An apple mobile which is nothing like apple",
+        price: 549,
+        stock: 94,
+        brand: "Apple",
+        category: "smartphones",
+        image_URL: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
       });
       expect(response.body.items[1]).toEqual({
         product_id: 2,
-        name: "test_product drie",
-        price: 5,
-        stock: 3,
-        description: "omschrijning test_product 3",
-        photo:
-          "https://cloudfront.alterego-design.com/media/catalog/product/cache/6/image/9df78eab33525d08d6e5fb8d27136e95/s/p/spano_black_newsite_01_4.jpg?_gl=1*51oyrg*_ga*MTM2NTk4Mjg3OC4xNjgxMjI0MDM5*_ga_Q3T21C0ST5*MTY4MTIyNDAzOC4xLjAuMTY4MTIyNDAzOC42MC4wLjA.&_ga=2.26334013.1693298657.1681224039-1365982878.1681224039",
-        deliveryTime: "12h",
+        name: "iPhone X",
+        description:
+          "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+        price: 899,
+        stock: 34,
+        brand: "Apple",
+        category: "smartphones",
+        image_URL: "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
       });
       expect(response.body.items[2]).toEqual({
         product_id: 3,
-        name: "test_product vier",
-        price: 9,
-        stock: 6,
-        description: "omschrijning test_product 3",
-        photo:
-          "https://cloudfront.alterego-design.com/media/catalog/product/cache/6/image/9df78eab33525d08d6e5fb8d27136e95/s/p/spano_black_newsite_01_4.jpg?_gl=1*51oyrg*_ga*MTM2NTk4Mjg3OC4xNjgxMjI0MDM5*_ga_Q3T21C0ST5*MTY4MTIyNDAzOC4xLjAuMTY4MTIyNDAzOC42MC4wLjA.&_ga=2.26334013.1693298657.1681224039-1365982878.1681224039",
-        deliveryTime: "1d",
+        name: "Samsung Universe 9",
+        description:
+          "Samsung's new variant which goes beyond Galaxy to the Universe",
+        price: 1249,
+        stock: 36,
+        brand: "Samsung",
+        category: "smartphones",
+        image_URL: "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
       });
     });
   });
 
-  describe("GET /api/product/id/:productId", () => {
+  describe("GET /api/products/id/:productId", () => {
     beforeAll(async () => {
-      await knex(tables.product).insert(data.producten);
+      await knex(tables.product).insert(data.products);
     });
 
     afterAll(async () => {
       await knex(tables.product)
-        .whereIn("product_id", dataToDelete.producten)
+        .whereIn("product_id", dataToDelete.products)
         .delete();
     });
 
-    it("should be 200 and return product with product_id 1", async () => {
-      const response = await request.get(
-        `${url}/id/${data.producten[0].product_id}`
-      );
+    it("should be 200 and return product iPhone 9", async () => {
+      const response = await request.get(`${url}/id/1`);
       expect(response.status).toBe(200);
       expect(response.body.items).toEqual({
         product_id: 1,
-        name: "test_product vijf",
-        price: 11,
-        stock: 5,
-        description: "omschrijning test_product 5",
-        photo:
-          "https://cloudfront.alterego-design.com/media/catalog/product/cache/6/image/9df78eab33525d08d6e5fb8d27136e95/s/p/spano_black_newsite_01_4.jpg?_gl=1*51oyrg*_ga*MTM2NTk4Mjg3OC4xNjgxMjI0MDM5*_ga_Q3T21C0ST5*MTY4MTIyNDAzOC4xLjAuMTY4MTIyNDAzOC42MC4wLjA.&_ga=2.26334013.1693298657.1681224039-1365982878.1681224039",
-        deliveryTime: "2d",
+        name: "iPhone 9",
+        description: "An apple mobile which is nothing like apple",
+        price: 549,
+        stock: 94,
+        brand: "Apple",
+        category: "smartphones",
+        image_URL: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
       });
     });
     it("should be 401 and return nothing", async () => {
@@ -134,32 +136,33 @@ describe("product", () => {
     });
   });
 
-  describe("GET /api/product/filter", () => {
+  describe("GET /api/products/filter", () => {
     beforeAll(async () => {
-      await knex(tables.product).insert(data.producten);
+      await knex(tables.product).insert(data.products);
     });
 
     afterAll(async () => {
       await knex(tables.product)
-        .whereIn("product_id", dataToDelete.producten)
+        .whereIn("product_id", dataToDelete.products)
         .delete();
     });
 
-    it("should be 200 and return product with product_id 3", async () => {
+    it("should be 200 and return product iPhone X", async () => {
       const response = await request.get(
-        `${url}/filter?startPrice=6&endPrice=10`
+        `${url}/filter?startPrice=800&endPrice=900`
       );
       expect(response.status).toBe(200);
       expect(response.body.items.length).toBe(1);
       expect(response.body.items[0]).toEqual({
-        product_id: 3,
-        name: "test_product vier",
-        price: 9,
-        stock: 6,
-        description: "omschrijning test_product 3",
-        photo:
-          "https://cloudfront.alterego-design.com/media/catalog/product/cache/6/image/9df78eab33525d08d6e5fb8d27136e95/s/p/spano_black_newsite_01_4.jpg?_gl=1*51oyrg*_ga*MTM2NTk4Mjg3OC4xNjgxMjI0MDM5*_ga_Q3T21C0ST5*MTY4MTIyNDAzOC4xLjAuMTY4MTIyNDAzOC42MC4wLjA.&_ga=2.26334013.1693298657.1681224039-1365982878.1681224039",
-        deliveryTime: "1d",
+        product_id: 2,
+        name: "iPhone X",
+        description:
+          "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+        price: 899,
+        stock: 34,
+        brand: "Apple",
+        category: "smartphones",
+        image_URL: "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
       });
     });
     it("should be 200 and return nothing", async () => {
@@ -170,36 +173,36 @@ describe("product", () => {
     });
 
     it("should be 200 and return nothing", async () => {
-      const response = await request.get(`${url}/filter?startPrice=100`);
+      const response = await request.get(`${url}/filter?startPrice=90000`);
       expect(response.status).toBe(200);
       expect(response.body.items.length).toBe(0);
       expect(response.body.items[0]).toEqual();
     });
   });
 
-  describe("GET /api/product/name", () => {
+  describe("GET /api/products/name", () => {
     beforeAll(async () => {
-      await knex(tables.product).insert(data.producten);
+      await knex(tables.product).insert(data.products);
     });
 
     afterAll(async () => {
       await knex(tables.product)
-        .whereIn("product_id", dataToDelete.producten)
+        .whereIn("product_id", dataToDelete.products)
         .delete();
     });
 
-    it("should be 200 and return test_product vier", async () => {
-      const response = await request.get(`${url}/name/test_product vier`);
+    it("should be 200 and return iPhone 9", async () => {
+      const response = await request.get(`${url}/name/iPhone 9`);
       expect(response.status).toBe(200);
       expect(response.body.items).toEqual({
-        product_id: 3,
-        name: "test_product vier",
-        price: 9,
-        stock: 6,
-        description: "omschrijning test_product 3",
-        photo:
-          "https://cloudfront.alterego-design.com/media/catalog/product/cache/6/image/9df78eab33525d08d6e5fb8d27136e95/s/p/spano_black_newsite_01_4.jpg?_gl=1*51oyrg*_ga*MTM2NTk4Mjg3OC4xNjgxMjI0MDM5*_ga_Q3T21C0ST5*MTY4MTIyNDAzOC4xLjAuMTY4MTIyNDAzOC42MC4wLjA.&_ga=2.26334013.1693298657.1681224039-1365982878.1681224039",
-        deliveryTime: "1d",
+        product_id: 1,
+        name: "iPhone 9",
+        description: "An apple mobile which is nothing like apple",
+        price: 549,
+        stock: 94,
+        brand: "Apple",
+        category: "smartphones",
+        image_URL: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
       });
     });
     it("should be 401 and return nothing", async () => {

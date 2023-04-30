@@ -35,11 +35,27 @@ getFilteredProducts.validationScheme = {
     endPrice: Joi.number().integer().positive().allow(0).optional(),
     inStock: Joi.boolean().optional(),
     limit: Joi.number().integer().positive().optional(),
+    skip: Joi.number().integer().positive().allow(0).optional(),
   },
 };
 
+const getProductCategories = async (ctx) => {
+  ctx.body = await productService.getCategories();
+};
+getProductCategories.validationScheme = null;
+
+const getProductBrands = async (ctx) => {
+  ctx.body = await productService.getBrands();
+};
+getProductBrands.validationScheme = null;
+
+const getProductsHighestPrice = async (ctx) => {
+  ctx.body = await productService.getHighestPrice();
+};
+getProductsHighestPrice.validationScheme = null;
+
 module.exports = (app) => {
-  const router = new Router({ prefix: "/product" });
+  const router = new Router({ prefix: "/products" });
 
   router.get("/", validate(getAllProducts.validationScheme), getAllProducts);
   router.get(
@@ -56,6 +72,21 @@ module.exports = (app) => {
     "/filter",
     validate(getFilteredProducts.validationScheme),
     getFilteredProducts
+  );
+  router.get(
+    "/categories",
+    validate(getProductCategories.validationScheme),
+    getProductCategories
+  );
+  router.get(
+    "/brands",
+    validate(getProductBrands.validationScheme),
+    getProductBrands
+  );
+  router.get(
+    "/highestPrice",
+    validate(getProductsHighestPrice.validationScheme),
+    getProductsHighestPrice
   );
 
   app.use(router.routes()).use(router.allowedMethods());

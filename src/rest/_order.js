@@ -46,7 +46,7 @@ createOrder.validationScheme = {
 };
 
 module.exports = (app) => {
-  const router = new Router({ prefix: "/order" });
+  const router = new Router({ prefix: "/orders" });
 
   router.get(
     "/",

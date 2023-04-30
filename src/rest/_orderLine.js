@@ -17,7 +17,7 @@ postOrderLine.validationScheme = {
 };
 
 module.exports = (app) => {
-  const router = new Router({ prefix: "/orderLine" });
+  const router = new Router({ prefix: "/orderLines" });
 
   router.post("/", validate(postOrderLine.validationScheme), postOrderLine);
 

@@ -22,7 +22,7 @@ getcustomerBySupplierId.validationScheme = {
 };
 
 module.exports = (app) => {
-  const router = new Router({ prefix: "/customer" });
+  const router = new Router({ prefix: "/customers" });
 
   router.get(
     "/email/:email",
