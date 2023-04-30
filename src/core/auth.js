@@ -1,8 +1,10 @@
 const jwksrsa = require("jwks-rsa");
 const jwt = require("koa-jwt");
 const { getLogger } = require("../core/logging");
-
+const axios = require("axios");
 const config = require("config");
+
+const AUTH_USER_INFO = config.get("auth.userInfo");
 
 function getJwtSecret() {
   try {
@@ -82,9 +84,35 @@ const logAuth = async (ctx, next) => {
   await next();
 };
 
+const addUserInfo = async (ctx) => {
+  const logger = getLogger();
+  try {
+    const token = ctx.headers.authorization;
+    const url = AUTH_USER_INFO;
+    if (token && url && ctx.state.user) {
+      logger.debug(`addUserInfo: ${url}, ${JSON.stringify(token)}`);
+
+      const userInfo = await axios.get(url, {
+        headers: {
+          Authorization: token,
+        },
+      });
+
+      ctx.state.user = {
+        ...ctx.state.user,
+        ...userInfo.data,
+      };
+    }
+  } catch (error) {
+    logger.error("Something went wrong when fetching user info", { error });
+    throw error;
+  }
+};
+
 module.exports = {
   checkJwtToken,
   hasPermission,
   logAuth,
   permissions,
+  addUserInfo,
 };

@@ -21,6 +21,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/1/4.jpg",
           "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
         ],*/
+        delivery_time: "12h",
       },
       {
         product_id: 2,
@@ -40,6 +41,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/2/3.jpg",
           "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
         ],*/
+        delivery_time: "1d",
       },
       {
         product_id: 3,
@@ -54,6 +56,7 @@ module.exports = {
         category: "smartphones",
         image_URL: "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
         /*images: ["https://i.dummyjson.com/data/products/3/1.jpg"],*/
+        delivery_time: "3d",
       },
       {
         product_id: 4,
@@ -73,6 +76,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/4/4.jpg",
           "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
         ],*/
+        delivery_time: "1d",
       },
       {
         product_id: 5,
@@ -91,6 +95,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/5/2.jpg",
           "https://i.dummyjson.com/data/products/5/3.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 6,
@@ -110,6 +115,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/6/3.png",
           "https://i.dummyjson.com/data/products/6/4.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 7,
@@ -129,6 +135,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/7/3.jpg",
           "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
         ],*/
+        delivery_time: "36h",
       },
       {
         product_id: 8,
@@ -149,6 +156,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/8/4.jpg",
           "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 9,
@@ -169,6 +177,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/9/4.jpg",
           "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
         ],*/
+        delivery_time: "9d",
       },
       {
         product_id: 10,
@@ -188,6 +197,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/10/3.jpg",
           "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 11,
@@ -207,6 +217,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/11/3.jpg",
           "https://i.dummyjson.com/data/products/11/thumbnail.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 12,
@@ -226,6 +237,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/12/4.jpg",
           "https://i.dummyjson.com/data/products/12/thumbnail.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 13,
@@ -246,6 +258,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/13/4.jpg",
           "https://i.dummyjson.com/data/products/13/thumbnail.webp",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 14,
@@ -265,6 +278,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/14/3.jpg",
           "https://i.dummyjson.com/data/products/14/thumbnail.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 15,
@@ -285,6 +299,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/15/4.jpg",
           "https://i.dummyjson.com/data/products/15/thumbnail.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 16,
@@ -305,6 +320,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/16/4.jpg",
           "https://i.dummyjson.com/data/products/16/thumbnail.jpg",
         ],*/
+        delivery_time: "4d",
       },
       {
         product_id: 17,
@@ -324,6 +340,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/17/3.jpg",
           "https://i.dummyjson.com/data/products/17/thumbnail.jpg",
         ],*/
+        delivery_time: "4d",
       },
       {
         product_id: 18,
@@ -344,6 +361,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/18/4.jpg",
           "https://i.dummyjson.com/data/products/18/thumbnail.jpg",
         ],*/
+        delivery_time: "1d",
       },
       {
         product_id: 19,
@@ -363,6 +381,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/19/3.png",
           "https://i.dummyjson.com/data/products/19/thumbnail.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 20,
@@ -383,6 +402,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/20/4.jpg",
           "https://i.dummyjson.com/data/products/20/thumbnail.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 21,
@@ -401,6 +421,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/21/2.jpg",
           "https://i.dummyjson.com/data/products/21/3.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 22,
@@ -419,6 +440,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/22/2.jpg",
           "https://i.dummyjson.com/data/products/22/3.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 23,
@@ -439,6 +461,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/23/4.jpg",
           "https://i.dummyjson.com/data/products/23/thumbnail.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 24,
@@ -459,6 +482,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/24/4.jpg",
           "https://i.dummyjson.com/data/products/24/thumbnail.jpg",
         ],*/
+        delivery_time: "7d",
       },
       {
         product_id: 25,
@@ -479,6 +503,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/25/4.jpg",
           "https://i.dummyjson.com/data/products/25/thumbnail.jpg",
         ],*/
+        delivery_time: "7d",
       },
       {
         product_id: 26,
@@ -500,6 +525,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/26/5.jpg",
           "https://i.dummyjson.com/data/products/26/thumbnail.jpg",
         ],*/
+        delivery_time: "6d",
       },
       {
         product_id: 27,
@@ -520,6 +546,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/27/4.jpg",
           "https://i.dummyjson.com/data/products/27/thumbnail.webp",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 28,
@@ -540,6 +567,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/28/4.jpg",
           "https://i.dummyjson.com/data/products/28/thumbnail.jpg",
         ],*/
+        delivery_time: "1d",
       },
       {
         product_id: 29,
@@ -560,6 +588,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/29/4.webp",
           "https://i.dummyjson.com/data/products/29/thumbnail.webp",
         ],*/
+        delivery_time: "1d",
       },
       {
         product_id: 30,
@@ -579,6 +608,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/30/3.jpg",
           "https://i.dummyjson.com/data/products/30/thumbnail.jpg",
         ],*/
+        delivery_time: "1d",
       },
       {
         product_id: 31,
@@ -599,6 +629,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/31/4.jpg",
           "https://i.dummyjson.com/data/products/31/thumbnail.jpg",
         ],*/
+        delivery_time: "1d",
       },
       {
         product_id: 32,
@@ -618,6 +649,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/32/3.jpg",
           "https://i.dummyjson.com/data/products/32/thumbnail.jpg",
         ],*/
+        delivery_time: "1d",
       },
       {
         product_id: 33,
@@ -638,6 +670,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/33/4.jpg",
           "https://i.dummyjson.com/data/products/33/thumbnail.jpg",
         ],*/
+        delivery_time: "1d",
       },
       {
         product_id: 34,
@@ -658,6 +691,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/34/4.jpg",
           "https://i.dummyjson.com/data/products/34/thumbnail.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 35,
@@ -678,6 +712,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/35/4.jpg",
           "https://i.dummyjson.com/data/products/35/thumbnail.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 36,
@@ -698,6 +733,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/36/4.jpg",
           "https://i.dummyjson.com/data/products/36/thumbnail.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 37,
@@ -718,6 +754,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/37/4.jpg",
           "https://i.dummyjson.com/data/products/37/thumbnail.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 38,
@@ -736,6 +773,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/38/3.jpg",
           "https://i.dummyjson.com/data/products/38/4.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 39,
@@ -756,6 +794,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/39/4.jpg",
           "https://i.dummyjson.com/data/products/39/thumbnail.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 40,
@@ -773,6 +812,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/40/1.jpg",
           "https://i.dummyjson.com/data/products/40/2.jpg",
         ],*/
+        delivery_time: "3d",
       },
       {
         product_id: 41,
@@ -793,6 +833,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/41/4.jpg",
           "https://i.dummyjson.com/data/products/41/thumbnail.webp",
         ],*/
+        delivery_time: "5d",
       },
       {
         product_id: 42,
@@ -813,6 +854,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/42/4.jpg",
           "https://i.dummyjson.com/data/products/42/thumbnail.jpg",
         ],*/
+        delivery_time: "5d",
       },
       {
         product_id: 43,
@@ -833,6 +875,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/43/4.jpg",
           "https://i.dummyjson.com/data/products/43/thumbnail.jpg",
         ],*/
+        delivery_time: "5d",
       },
       {
         product_id: 44,
@@ -853,6 +896,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/44/4.jpg",
           "https://i.dummyjson.com/data/products/44/thumbnail.jpg",
         ],*/
+        delivery_time: "5d",
       },
       {
         product_id: 45,
@@ -873,6 +917,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/45/4.jpg",
           "https://i.dummyjson.com/data/products/45/thumbnail.jpg",
         ],*/
+        delivery_time: "8d",
       },
       {
         product_id: 46,
@@ -893,6 +938,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/46/4.jpg",
           "https://i.dummyjson.com/data/products/46/thumbnail.jpg",
         ],*/
+        delivery_time: "36h",
       },
       {
         product_id: 47,
@@ -912,6 +958,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/47/3.jpg",
           "https://i.dummyjson.com/data/products/47/thumbnail.jpeg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 48,
@@ -932,6 +979,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/48/4.jpg",
           "https://i.dummyjson.com/data/products/48/thumbnail.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 49,
@@ -951,6 +999,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/49/3.webp",
           "https://i.dummyjson.com/data/products/49/thumbnail.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 50,
@@ -969,6 +1018,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/50/2.jpg",
           "https://i.dummyjson.com/data/products/50/3.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 51,
@@ -988,6 +1038,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/51/3.jpg",
           "https://i.dummyjson.com/data/products/51/thumbnail.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 52,
@@ -1008,6 +1059,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/52/4.jpg",
           "https://i.dummyjson.com/data/products/52/thumbnail.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 53,
@@ -1027,6 +1079,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/53/4.jpg",
           "https://i.dummyjson.com/data/products/53/thumbnail.jpg",
         ],*/
+        delivery_time: "2d",
       },
       {
         product_id: 54,
@@ -1045,8 +1098,8 @@ module.exports = {
           "https://i.dummyjson.com/data/products/54/2.jpg",
           "https://i.dummyjson.com/data/products/54/3.jpg",
           "https://i.dummyjson.com/data/products/54/4.jpg",
-          "https://i.dummyjson.com/data/products/54/thumbnail.jpg",
-        ],*/
+          "https://i.dummyjson.com/data/products/54/thumbnail.jpg",*/
+        delivery_time: "2d",
       },
       {
         product_id: 55,
@@ -1064,8 +1117,8 @@ module.exports = {
           "https://i.dummyjson.com/data/products/55/2.webp",
           "https://i.dummyjson.com/data/products/55/3.jpg",
           "https://i.dummyjson.com/data/products/55/4.jpg",
-          "https://i.dummyjson.com/data/products/55/thumbnail.jpg",
-        ],*/
+          "https://i.dummyjson.com/data/products/55/thumbnail.jpg",]*/
+        delivery_time: "2d",
       },
       {
         product_id: 56,
@@ -1086,7 +1139,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/56/4.jpg",
           "https://i.dummyjson.com/data/products/56/5.jpg",
           "https://i.dummyjson.com/data/products/56/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 57,
@@ -1106,7 +1159,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/57/3.jpg",
           "https://i.dummyjson.com/data/products/57/4.jpg",
           "https://i.dummyjson.com/data/products/57/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 58,
@@ -1126,7 +1179,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/58/3.jpg",
           "https://i.dummyjson.com/data/products/58/4.jpg",
           "https://i.dummyjson.com/data/products/58/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "4d",
       },
       {
         product_id: 59,
@@ -1146,7 +1199,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/59/3.jpg",
           "https://i.dummyjson.com/data/products/59/4.jpg",
           "https://i.dummyjson.com/data/products/59/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 60,
@@ -1165,7 +1218,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/60/2.jpg",
           "https://i.dummyjson.com/data/products/60/3.jpg",
           "https://i.dummyjson.com/data/products/60/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 61,
@@ -1182,7 +1235,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/61/1.jpg",
           "https://i.dummyjson.com/data/products/61/2.png",
           "https://i.dummyjson.com/data/products/61/3.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 62,
@@ -1199,7 +1252,7 @@ module.exports = {
         /*images: [
           "https://i.dummyjson.com/data/products/62/1.jpg",
           "https://i.dummyjson.com/data/products/62/2.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 63,
@@ -1218,7 +1271,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/63/2.jpg",
           "https://i.dummyjson.com/data/products/63/3.png",
           "https://i.dummyjson.com/data/products/63/4.jpeg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 64,
@@ -1237,7 +1290,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/64/2.webp",
           "https://i.dummyjson.com/data/products/64/3.jpg",
           "https://i.dummyjson.com/data/products/64/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 65,
@@ -1257,7 +1310,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/65/3.jpg",
           "https://i.dummyjson.com/data/products/65/4.webp",
           "https://i.dummyjson.com/data/products/65/thumbnail.webp",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 66,
@@ -1277,7 +1330,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/66/3.jpg",
           "https://i.dummyjson.com/data/products/66/4.JPG",
           "https://i.dummyjson.com/data/products/66/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 67,
@@ -1297,7 +1350,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/67/3.jpg",
           "https://i.dummyjson.com/data/products/67/4.jpg",
           "https://i.dummyjson.com/data/products/67/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 68,
@@ -1314,7 +1367,7 @@ module.exports = {
         /*images: [
           "https://i.dummyjson.com/data/products/68/1.jpg",
           "https://i.dummyjson.com/data/products/68/2.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 69,
@@ -1334,7 +1387,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/69/3.webp",
           "https://i.dummyjson.com/data/products/69/4.jpg",
           "https://i.dummyjson.com/data/products/69/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 70,
@@ -1352,7 +1405,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/70/1.jpg",
           "https://i.dummyjson.com/data/products/70/2.jpg",
           "https://i.dummyjson.com/data/products/70/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 71,
@@ -1371,7 +1424,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/71/2.jpg",
           "https://i.dummyjson.com/data/products/71/3.webp",
           "https://i.dummyjson.com/data/products/71/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 72,
@@ -1391,7 +1444,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/72/3.webp",
           "https://i.dummyjson.com/data/products/72/4.jpg",
           "https://i.dummyjson.com/data/products/72/thumbnail.webp",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 73,
@@ -1410,7 +1463,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/73/2.webp",
           "https://i.dummyjson.com/data/products/73/3.jpg",
           "https://i.dummyjson.com/data/products/73/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 74,
@@ -1430,7 +1483,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/74/3.jpg",
           "https://i.dummyjson.com/data/products/74/4.jpg",
           "https://i.dummyjson.com/data/products/74/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 75,
@@ -1449,7 +1502,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/75/2.jpg",
           "https://i.dummyjson.com/data/products/75/3.jpg",
           "https://i.dummyjson.com/data/products/75/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 76,
@@ -1467,7 +1520,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/76/1.jpg",
           "https://i.dummyjson.com/data/products/76/2.jpg",
           "https://i.dummyjson.com/data/products/76/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 77,
@@ -1486,7 +1539,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/77/2.jpg",
           "https://i.dummyjson.com/data/products/77/3.jpg",
           "https://i.dummyjson.com/data/products/77/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 78,
@@ -1501,6 +1554,7 @@ module.exports = {
         category: "womens-jewellery",
         image_URL: "https://i.dummyjson.com/data/products/78/thumbnail.jpg",
         /*images: ["https://i.dummyjson.com/data/products/78/thumbnail.jpg"],*/
+        delivery_time: "2d",
       },
       {
         product_id: 79,
@@ -1515,6 +1569,7 @@ module.exports = {
         category: "womens-jewellery",
         image_URL: "https://i.dummyjson.com/data/products/79/thumbnail.jpg",
         /*images: ["https://i.dummyjson.com/data/products/79/1.jpg"],*/
+        delivery_time: "2d",
       },
       {
         product_id: 80,
@@ -1534,7 +1589,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/80/3.png",
           "https://i.dummyjson.com/data/products/80/4.jpg",
           "https://i.dummyjson.com/data/products/80/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 81,
@@ -1554,7 +1609,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/81/3.jpg",
           "https://i.dummyjson.com/data/products/81/4.webp",
           "https://i.dummyjson.com/data/products/81/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 82,
@@ -1574,7 +1629,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/82/3.jpg",
           "https://i.dummyjson.com/data/products/82/4.jpg",
           "https://i.dummyjson.com/data/products/82/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 83,
@@ -1594,7 +1649,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/83/3.jpg",
           "https://i.dummyjson.com/data/products/83/4.jpg",
           "https://i.dummyjson.com/data/products/83/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 84,
@@ -1612,7 +1667,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/84/1.jpg",
           "https://i.dummyjson.com/data/products/84/2.jpg",
           "https://i.dummyjson.com/data/products/84/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 85,
@@ -1630,7 +1685,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/85/1.jpg",
           "https://i.dummyjson.com/data/products/85/2.jpg",
           "https://i.dummyjson.com/data/products/85/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 86,
@@ -1650,7 +1705,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/86/3.jpg",
           "https://i.dummyjson.com/data/products/86/4.jpg",
           "https://i.dummyjson.com/data/products/86/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 87,
@@ -1670,7 +1725,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/87/3.jpg",
           "https://i.dummyjson.com/data/products/87/4.jpg",
           "https://i.dummyjson.com/data/products/87/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 88,
@@ -1690,7 +1745,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/88/3.jpg",
           "https://i.dummyjson.com/data/products/88/4.webp",
           "https://i.dummyjson.com/data/products/88/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 89,
@@ -1710,7 +1765,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/89/3.jpg",
           "https://i.dummyjson.com/data/products/89/4.jpg",
           "https://i.dummyjson.com/data/products/89/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 90,
@@ -1730,7 +1785,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/90/3.jpg",
           "https://i.dummyjson.com/data/products/90/4.jpg",
           "https://i.dummyjson.com/data/products/90/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 91,
@@ -1750,7 +1805,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/91/3.jpg",
           "https://i.dummyjson.com/data/products/91/4.jpg",
           "https://i.dummyjson.com/data/products/91/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 92,
@@ -1769,7 +1824,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/92/2.jpg",
           "https://i.dummyjson.com/data/products/92/3.jpg",
           "https://i.dummyjson.com/data/products/92/4.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 93,
@@ -1789,7 +1844,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/93/3.jpg",
           "https://i.dummyjson.com/data/products/93/4.jpg",
           "https://i.dummyjson.com/data/products/93/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 94,
@@ -1808,7 +1863,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/94/2.jpg",
           "https://i.dummyjson.com/data/products/94/3.jpg",
           "https://i.dummyjson.com/data/products/94/thumbnail.webp",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 95,
@@ -1828,7 +1883,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/95/3.jpg",
           "https://i.dummyjson.com/data/products/95/4.jpg",
           "https://i.dummyjson.com/data/products/95/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 96,
@@ -1848,7 +1903,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/96/3.jpg",
           "https://i.dummyjson.com/data/products/96/4.jpg",
           "https://i.dummyjson.com/data/products/96/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 97,
@@ -1868,7 +1923,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/97/3.jpg",
           "https://i.dummyjson.com/data/products/97/4.webp",
           "https://i.dummyjson.com/data/products/97/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 98,
@@ -1888,7 +1943,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/98/3.jpg",
           "https://i.dummyjson.com/data/products/98/4.jpg",
           "https://i.dummyjson.com/data/products/98/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 99,
@@ -1908,7 +1963,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/99/3.jpg",
           "https://i.dummyjson.com/data/products/99/4.jpg",
           "https://i.dummyjson.com/data/products/99/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
       {
         product_id: 100,
@@ -1926,7 +1981,7 @@ module.exports = {
           "https://i.dummyjson.com/data/products/100/2.jpg",
           "https://i.dummyjson.com/data/products/100/3.jpg",
           "https://i.dummyjson.com/data/products/100/thumbnail.jpg",
-        ],*/
+        ],*/ delivery_time: "2d",
       },
     ];
     await knex(tables.product).insert(products);

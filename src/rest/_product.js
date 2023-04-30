@@ -71,6 +71,7 @@ getProductByCategory.validationScheme = {
     category: Joi.string(),
   },
 };
+
 module.exports = (app) => {
   const router = new Router({ prefix: "/products" });
 

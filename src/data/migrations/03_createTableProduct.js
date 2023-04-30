@@ -11,6 +11,7 @@ module.exports = {
       table.string("brand").notNullable();
       table.string("category").notNullable();
       table.longText("image_URL").notNullable();
+      table.string("delivery_time").notNullable();
     });
   },
   down: (knex) => {
