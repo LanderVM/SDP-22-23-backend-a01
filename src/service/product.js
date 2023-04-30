@@ -38,6 +38,8 @@ const getFilteredProducts = async ({
   startPrice = 0,
   endPrice = Number.MAX_SAFE_INTEGER,
   inStock = true,
+  brand,
+  category,
   limit,
   skip = 0,
 }) => {
@@ -45,6 +47,8 @@ const getFilteredProducts = async ({
     Number(startPrice),
     Number(endPrice),
     Boolean(JSON.parse(inStock)),
+    Array(brand),
+    Array(category),
     Number(limit),
     Number(skip)
   );
