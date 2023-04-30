@@ -54,6 +54,23 @@ const getProductsHighestPrice = async (ctx) => {
 };
 getProductsHighestPrice.validationScheme = null;
 
+const getProductByBrand = async (ctx) => {
+  ctx.body = await productService.getByBrand(ctx.params.brand);
+};
+getProductByBrand.validationScheme = {
+  params: {
+    brand: Joi.string(),
+  },
+};
+
+const getProductByCategory = async (ctx) => {
+  ctx.body = await productService.getByCategory(ctx.params.category);
+};
+getProductByCategory.validationScheme = {
+  params: {
+    category: Joi.string(),
+  },
+};
 module.exports = (app) => {
   const router = new Router({ prefix: "/products" });
 
@@ -87,6 +104,16 @@ module.exports = (app) => {
     "/highestPrice",
     validate(getProductsHighestPrice.validationScheme),
     getProductsHighestPrice
+  );
+  router.get(
+    "/brand/:brand",
+    validate(getProductByBrand.validationScheme),
+    getProductByBrand
+  );
+  router.get(
+    "/category/:category",
+    validate(getProductByCategory.validationScheme),
+    getProductByCategory
   );
 
   app.use(router.routes()).use(router.allowedMethods());

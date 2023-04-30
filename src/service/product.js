@@ -91,6 +91,30 @@ const getHighestPrice = async () => {
   };
 };
 
+const getByBrand = async (brand) => {
+  const product = await productRepository.getByBrand(brand);
+  /*if (!product) {
+    throw ServiceError.notFound(`There is no product with brand ${brand}`);
+  }*/
+  return {
+    items: product,
+    count: product.length,
+  };
+};
+
+const getByCategory = async (category) => {
+  const product = await productRepository.getByCategory(category);
+  /*if (!product) {
+    throw ServiceError.notFound(
+      `There is no product with category ${category}`
+    );
+  }*/
+  return {
+    items: product,
+    count: product.length,
+  };
+};
+
 module.exports = {
   getAll,
   getById,
@@ -99,4 +123,6 @@ module.exports = {
   getCategories,
   getBrands,
   getHighestPrice,
+  getByBrand,
+  getByCategory,
 };

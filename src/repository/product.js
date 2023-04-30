@@ -58,6 +58,16 @@ const getHighestPrice = async () => {
   return highestPrice;
 };
 
+const getByBrand = async (brand) => {
+  const product = await getKnex()(tables.product).where("brand", brand);
+  return product;
+};
+
+const getByCategory = async (category) => {
+  const product = await getKnex()(tables.product).where("category", category);
+  return product;
+};
+
 module.exports = {
   getAll,
   getById,
@@ -66,4 +76,6 @@ module.exports = {
   getCategories,
   getBrands,
   getHighestPrice,
+  getByBrand,
+  getByCategory,
 };
