@@ -34,6 +34,8 @@ getFilteredProducts.validationScheme = {
     startPrice: Joi.number().integer().positive().allow(0).optional(),
     endPrice: Joi.number().integer().positive().allow(0).optional(),
     inStock: Joi.boolean().optional(),
+    brand: Joi.alternatives().try(Joi.array(), Joi.string()).optional(),
+    category: Joi.alternatives().try(Joi.array(), Joi.string()).optional(),
     limit: Joi.number().integer().positive().optional(),
     skip: Joi.number().integer().positive().allow(0).optional(),
   },
