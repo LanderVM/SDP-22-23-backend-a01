@@ -11,7 +11,6 @@ module.exports = {
       table.integer("delivery_house_number").notNullable();
       table.string("delivery_box", 255);
       table.date("order_date").notNullable();
-      //table.decimal("original_acquisition_price").notNullable();
       table.integer("order_status").notNullable();
       table.string("tracking_code", 255);
       table

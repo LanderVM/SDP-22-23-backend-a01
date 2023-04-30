@@ -5,8 +5,12 @@ module.exports = {
     await knex.schema.createTable(tables.carrier, (table) => {
       table.increments("carrier_id");
       table.boolean("is_active").notNullable();
-      table.string("name", 255).notNullable();
-      table.integer("SUPPLIER_supplier_id").notNullable();
+      table.string("name").notNullable();
+      table
+        .integer("SUPPLIER_supplier_id")
+        .notNullable()
+        .unsigned()
+        .references(`${tables.supplier}.supplier_id`);
       table
         .integer("TRACKINGCODEDETAILS_tracking_code_details_id")
         .unsigned()

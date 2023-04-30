@@ -4,10 +4,11 @@ module.exports = {
   up: async (knex) => {
     await knex.schema.createTable(tables.supplier, (table) => {
       table.increments("supplier_id");
-      table.string("address", 255).notNullable();
-      table.string("email", 255).notNullable();
-      table.string("name", 255).notNullable();
-      table.string("phone_number", 255).notNullable();
+      table.string("address").notNullable();
+      table.string("email").notNullable();
+      table.string("name").notNullable();
+      table.string("phone_number").notNullable();
+      table.longText("logo_URL").notNullable();
     });
   },
   down: (knex) => {
