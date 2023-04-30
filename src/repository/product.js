@@ -34,8 +34,9 @@ const getFilteredProducts = async (
     products.whereBetween("price", [startPrice, endPrice]);
   }
   if (limit) {
-    products.limit(limit).offset(skip);
+    products.limit(limit);
   }
+  products.offset(skip);
   return products;
 };
 
