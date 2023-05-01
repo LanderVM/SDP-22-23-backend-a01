@@ -37,9 +37,13 @@ const getByTrackingCodes = async (trackAndTraceCode, verificationCode) => {
     count: order.length || 1,
   };
 };
-/*
-const create = async ({ email, products, address }) => {
-  const supplierCustomer = { supplier_id: 3 }; //await supplierRepository.findSupplierByUserEmail(email);
+
+const create = async ({
+  email,
+  products,
+  address
+}) => {
+  const supplierCustomer = await supplierRepository.findSupplierByUserEmail(email); //{ supplier_id: 3 }; await supplierRepository.findSupplierByUserEmail(email);
 
   const street = address.street;
   const number = address.number;
@@ -58,13 +62,23 @@ const create = async ({ email, products, address }) => {
   date = date.toISOString().split("T")[0];
 
   const suppliers = {
-    1: [
-      { productId: 1, amount: 5 },
-      { productId: 2, amount: 5 },
+    1: [{
+        productId: 1,
+        amount: 5
+      },
+      {
+        productId: 2,
+        amount: 5
+      },
     ],
-    2: [
-      { productId: 4, amount: 5 },
-      { productId: 5, amount: 5 },
+    2: [{
+        productId: 4,
+        amount: 5
+      },
+      {
+        productId: 5,
+        amount: 5
+      },
     ],
   }; //await organizeProducts(products);
 
@@ -96,12 +110,12 @@ const create = async ({ email, products, address }) => {
       );
     });
   });
-  
+
   orders.forEach(async el => {
     order = await orderRepository.findById(el);
     orderObjects.push(order);
   });
-  
+
   return orderObjects;
 };
 
@@ -112,13 +126,16 @@ const organizeProducts = async (products) => {
       element.productId
     );
     if (!Object.keys(supplier).includes(supplierId)) {
-      suppliers = { ...suppliers, supplierId: [element] };
+      suppliers = {
+        ...suppliers,
+        supplierId: [element]
+      };
     } else {
       suppliers.supplierId.push(element);
     }
   });
   return suppliers;
-};*/
+};
 
 module.exports = {
   getByTrackingCodes,

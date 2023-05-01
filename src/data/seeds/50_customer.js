@@ -18,6 +18,13 @@ module.exports = {
         image_url:
           "https://s.gravatar.com/avatar/74d81d6aada690a1b114800a2c3dcec8?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fbe.png",
         SUPPLIER_supplier_id: 2,
+      },{
+        auth0_id: "",
+        email: "job@bartInc.com",
+        username: "Job",
+        image_url:
+          "https://s.gravatar.com/avatar/74d81d6aada690a1b114800a2c3dcec8?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fbe.png",
+        SUPPLIER_supplier_id: 3,
       },
     ]);
   },
