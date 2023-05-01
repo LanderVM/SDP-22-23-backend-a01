@@ -30,6 +30,14 @@ module.exports = {
         phone_number: "0456443212",
         logo_URL:
           "https://static.vecteezy.com/ti/gratis-vector/p3/2520838-apple-logo-zwart-geisoleerd-op-transparante-achtergrond-gratis-vector.jpg",
+      },{
+        supplier_id: 3,
+        address: "Bosstraat 72 9000 Aalst",
+        email: "sales@bartInc.com",
+        name: "Bart INC",
+        phone_number: "0488449921",
+        logo_URL:
+          "https://static.vecteezy.com/ti/gratis-vector/p3/2520838-apple-logo-zwart-geisoleerd-op-transparante-achtergrond-gratis-vector.jpg",
       },
     ]);
   },
