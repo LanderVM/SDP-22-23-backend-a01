@@ -18,12 +18,13 @@ module.exports = {
         image_url:
           "https://s.gravatar.com/avatar/74d81d6aada690a1b114800a2c3dcec8?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fbe.png",
         SUPPLIER_supplier_id: 2,
-      },{
-        auth0_id: "",
+      },
+      {
+        auth0_id: "auth0|644fe09f2d805379de3c9ab6",
         email: "job@bartInc.com",
         username: "Job",
         image_url:
-          "https://s.gravatar.com/avatar/74d81d6aada690a1b114800a2c3dcec8?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fbe.png",
+          "https://s.gravatar.com/avatar/2e161b057ddca5c40178441d5f9a3feb?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fjo.png",
         SUPPLIER_supplier_id: 3,
       },
     ]);

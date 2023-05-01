@@ -10,7 +10,7 @@ module.exports = {
       table.string("delivery_street").notNullable();
       table.integer("delivery_house_number").notNullable();
       table.string("delivery_box");
-      table.string("email").notNullable();
+      table.string("supplier_email").notNullable();
       table.string("name").notNullable();
       table.string("phone_number").notNullable();
       table.longText("logo_URL").notNullable();

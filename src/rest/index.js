@@ -3,7 +3,6 @@ const installcustomerRouter = require("./_customer");
 const installProductRouter = require("./_product");
 const installOrderRouter = require("./_order");
 const installOrderLineRouter = require("./_orderLine");
-const installProfileRouter = require("./_profile");
 const installCarrierRouter = require("./_carrier");
 const installPackagingRouter = require("./_packaging");
 const Router = require("@koa/router");
@@ -16,7 +15,6 @@ module.exports = (app) => {
   installProductRouter(router);
   installOrderRouter(router);
   installOrderLineRouter(router);
-  installProfileRouter(router);
   installCarrierRouter(router);
   installPackagingRouter(router);
 

@@ -1,6 +1,6 @@
 const orderRepository = require("../repository/order");
 const ServiceError = require("../core/serviceError");
-const { getByAuthId } = require("./profile");
+const { getByAuthId } = require("./customer");
 
 const getByTrackingCodes = async ({ trackAndTraceCode, verificationCode }) => {
   const verificationType =

@@ -1,31 +1,35 @@
 const customerRepository = require("../repository/customer");
 const ServiceError = require("../core/serviceError");
 
-const getByEmail = async (email) => {
-  const customer = await customerRepository.getByEmail(email);
-  if (!customer) {
-    throw ServiceError.notFound(`There is no customer with email ${email}`);
+const getByAuthId = async (auth0Id) => {
+  const profile = await customerRepository.getByAuthId(auth0Id);
+  if (!profile) {
+    throw ServiceError.notFound(`There is no user with auth0id "${auth0Id}"`);
   }
   return {
-    items: customer,
-    count: customer.length || 1,
+    items: profile,
+    count: profile.length || 1,
   };
 };
 
-const getBySupplierId = async (supplierId) => {
-  const customer = await customerRepository.getBySupplierId(supplierId);
-  if (!customer) {
-    throw ServiceError.notFound(
-      `There is no customer with supplier id: ${supplierId}`
-    );
-  }
+const getSupplierId = async (auth0Id) => {
+  const supplierId = await customerRepository.getSupplierId(auth0Id);
+  return supplierId;
+};
+
+const getAllColleagues = async (auth0Id) => {
+  const { SUPPLIER_supplier_id: supplierId } = await getSupplierId(auth0Id);
+  const colleagues = await customerRepository.getAllColleagues(
+    auth0Id,
+    supplierId
+  );
   return {
-    items: customer,
-    count: customer.length || 1,
+    items: colleagues,
+    count: colleagues.length,
   };
 };
 
 module.exports = {
-  getByEmail,
-  getBySupplierId,
+  getByAuthId,
+  getAllColleagues,
 };

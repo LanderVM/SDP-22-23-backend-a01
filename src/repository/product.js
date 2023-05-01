@@ -24,7 +24,7 @@ const getFilteredProducts = async (
   brand,
   category,
   limit,
-  skip,
+  skip
 ) => {
   const products = getKnex()(tables.product);
   if (inStock) {
@@ -35,18 +35,18 @@ const getFilteredProducts = async (
   if (startPrice != null && endPrice != null) {
     products.whereBetween("price", [startPrice, endPrice]);
   }
-  if (typeof(category[0]) == "object") {
-    products.whereIn("category", category[0])
-  } 
-  if (typeof(category[0]) === "string") {
-    products.where("category", category[0])
-    console.log(category[0])
+  if (typeof category[0] == "object") {
+    products.whereIn("category", category[0]);
   }
-  if (typeof(brand[0]) == "object") {
-    products.whereIn("brand", brand[0])
-  } 
-  if (typeof(brand[0]) === "string") {
-    products.where("brand", brand[0])
+  if (typeof category[0] === "string") {
+    products.where("category", category[0]);
+    console.log(category[0]);
+  }
+  if (typeof brand[0] == "object") {
+    products.whereIn("brand", brand[0]);
+  }
+  if (typeof brand[0] === "string") {
+    products.where("brand", brand[0]);
   }
   if (limit) {
     products.limit(limit);
@@ -74,16 +74,6 @@ const getHighestPrice = async () => {
   return highestPrice;
 };
 
-const getByBrand = async (brand) => {
-  const product = await getKnex()(tables.product).where("brand", brand);
-  return product;
-};
-
-const getByCategory = async (category) => {
-  const product = await getKnex()(tables.product).where("category", category);
-  return product;
-};
-
 module.exports = {
   getAll,
   getById,
@@ -92,6 +82,4 @@ module.exports = {
   getCategories,
   getBrands,
   getHighestPrice,
-  getByBrand,
-  getByCategory,
 };

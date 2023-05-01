@@ -45,7 +45,7 @@ module.exports = (app) => {
   const router = new Router({ prefix: "/orders" });
 
   router.get(
-    "/orderId/:orderId",
+    "/id/:orderId",
     validate(getOrderById.validationScheme),
     getOrderById
   );
