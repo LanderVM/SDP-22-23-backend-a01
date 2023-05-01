@@ -18,6 +18,7 @@ module.exports = {
         CUSTOMER_supplier_id: 1,
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 2,
+        CUSTOMER_auth0_id: "auth0|644ed8f2dfb8300113c88c32",
       },
       {
         order_id: 2,
@@ -34,6 +35,7 @@ module.exports = {
         CUSTOMER_supplier_id: 1,
         PACKAGING_packaging_id: 3,
         SUPPLIER_supplier_id: 2,
+        CUSTOMER_auth0_id: "auth0|644ed8f2dfb8300113c88c32",
       },
       {
         order_id: 3,
@@ -50,6 +52,7 @@ module.exports = {
         CUSTOMER_supplier_id: 2,
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 3,
+        CUSTOMER_auth0_id: "auth0|64439bc8bc6509196a8e5990",
       },
       {
         order_id: 4,
@@ -66,6 +69,7 @@ module.exports = {
         CUSTOMER_supplier_id: 2,
         PACKAGING_packaging_id: 4,
         SUPPLIER_supplier_id: 1,
+        CUSTOMER_auth0_id: "auth0|64439bc8bc6509196a8e5990",
       },
     ]);
   },

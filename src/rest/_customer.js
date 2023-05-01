@@ -16,6 +16,12 @@ const getAllColleagues = async (ctx) => {
 };
 getAllColleagues.validationScheme = null;
 
+const getAllOrders = async (ctx) => {
+  await addUserInfo(ctx);
+  ctx.body = await customerService.getAllOrders(ctx.state.user.sub);
+};
+getAllOrders.validationScheme = null;
+
 module.exports = (app) => {
   const router = new Router({ prefix: "/customers" });
 
@@ -30,6 +36,10 @@ module.exports = (app) => {
     validate(getAllColleagues.validationScheme),
     getAllColleagues
   );
-
+  router.get(
+      "/orders",
+      validate(getAllOrders.validationScheme),
+      getAllOrders
+  );
   app.use(router.routes()).use(router.allowedMethods());
 };

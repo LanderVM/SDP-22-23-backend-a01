@@ -64,8 +64,16 @@ const getAllColleagues = async (auth0Id, supplierId) => {
   return colleagues;
 };
 
+const getAllOrders = async (auth0Id) => {
+  const orders = await getKnex()(tables.customer_order)
+      .select("*")
+      .where("CUSTOMER_auth0_id", auth0Id)
+  return orders;
+};
+
 module.exports = {
   getByAuthId,
   getAllColleagues,
   getSupplierId,
+  getAllOrders,
 };

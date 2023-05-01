@@ -20,6 +20,7 @@ module.exports = {
       table.integer("CUSTOMER_supplier_id").notNullable();
       table.integer("PACKAGING_packaging_id").notNullable();
       table.integer("SUPPLIER_supplier_id").notNullable();
+      table.string("CUSTOMER_auth0_id").notNullable();
     });
   },
   down: (knex) => {

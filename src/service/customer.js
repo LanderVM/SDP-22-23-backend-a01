@@ -29,7 +29,16 @@ const getAllColleagues = async (auth0Id) => {
   };
 };
 
+const getAllOrders = async (auth0Id) => {
+  const orders = await customerRepository.getAllOrders(auth0Id);
+  return {
+    items: orders,
+    count: orders.length,
+  };
+};
+
 module.exports = {
   getByAuthId,
   getAllColleagues,
+  getAllOrders,
 };
