@@ -1,4 +1,5 @@
 const { getKnex, tables } = require("../data/index");
+const { getLogger } = require("../core/logging");
 
 const getVerificationTypeByTrackAndTraceCode = async (trackAndTraceCode) => {
   const product = await getKnex()(tables.customer_order)
@@ -41,7 +42,10 @@ const getProductsByTrackingCodes = async (
   return product;
 };
 
-const getByOrderId = async (trackAndTraceCode, verificationCode) => {
+const getTrackAndTraceByOrderId = async (
+  trackAndTraceCode,
+  verificationCode
+) => {
   return getProductsByTrackingCodes(
     trackAndTraceCode,
     verificationCode,
@@ -49,7 +53,10 @@ const getByOrderId = async (trackAndTraceCode, verificationCode) => {
   );
 };
 
-const getByPostalCode = async (trackAndTraceCode, verificationCode) => {
+const getTrackAndTraceByPostalCode = async (
+  trackAndTraceCode,
+  verificationCode
+) => {
   return getProductsByTrackingCodes(
     trackAndTraceCode,
     verificationCode,
@@ -57,32 +64,58 @@ const getByPostalCode = async (trackAndTraceCode, verificationCode) => {
   );
 };
 
-const findById = async (orderId) => {
+const getById = async (orderId) => {
   const order = await getKnex()(tables.customer_order)
     .where("order_id", orderId)
     .first();
   return order;
 };
 
-const create = async (supplierCustomerId, address, date, supplierId) => {
-  const [id] = await getKnex()(tables.customer_order).insert({
-    delivery_address: address,
-    order_date: date,
-    original_acquisition_price: 0,
-    order_status: 0,
-    tracking_code: null,
-    CARRIER_carrier_id: null,
-    CUSTOMER_supplier_id: supplierCustomerId,
-    PACKAGING_packaging_id: 1,
-    SUPPLIER_supplier_id: supplierId,
-  });
-  return id;
+const postOrder = async (
+  delivery_country,
+  delivery_city,
+  delivery_postal_code,
+  delivery_street,
+  delivery_house_number,
+  delivery_box,
+  order_date,
+  order_status,
+  tracking_code,
+  CARRIER_carrier_id,
+  CUSTOMER_supplier_id,
+  PACKAGING_packaging_id,
+  SUPPLIER_supplier_id
+) => {
+  try {
+    const [id] = await getKnex()(tables.customer_order).insert({
+      delivery_country,
+      delivery_city,
+      delivery_postal_code,
+      delivery_street,
+      delivery_house_number,
+      delivery_box,
+      order_date,
+      order_status,
+      tracking_code,
+      CARRIER_carrier_id,
+      CUSTOMER_supplier_id,
+      PACKAGING_packaging_id,
+      SUPPLIER_supplier_id,
+    });
+    return id;
+  } catch (error) {
+    const logger = getLogger();
+    logger.error("Error in create", {
+      error,
+    });
+    throw error;
+  }
 };
 
 module.exports = {
   getVerificationTypeByTrackAndTraceCode,
-  getByOrderId,
-  getByPostalCode,
-  findById,
-  create,
+  getTrackAndTraceByOrderId,
+  getTrackAndTraceByPostalCode,
+  getById,
+  postOrder,
 };

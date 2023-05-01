@@ -3,9 +3,12 @@ const ServiceError = require("../core/serviceError");
 
 const getByAuthId = async (auth0Id) => {
   const profile = await profileRepository.getByAuthId(auth0Id);
+  if (!profile) {
+    throw ServiceError.notFound(`There is no user with auth0id "${auth0Id}"`);
+  }
   return {
     items: profile,
-    count: profile.length,
+    count: profile.length || 1,
   };
 };
 const getAllColleagues = async (auth0Id) => {
