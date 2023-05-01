@@ -4,11 +4,7 @@ const Joi = require("joi");
 const validate = require("./_validation.js");
 
 const getOrderByTrackingCodes = async (ctx) => {
-  const { trackAndTraceCode, verificationCode } = ctx.query;
-  ctx.body = await orderService.getByTrackingCodes(
-    trackAndTraceCode,
-    verificationCode
-  );
+  ctx.body = await orderService.getByTrackingCodes(ctx.query);
 };
 getOrderByTrackingCodes.validationScheme = {
   query: {
@@ -18,31 +14,21 @@ getOrderByTrackingCodes.validationScheme = {
 };
 
 //-------- TO DO------------//
-const createOrder = async (ctx) => {
-  ctx.body = await orderService.getByTrackingCodes(ctx.request.body);
+const postOrder = async (ctx) => {
+  ctx.body = await orderService.post(ctx.request.body);
 };
-createOrder.validationScheme = {
+postOrder.validationScheme = {
   body: {
     delivery_country: Joi.string(),
     delivery_city: Joi.string(),
-    delivery_postal_code: Joi.number().integer().positive().allow(0),
-    delivery_street: Joi.string().allow(0),
+    delivery_postal_code: Joi.number().integer().positive(),
+    delivery_street: Joi.string(),
     delivery_house_number: Joi.number().integer().positive().allow(0),
     delivery_box: Joi.string().optional(),
-    order_date: Joi.date(),
-    order_status: Joi.number().integer().positive().allow(0),
-    tracking_code: Joi.string().optional(),
     CARRIER_carrier_id: Joi.number().integer().positive().optional(),
     CUSTOMER_supplier_id: Joi.number().integer().positive().optional(),
     PACKAGING_packaging_id: Joi.number().integer().positive().optional(),
   },
-};
-createOrder.validationScheme = {
-  body: Joi.object({
-    email: Joi.string(),
-    products: Joi.array(),
-    address: Joi.object(),
-  }),
 };
 
 module.exports = (app) => {
@@ -53,7 +39,7 @@ module.exports = (app) => {
     validate(getOrderByTrackingCodes.validationScheme),
     getOrderByTrackingCodes
   );
-  router.post("/", createOrder);
+  router.post("/", validate(postOrder.validationScheme), postOrder);
 
   app.use(router.routes()).use(router.allowedMethods());
 };

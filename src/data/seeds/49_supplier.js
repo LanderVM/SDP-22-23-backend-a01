@@ -5,7 +5,12 @@ module.exports = {
     await knex(tables.supplier).insert([
       {
         supplier_id: 1,
-        address: "Timlaan 24 1000 Brussel",
+        delivery_country: "Belgium",
+        delivery_city: "Brussel",
+        delivery_postal_code: "1200",
+        delivery_street: "Hippokrateslaan",
+        delivery_house_number: "10",
+        delivery_box: "",
         email: "sales@janInc.com",
         name: "Tim CO",
         phone_number: "0426343211",
@@ -14,7 +19,12 @@ module.exports = {
       },
       {
         supplier_id: 2,
-        address: "Janstraat 12 9000 Aalst",
+        delivery_country: "Belgium",
+        delivery_city: "Aalst",
+        delivery_postal_code: "9300",
+        delivery_street: "Merestraat",
+        delivery_house_number: "80",
+        delivery_box: "B",
         email: "sales@timCo.com",
         name: "Jan INC",
         phone_number: "0456443212",

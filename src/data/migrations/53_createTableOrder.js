@@ -4,15 +4,15 @@ module.exports = {
   up: async (knex) => {
     await knex.schema.createTable(tables.customer_order, (table) => {
       table.increments("order_id");
-      table.string("delivery_country", 255).notNullable();
-      table.string("delivery_city", 255).notNullable();
+      table.string("delivery_country").notNullable();
+      table.string("delivery_city").notNullable();
       table.integer("delivery_postal_code").notNullable();
-      table.string("delivery_street", 255).notNullable();
+      table.string("delivery_street").notNullable();
       table.integer("delivery_house_number").notNullable();
-      table.string("delivery_box", 255);
+      table.string("delivery_box");
       table.date("order_date").notNullable();
       table.integer("order_status").notNullable();
-      table.string("tracking_code", 255);
+      table.string("tracking_code");
       table
         .integer("CARRIER_carrier_id")
         .unsigned()
