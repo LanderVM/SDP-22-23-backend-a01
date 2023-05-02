@@ -64,9 +64,10 @@ const getTrackAndTraceByPostalCode = async (
   );
 };
 
-const getById = async (orderId) => {
+const getById = async (orderId, auth0Id) => {
   const order = await getKnex()(tables.customer_order)
     .where("order_id", orderId)
+    .andWhere("CUSTOMER_auth0_id", auth0Id)
     .first();
   return order;
 };

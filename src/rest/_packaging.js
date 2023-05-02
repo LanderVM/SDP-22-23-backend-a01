@@ -2,24 +2,22 @@ const Router = require("@koa/router");
 const packagingService = require("../service/packaging");
 const Joi = require("joi");
 const validate = require("./_validation.js");
+const { addUserInfo, permissions, hasPermission } = require("../core/auth");
 
-const getpackagingsBySupplierId = async (ctx) => {
-  ctx.body = await packagingService.getBySupplierId(ctx.params.id);
+const getpackagings = async (ctx) => {
+  await addUserInfo(ctx);
+  ctx.body = await packagingService.getBySupplierId(ctx.state.user.sub);
 };
-getpackagingsBySupplierId.validationScheme = {
-  params: {
-    id: Joi.number().integer().positive(),
-  },
-};
+getpackagings.validationScheme = null;
 
 module.exports = (app) => {
   const router = new Router({ prefix: "/packagings" });
 
-  // TO DO security risc
   router.get(
-    "/supplierId/:id",
-    validate(getpackagingsBySupplierId.validationScheme),
-    getpackagingsBySupplierId
+    "/",
+    hasPermission(permissions.purchase),
+    validate(getpackagings.validationScheme),
+    getpackagings
   );
 
   app.use(router.routes()).use(router.allowedMethods());

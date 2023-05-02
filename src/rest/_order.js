@@ -2,7 +2,7 @@ const Router = require("@koa/router");
 const orderService = require("../service/order");
 const Joi = require("joi");
 const validate = require("./_validation.js");
-const { addUserInfo } = require("../core/auth");
+const { addUserInfo, permissions, hasPermission } = require("../core/auth");
 
 const getOrderByTrackingCodes = async (ctx) => {
   ctx.body = await orderService.getByTrackingCodes(ctx.query);
@@ -15,7 +15,8 @@ getOrderByTrackingCodes.validationScheme = {
 };
 
 const getOrderById = async (ctx) => {
-  ctx.body = await orderService.getById(ctx.params.orderId);
+  await addUserInfo(ctx);
+  ctx.body = await orderService.getById(ctx.params.orderId, ctx.state.user.sub);
 };
 getOrderById.validationScheme = {
   params: {
@@ -51,7 +52,6 @@ postOrder.validationScheme = {
 module.exports = (app) => {
   const router = new Router({ prefix: "/orders" });
 
-  // TO DO security risc
   router.get(
     "/id/:orderId",
     validate(getOrderById.validationScheme),
@@ -59,10 +59,16 @@ module.exports = (app) => {
   );
   router.get(
     "/",
+    hasPermission(permissions.purchase),
     validate(getOrderByTrackingCodes.validationScheme),
     getOrderByTrackingCodes
   );
-  router.post("/", validate(postOrder.validationScheme), postOrder);
+  router.post(
+    "/",
+    hasPermission(permissions.purchase),
+    validate(postOrder.validationScheme),
+    postOrder
+  );
 
   app.use(router.routes()).use(router.allowedMethods());
 };

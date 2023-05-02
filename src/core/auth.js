@@ -41,8 +41,7 @@ function checkJwtToken() {
 
 const permissions = Object.freeze({
   loggedIn: "loggedIn",
-  read: "read",
-  write: "write",
+  purchase: "purchase",
 });
 
 function hasPermission(permission) {

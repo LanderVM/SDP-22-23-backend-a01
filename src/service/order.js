@@ -40,11 +40,13 @@ const getByTrackingCodes = async ({ trackAndTraceCode, verificationCode }) => {
   };
 };
 
-const getById = async (id) => {
-  const order = await orderRepository.getById(id);
+const getById = async (id, auth0Id) => {
+  const order = await orderRepository.getById(id, auth0Id);
 
   if (!order) {
-    throw ServiceError.notFound(`There is no order with id "${id}"`);
+    throw ServiceError.notFound(
+      `There is no order with id "${id}" for this user`
+    );
   }
 
   return {
