@@ -1,5 +1,6 @@
 const orderLineRepository = require("../repository/orderLine");
 const ServiceError = require("../core/serviceError");
+const { getById: getProductById } = require("./product");
 
 const getById = async (id) => {
   const orderLine = await orderLineRepository.getById(id);
@@ -12,8 +13,20 @@ const getById = async (id) => {
   };
 };
 
-const create = async (body) => {
-  const orderLineId = await orderLineRepository.create(body);
+const create = async (orderLineData, orderId) => {
+  const orderLines = await Promise.all(
+    orderLineData.map(async ({ PRODUCT_product_id, product_count }) => {
+      return {
+        ORDER_order_id: orderId,
+        PRODUCT_product_id,
+        original_acquisition_price: (await getProductById(PRODUCT_product_id))
+          .items.price,
+        product_count,
+      };
+    })
+  );
+
+  const orderLineId = await orderLineRepository.create(...orderLines);
   return getById(orderLineId);
 };
 

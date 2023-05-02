@@ -1,6 +1,5 @@
 const { getKnex, tables } = require("../data/index");
 
-// TO DO  not both emails showing
 const getByAuthId = async (auth0Id) => {
   const formatProfile = ({
     auth0_id,
@@ -65,9 +64,10 @@ const getAllColleagues = async (auth0Id, supplierId) => {
 };
 
 const getAllOrders = async (auth0Id) => {
-  const orders = await getKnex()(tables.customer_order)
-      .select("*")
-      .where("CUSTOMER_auth0_id", auth0Id)
+  const orders = await getKnex()(tables.customer_order).where(
+    "CUSTOMER_auth0_id",
+    auth0Id
+  );
   return orders;
 };
 

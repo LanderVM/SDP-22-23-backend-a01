@@ -36,10 +36,7 @@ module.exports = (app) => {
     validate(getAllColleagues.validationScheme),
     getAllColleagues
   );
-  router.get(
-      "/orders",
-      validate(getAllOrders.validationScheme),
-      getAllOrders
-  );
+
+  router.get("/orders", validate(getAllOrders.validationScheme), getAllOrders);
   app.use(router.routes()).use(router.allowedMethods());
 };

@@ -1,6 +1,7 @@
 const orderRepository = require("../repository/order");
 const ServiceError = require("../core/serviceError");
 const { getByAuthId } = require("./customer");
+const { create: postOrderLine } = require("./orderLine");
 
 const getByTrackingCodes = async ({ trackAndTraceCode, verificationCode }) => {
   const verificationType =
@@ -63,6 +64,7 @@ const postOrder = async (
     CARRIER_carrier_id,
     PACKAGING_packaging_id,
     SUPPLIER_supplier_id,
+    order_lines,
   },
   auth0Id
 ) => {
@@ -79,13 +81,13 @@ const postOrder = async (
     CARRIER_carrier_id,
     (CUSTOMER_supplier_id = (await getByAuthId(auth0Id)).items.supplier_id),
     PACKAGING_packaging_id,
-    SUPPLIER_supplier_id
+    SUPPLIER_supplier_id,
+    auth0Id
   );
 
-  return {
-    items: order,
-    count: order.length || 1,
-  };
+  const orderLines = await postOrderLine(order_lines, id);
+
+  return getById(id);
 };
 
 module.exports = {

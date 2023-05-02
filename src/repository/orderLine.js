@@ -20,19 +20,19 @@ const getById = async (id) => {
   return formatOrderLine(orderLine);
 };
 
-const create = async ({
+const create = async (
   productCount,
   orderId,
   productId,
-  originalAcquisitionPrice,
-}) => {
+  originalAcquisitionPrice
+) => {
   try {
-    const [id] = await getKnex()(tables.order_line).insert({
-      product_count: productCount,
-      ORDER_order_id: orderId,
-      PRODUCT_product_id: productId,
-      original_acquisition_price: originalAcquisitionPrice,
-    });
+    const [id] = await getKnex()(tables.order_line).insert(
+      productCount,
+      orderId,
+      productId,
+      originalAcquisitionPrice
+    );
     return id;
   } catch (error) {
     const logger = getLogger();

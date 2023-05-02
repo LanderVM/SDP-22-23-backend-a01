@@ -84,7 +84,8 @@ const postOrder = async (
   CARRIER_carrier_id,
   CUSTOMER_supplier_id,
   PACKAGING_packaging_id,
-  SUPPLIER_supplier_id
+  SUPPLIER_supplier_id,
+  auth0Id
 ) => {
   try {
     const [id] = await getKnex()(tables.customer_order).insert({
@@ -101,6 +102,7 @@ const postOrder = async (
       CUSTOMER_supplier_id,
       PACKAGING_packaging_id,
       SUPPLIER_supplier_id,
+      CUSTOMER_auth0_id: auth0Id,
     });
     return id;
   } catch (error) {

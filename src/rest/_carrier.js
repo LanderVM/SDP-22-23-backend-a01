@@ -14,7 +14,7 @@ getCarriersBySupplierId.validationScheme = {
 
 module.exports = (app) => {
   const router = new Router({ prefix: "/carriers" });
-
+  // TO DO security risc
   router.get(
     "/supplierId/:id",
     validate(getCarriersBySupplierId.validationScheme),
