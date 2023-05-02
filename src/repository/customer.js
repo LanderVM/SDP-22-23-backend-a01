@@ -64,10 +64,10 @@ const getAllColleagues = async (auth0Id, supplierId) => {
 };
 
 const getAllOrders = async (auth0Id) => {
-  const orders = await getKnex()(tables.customer_order).where(
+  const orders = await getKnex()(tables.order).where(
     "CUSTOMER_auth0_id",
     auth0Id
-  );
+  ).join(tables.sub_order, `${tables.order}.order_id`, `${tables.sub_order}.ORDER_order_id`);
   return orders;
 };
 

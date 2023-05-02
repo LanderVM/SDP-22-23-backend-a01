@@ -14,7 +14,7 @@ const formatOrderLine = ({
 });
 
 const getById = async (id) => {
-  const orderLine = await getKnex()(tables.order_line)
+  const orderLine = await getKnex()(tables.sub_order_line)
     .where("order_line_id", id)
     .first();
   return formatOrderLine(orderLine);
@@ -27,7 +27,7 @@ const create = async (
   originalAcquisitionPrice
 ) => {
   try {
-    const [id] = await getKnex()(tables.order_line).insert(
+    const [id] = await getKnex()(tables.sub_order_line).insert(
       productCount,
       orderId,
       productId,

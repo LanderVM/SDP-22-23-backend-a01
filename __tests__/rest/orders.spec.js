@@ -133,11 +133,11 @@ describe("orders", () => {
     beforeAll(async () => {
       await knex(tables.tracking_code_details).insert(data.trackingCodeDetails);
       await knex(tables.carrier).insert(data.carriers);
-      await knex(tables.customer_order).insert(data.orders);
+      await knex(tables.sub_order).insert(data.orders);
     });
 
     afterAll(async () => {
-      await knex(tables.customer_order).delete();
+      await knex(tables.sub_order).delete();
       await knex(tables.carrier).delete();
       await knex(tables.tracking_code_details).delete();
     });
