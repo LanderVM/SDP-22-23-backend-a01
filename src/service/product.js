@@ -23,6 +23,18 @@ const getById = async (id) => {
   };
 };
 
+const getByIds = async ({
+  productId,
+}) => {
+  const products = await productRepository.getByIds(
+    Array(productId),
+  );
+  return {
+    items: products,
+    count: products.length,
+  };
+}
+
 const getByName = async (name) => {
   const product = await productRepository.getByName(name);
   if (!product) {
@@ -47,7 +59,7 @@ const getFilteredProducts = async ({
     Number(startPrice),
     Number(endPrice),
     Boolean(JSON.parse(inStock)),
-    Array(brand),
+    (brand),
     Array(category),
     Number(limit),
     Number(skip)
@@ -98,6 +110,7 @@ const getHighestPrice = async () => {
 module.exports = {
   getAll,
   getById,
+  getByIds,
   getByName,
   getFilteredProducts,
   getCategories,

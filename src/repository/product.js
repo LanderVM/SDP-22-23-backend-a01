@@ -12,6 +12,22 @@ const getById = async (id) => {
   return product;
 };
 
+const getByIds = async (
+  productId
+) => {
+  const products = getKnex()(tables.product);
+  if (typeof productId[0] === "undefined") {
+    products.where("product_id", 0);
+  }
+  if (typeof productId[0] == "object") {
+    products.whereIn("product_id", productId[0]);
+  }
+  if (typeof productId[0] === "string") {
+    products.where("product_id", productId[0]);
+  }
+  return products;
+}
+
 const getByName = async (name) => {
   const product = await getKnex()(tables.product).where("name", name).first();
   return product;
@@ -77,6 +93,7 @@ const getHighestPrice = async () => {
 module.exports = {
   getAll,
   getById,
+  getByIds,
   getByName,
   getFilteredProducts,
   getCategories,

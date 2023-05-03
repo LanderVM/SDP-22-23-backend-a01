@@ -17,6 +17,15 @@ getProductById.validationScheme = {
   },
 };
 
+const getProductByIds = async (ctx) => {
+  ctx.body = await productService.getByIds(ctx.query);
+};
+getProductByIds.validationScheme = {
+  query: {
+    productId: Joi.alternatives().try(Joi.array(), Joi.number().integer().positive()).optional(),
+  },
+};
+
 const getProductByName = async (ctx) => {
   ctx.body = await productService.getByName(ctx.params.productName);
 };
@@ -65,6 +74,11 @@ module.exports = (app) => {
     validate(getProductById.validationScheme),
     getProductById
   );
+  router.get(
+    "/ids",
+    validate(getProductByIds.validationScheme),
+    getProductByIds
+  )
   router.get(
     "/name/:productName",
     validate(getProductByName.validationScheme),
