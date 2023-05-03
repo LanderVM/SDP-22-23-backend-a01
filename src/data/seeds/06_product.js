@@ -32,7 +32,7 @@ module.exports = {
         price: 899,
         //discountPercentage: 17.94,
         //rating: 4.44,
-        stock: 34,
+        stock: 0,
         brand: "Apple",
         category: "smartphones",
         image_URL: "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
