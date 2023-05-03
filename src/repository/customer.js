@@ -64,11 +64,22 @@ const getAllColleagues = async (auth0Id, supplierId) => {
 };
 
 const getAllOrders = async (auth0Id) => {
-  const orders = await getKnex()(tables.order).where(
-    "CUSTOMER_auth0_id",
-    auth0Id
-  ).join(tables.sub_order, `${tables.order}.order_id`, `${tables.sub_order}.ORDER_order_id`);
-  return orders;
+  const subOrders = await getKnex()(tables.order).where(
+      "CUSTOMER_auth0_id",
+      auth0Id
+  )
+      .join(tables.sub_order, `${tables.order}.order_id`, `${tables.sub_order}.ORDER_order_id`)
+      .join(tables.sub_order_line, `${tables.sub_order}.sub_order_id`, `${tables.sub_order_line}.ORDER_order_id`)
+      .join(tables.product, `${tables.sub_order_line}.PRODUCT_product_id`, `${tables.product}.product_id`)
+  const ordersGrouped = subOrders.reduce((orderList, product) => {
+    const order_id = product.ORDER_order_id;
+    if (!orderList[order_id]) {
+      orderList[order_id] = [];
+    }
+    orderList[order_id].push(product);
+    return orderList;
+  }, {});
+  return ordersGrouped;
 };
 
 module.exports = {
