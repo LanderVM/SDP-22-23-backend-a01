@@ -1,4 +1,5 @@
 const { getKnex, tables } = require("../data/index");
+const moment = require("moment");
 
 const getByAuthId = async (auth0Id) => {
   const formatProfile = ({
@@ -71,6 +72,8 @@ const getAllOrders = async (auth0Id) => {
       .join(tables.sub_order, `${tables.order}.order_id`, `${tables.sub_order}.ORDER_order_id`)
       .join(tables.sub_order_line, `${tables.sub_order}.sub_order_id`, `${tables.sub_order_line}.ORDER_order_id`)
       .join(tables.product, `${tables.sub_order_line}.PRODUCT_product_id`, `${tables.product}.product_id`)
+      .where(`${tables.order}.order_date`, '>=', moment().subtract(3, 'months').toDate())
+
   const ordersGrouped = subOrders.reduce((orderList, product) => {
     const order_id = product.ORDER_order_id;
     if (!orderList[order_id]) {
