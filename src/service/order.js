@@ -69,7 +69,7 @@ const createOrder = async (
   },
   auth0Id
 ) => {
-  const id = await orderRepository.postOrder(
+  const id = await orderRepository.createOrder(
     delivery_country,
     delivery_city,
     delivery_postal_code,

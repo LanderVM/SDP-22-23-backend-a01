@@ -40,7 +40,7 @@ const getAllColleagues = async (auth0Id) => {
 const getAllOrders = async (auth0Id) => {
   const orders = await customerRepository.getAllOrders(auth0Id);
 
-  if (!orders[0]) {
+  if (!orders) {
     throw ServiceError.notFound(`There are no orders for this company`);
   }
   return {

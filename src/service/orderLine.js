@@ -20,8 +20,10 @@ const create = async (orderLineData, orderId) => {
         ORDER_order_id: orderId,
         PRODUCT_product_id,
         original_acquisition_price: (
-          await productService.getById(PRODUCT_product_id)
-        ).items.price,
+          await productService.getByIds({
+            productId: String(PRODUCT_product_id),
+          })
+        ).items[0].price,
         product_count,
       };
     })
