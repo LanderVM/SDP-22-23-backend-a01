@@ -46,16 +46,13 @@ const getById = async (orderId, auth0Id) => {
     await customerService.getSupplierId(auth0Id);
   const order = await orderRepository.getById(orderId, supplierId);
 
-  if (!order) {
+  if (!(order && order.order_info)) {
     throw ServiceError.notFound(
       `There is no order with id "${orderId}" for your company`
     );
   }
-
-  return {
-    items: order,
-    count: order.length || 1,
-  };
+  console.log(order)
+  return order;
 };
 
 const postOrder = async (
