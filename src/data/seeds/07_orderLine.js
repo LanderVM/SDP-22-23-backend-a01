@@ -2,7 +2,7 @@ const { tables } = require("../index");
 
 module.exports = {
   seed: async (knex) => {
-    await knex(tables.sub_order_line).insert([
+    await knex(tables.order_line).insert([
       {
         order_line_id: 1,
         product_count: 2,

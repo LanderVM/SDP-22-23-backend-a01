@@ -2,10 +2,10 @@ const {tables} = require("../index");
 
 module.exports = {
     seed: async (knex) => {
-        await knex(tables.sub_order).insert([
+        await knex(tables.order).insert([
             {
-                sub_order_id: 1,
-                ORDER_order_id: 1,
+                order_id: 1,
+                order_date: "2023-02-20",
                 delivery_country: "Belgium",
                 delivery_city: "Bilzen",
                 delivery_postal_code: 3740,
@@ -17,10 +17,11 @@ module.exports = {
                 CARRIER_carrier_id: null,
                 PACKAGING_packaging_id: 1,
                 SUPPLIER_supplier_id: 1,
+                CUSTOMER_supplier_id: 2,
             },
             {
-                sub_order_id: 2,
-                ORDER_order_id: 1,
+                order_id: 2,
+                order_date: "2023-05-01",
                 delivery_country: "Belgium",
                 delivery_city: "Haaltert",
                 delivery_postal_code: 9451,
@@ -32,10 +33,11 @@ module.exports = {
                 CARRIER_carrier_id: 3,
                 PACKAGING_packaging_id: 3,
                 SUPPLIER_supplier_id: 2,
+                CUSTOMER_supplier_id: 1,
             },
             {
-                sub_order_id: 3,
-                ORDER_order_id: 2,
+                order_id: 3,
+                order_date: "2023-04-18",
                 delivery_country: "Belgium",
                 delivery_city: "Lokeren",
                 delivery_postal_code: 9160,
@@ -47,10 +49,11 @@ module.exports = {
                 CARRIER_carrier_id: null,
                 PACKAGING_packaging_id: 1,
                 SUPPLIER_supplier_id: 3,
+                CUSTOMER_supplier_id: 1,
             },
             {
-                sub_order_id: 4,
-                ORDER_order_id: 3,
+                order_id: 4,
+                order_date: "2023-04-15",
                 delivery_country: "Belgium",
                 delivery_city: "Gent",
                 delivery_postal_code: 9000,
@@ -62,6 +65,7 @@ module.exports = {
                 CARRIER_carrier_id: 1,
                 PACKAGING_packaging_id: 4,
                 SUPPLIER_supplier_id: 1,
+                CUSTOMER_supplier_id: 2,
             },
         ]);
     },

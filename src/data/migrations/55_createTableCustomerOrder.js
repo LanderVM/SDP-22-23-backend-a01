@@ -2,12 +2,9 @@ const { tables } = require("../index");
 
 module.exports = {
   up: async (knex) => {
-    await knex.schema.createTable(tables.sub_order, (table) => {
-      table.increments("sub_order_id");
-      table
-          .integer("ORDER_order_id")
-          .unsigned()
-          .references(`${tables.order}.order_id`);
+    await knex.schema.createTable(tables.order, (table) => {
+      table.increments("order_id");
+      table.string("order_date").notNullable();
       table.string("delivery_country").notNullable();
       table.string("delivery_city").notNullable();
       table.integer("delivery_postal_code").notNullable();
@@ -22,9 +19,13 @@ module.exports = {
         .references(`${tables.carrier}.carrier_id`);
       table.integer("PACKAGING_packaging_id").notNullable();
       table.integer("SUPPLIER_supplier_id").notNullable();
+      table
+          .integer("CUSTOMER_supplier_id")
+          .unsigned()
+          .references(`${tables.customer}.SUPPLIER_supplier_id`);
     });
   },
   down: (knex) => {
-    return knex.schema.dropTableIfExists(tables.sub_order);
+    return knex.schema.dropTableIfExists(tables.order);
   },
 };
