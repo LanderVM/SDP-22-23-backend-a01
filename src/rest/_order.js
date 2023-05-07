@@ -53,7 +53,7 @@ module.exports = (app) => {
   const router = new Router({ prefix: "/orders" });
 
   router.get(
-    "/id/:orderId",
+    "/:orderId",
     hasPermission(permissions.purchase),
     validate(getOrderById.validationScheme),
     getOrderById

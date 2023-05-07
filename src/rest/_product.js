@@ -3,11 +3,6 @@ const productService = require("../service/product");
 const Joi = require("joi");
 const validate = require("./_validation.js");
 
-const getAllProducts = async (ctx) => {
-  ctx.body = await productService.getAll();
-};
-getAllProducts.validationScheme = null;
-
 const getProductById = async (ctx) => {
   ctx.body = await productService.getById(ctx.params.productId);
 };
@@ -22,7 +17,7 @@ const getProductByIds = async (ctx) => {
 };
 getProductByIds.validationScheme = {
   query: {
-    productId: Joi.alternatives().try(Joi.array(), Joi.number().integer().positive()).optional(),
+    productId: Joi.array().items(Joi.number().integer()),
   },
 };
 
@@ -68,7 +63,11 @@ getProductsHighestPrice.validationScheme = null;
 module.exports = (app) => {
   const router = new Router({ prefix: "/products" });
 
-  router.get("/", validate(getAllProducts.validationScheme), getAllProducts);
+  router.get(
+    "/",
+    validate(getFilteredProducts.validationScheme),
+    getFilteredProducts
+  );
   router.get(
     "/id/:productId",
     validate(getProductById.validationScheme),
@@ -78,16 +77,11 @@ module.exports = (app) => {
     "/ids",
     validate(getProductByIds.validationScheme),
     getProductByIds
-  )
+  );
   router.get(
     "/name/:productName",
     validate(getProductByName.validationScheme),
     getProductByName
-  );
-  router.get(
-    "/filter",
-    validate(getFilteredProducts.validationScheme),
-    getFilteredProducts
   );
   router.get(
     "/categories",

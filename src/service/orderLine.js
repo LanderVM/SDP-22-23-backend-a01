@@ -1,6 +1,6 @@
 const orderLineRepository = require("../repository/orderLine");
 const ServiceError = require("../core/serviceError");
-const { getById: getProductById } = require("./product");
+const productService = require("./product");
 
 const getById = async (id) => {
   const orderLine = await orderLineRepository.getById(id);
@@ -19,15 +19,16 @@ const create = async (orderLineData, orderId) => {
       return {
         ORDER_order_id: orderId,
         PRODUCT_product_id,
-        original_acquisition_price: (await getProductById(PRODUCT_product_id))
-          .items.price,
+        original_acquisition_price: (
+          await productService.getById(PRODUCT_product_id)
+        ).items.price,
         product_count,
       };
     })
   );
 
-  const orderLineId = await orderLineRepository.create(...orderLines);
-  return getById(orderLineId);
+  await orderLineRepository.create(orderLines);
+  //return getById(orderLineId);
 };
 
 module.exports = {
