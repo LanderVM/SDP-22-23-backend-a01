@@ -54,12 +54,12 @@ module.exports = (app) => {
 
   router.get(
     "/id/:orderId",
+    hasPermission(permissions.purchase),
     validate(getOrderById.validationScheme),
     getOrderById
   );
   router.get(
     "/",
-    hasPermission(permissions.purchase),
     validate(getOrderByTrackingCodes.validationScheme),
     getOrderByTrackingCodes
   );

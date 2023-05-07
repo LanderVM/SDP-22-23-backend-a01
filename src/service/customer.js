@@ -41,4 +41,5 @@ module.exports = {
   getByAuthId,
   getAllColleagues,
   getAllOrders,
+  getSupplierId,
 };

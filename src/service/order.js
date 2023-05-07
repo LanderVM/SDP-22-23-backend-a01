@@ -2,6 +2,7 @@ const orderRepository = require("../repository/order");
 const ServiceError = require("../core/serviceError");
 const { getByAuthId } = require("./customer");
 const { create: postOrderLine } = require("./orderLine");
+const customerService = require("./customer");
 
 const getByTrackingCodes = async ({ trackAndTraceCode, verificationCode }) => {
   const verificationType =
@@ -40,12 +41,14 @@ const getByTrackingCodes = async ({ trackAndTraceCode, verificationCode }) => {
   };
 };
 
-const getById = async (id, auth0Id) => {
-  const order = await orderRepository.getById(id, auth0Id);
+const getById = async (orderId, auth0Id) => {
+  const { SUPPLIER_supplier_id: supplierId } =
+    await customerService.getSupplierId(auth0Id);
+  const order = await orderRepository.getById(orderId, supplierId);
 
   if (!order) {
     throw ServiceError.notFound(
-      `There is no order with id "${id}" for this user`
+      `There is no order with id "${orderId}" for your company`
     );
   }
 
@@ -66,7 +69,6 @@ const postOrder = async (
     CARRIER_carrier_id,
     PACKAGING_packaging_id,
     SUPPLIER_supplier_id,
-    order_lines,
   },
   auth0Id
 ) => {
@@ -83,15 +85,11 @@ const postOrder = async (
     CARRIER_carrier_id,
     (CUSTOMER_supplier_id = (await getByAuthId(auth0Id)).items.supplier_id),
     PACKAGING_packaging_id,
-    SUPPLIER_supplier_id,
-    auth0Id
+    SUPPLIER_supplier_id
   );
 
-  return {
-    items: order,
-    count: order.length || 1,
-  };
-}
+  return getById(id, auth0Id);
+};
 /*
 const create = async ({
   email,

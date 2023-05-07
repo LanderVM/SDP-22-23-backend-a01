@@ -12,7 +12,7 @@ module.exports = {
 
   database: {
     client: "mysql2",
-    host: "192.168.56.101",
+    host: "localhost",
     port: 3306,
     name: "sdp2",
   },
