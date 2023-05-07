@@ -14,6 +14,11 @@ const getByAuthId = async (auth0Id) => {
 
 const getSupplierId = async (auth0Id) => {
   const supplierId = await customerRepository.getSupplierId(auth0Id);
+  if (!supplierId) {
+    throw ServiceError.notFound(
+      `There are no suppliers for this users company`
+    );
+  }
   return supplierId;
 };
 
@@ -23,6 +28,9 @@ const getAllColleagues = async (auth0Id) => {
     auth0Id,
     supplierId
   );
+  if (!colleagues[0]) {
+    throw ServiceError.notFound(`There are no colleagues for this user`);
+  }
   return {
     items: colleagues,
     count: colleagues.length,
@@ -31,6 +39,10 @@ const getAllColleagues = async (auth0Id) => {
 
 const getAllOrders = async (auth0Id) => {
   const orders = await customerRepository.getAllOrders(auth0Id);
+
+  if (!orders[0]) {
+    throw ServiceError.notFound(`There are no orders for this company`);
+  }
   return {
     items: orders,
     count: orders.length,

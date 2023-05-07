@@ -5,28 +5,13 @@ const getAll = async () => {
   return products;
 };
 
-const getById = async (id) => {
-  const product = await getKnex()(tables.product)
-    .where("product_id", id)
-    .first();
-  return product;
-};
-
-const getByIds = async (
-  productId
-) => {
+const getByIds = async (productId) => {
   const products = getKnex()(tables.product);
-  if (typeof productId[0] === "undefined") {
-    products.where("product_id", 0);
-  }
-  if (typeof productId[0] == "object") {
-    products.whereIn("product_id", productId[0]);
-  }
-  if (typeof productId[0] === "string") {
-    products.where("product_id", productId[0]);
+  if (productId) {
+    products.whereIn("product_id", productId);
   }
   return products;
-}
+};
 
 const getByName = async (name) => {
   const product = await getKnex()(tables.product).where("name", name).first();
@@ -51,18 +36,11 @@ const getFilteredProducts = async (
   if (startPrice != null && endPrice != null) {
     products.whereBetween("price", [startPrice, endPrice]);
   }
-  if (typeof category[0] == "object") {
-    products.whereIn("category", category[0]);
+  if (category) {
+    products.whereIn("category", category);
   }
-  if (typeof category[0] === "string") {
-    products.where("category", category[0]);
-    console.log(category[0]);
-  }
-  if (typeof brand[0] == "object") {
-    products.whereIn("brand", brand[0]);
-  }
-  if (typeof brand[0] === "string") {
-    products.where("brand", brand[0]);
+  if (brand) {
+    products.whereIn("brand", brand);
   }
   if (limit) {
     products.limit(limit);
@@ -92,7 +70,6 @@ const getHighestPrice = async () => {
 
 module.exports = {
   getAll,
-  getById,
   getByIds,
   getByName,
   getFilteredProducts,

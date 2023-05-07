@@ -24,12 +24,15 @@ getOrderById.validationScheme = {
   },
 };
 
-const postOrder = async (ctx) => {
+const createOrder = async (ctx) => {
   await addUserInfo(ctx);
-  ctx.body = await orderService.postOrder(ctx.request.body, ctx.state.user.sub);
+  ctx.body = await orderService.createOrder(
+    ctx.request.body,
+    ctx.state.user.sub
+  );
   ctx.status = 201;
 };
-postOrder.validationScheme = {
+createOrder.validationScheme = {
   body: {
     delivery_country: Joi.string(),
     delivery_city: Joi.string(),
@@ -66,8 +69,8 @@ module.exports = (app) => {
   router.post(
     "/",
     hasPermission(permissions.purchase),
-    validate(postOrder.validationScheme),
-    postOrder
+    validate(createOrder.validationScheme),
+    createOrder
   );
 
   app.use(router.routes()).use(router.allowedMethods());

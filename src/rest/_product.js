@@ -3,21 +3,15 @@ const productService = require("../service/product");
 const Joi = require("joi");
 const validate = require("./_validation.js");
 
-const getProductById = async (ctx) => {
-  ctx.body = await productService.getById(ctx.params.productId);
-};
-getProductById.validationScheme = {
-  params: {
-    productId: Joi.number().integer().positive(),
-  },
-};
-
 const getProductByIds = async (ctx) => {
   ctx.body = await productService.getByIds(ctx.query);
 };
 getProductByIds.validationScheme = {
   query: {
-    productId: Joi.array().items(Joi.number().integer()),
+    productId: Joi.alternatives().try(
+      Joi.array().items(Joi.number().integer().positive()),
+      Joi.number().integer().positive()
+    ),
   },
 };
 
@@ -38,8 +32,12 @@ getFilteredProducts.validationScheme = {
     startPrice: Joi.number().integer().positive().allow(0).optional(),
     endPrice: Joi.number().integer().positive().allow(0).optional(),
     inStock: Joi.boolean().optional(),
-    brand: Joi.alternatives().try(Joi.array(), Joi.string()).optional(),
-    category: Joi.alternatives().try(Joi.array(), Joi.string()).optional(),
+    brand: Joi.alternatives()
+      .try(Joi.array().items(Joi.string()), Joi.string())
+      .optional(),
+    category: Joi.alternatives()
+      .try(Joi.array().items(Joi.string()), Joi.string())
+      .optional(),
     limit: Joi.number().integer().positive().optional(),
     skip: Joi.number().integer().positive().allow(0).optional(),
   },
@@ -67,11 +65,6 @@ module.exports = (app) => {
     "/",
     validate(getFilteredProducts.validationScheme),
     getFilteredProducts
-  );
-  router.get(
-    "/id/:productId",
-    validate(getProductById.validationScheme),
-    getProductById
   );
   router.get(
     "/ids",

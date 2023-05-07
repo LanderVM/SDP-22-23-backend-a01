@@ -51,11 +51,10 @@ const getById = async (orderId, auth0Id) => {
       `There is no order with id "${orderId}" for your company`
     );
   }
-  console.log(order)
   return order;
 };
 
-const postOrder = async (
+const createOrder = async (
   {
     delivery_country,
     delivery_city,
@@ -95,5 +94,5 @@ const postOrder = async (
 module.exports = {
   getByTrackingCodes,
   getById,
-  postOrder,
+  createOrder,
 };

@@ -6,7 +6,9 @@ const getBySupplierId = async (auth0Id) => {
   const { SUPPLIER_supplier_id: supplierId } =
     await customerService.getSupplierId(auth0Id);
   const carriers = await carrierRepository.getBySupplierId(supplierId);
-
+  if (!carriers[0]) {
+    throw ServiceError.notFound(`There are no carriers for this users company`);
+  }
   return {
     items: carriers,
     count: carriers.length,

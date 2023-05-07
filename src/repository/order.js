@@ -66,25 +66,44 @@ const getTrackAndTraceByPostalCode = async (
 
 const getById = async (orderId, supplierId) => {
   const order = await getKnex()(tables.order)
-      .select('order_id', 'order_date',
-          'delivery_country', 'delivery_city', 'delivery_postal_code', 'delivery_street',
-          'delivery_house_number', 'delivery_box',
-          'order_status', 'tracking_code')
+    .select(
+      "order_id",
+      "order_date",
+      "delivery_country",
+      "delivery_city",
+      "delivery_postal_code",
+      "delivery_street",
+      "delivery_house_number",
+      "delivery_box",
+      "order_status",
+      "tracking_code"
+    )
     .where("order_id", orderId)
     .andWhere("CUSTOMER_supplier_id", supplierId)
     .first();
   const productList = await getKnex()(tables.order_line)
-      .select('product_id', 'product_count', 'original_acquisition_price',
-          'image_URL', 'brand', 'name', 'description')
-      .join(tables.product, `${tables.order_line}.PRODUCT_product_id`, `${tables.product}.product_id`)
-      .where("ORDER_order_id", orderId)
+    .select(
+      "product_id",
+      "product_count",
+      "original_acquisition_price",
+      "image_URL",
+      "brand",
+      "name",
+      "description"
+    )
+    .join(
+      tables.product,
+      `${tables.order_line}.PRODUCT_product_id`,
+      `${tables.product}.product_id`
+    )
+    .where("ORDER_order_id", orderId);
   return {
     order_info: order,
     product_list: productList,
   };
 };
 
-const postOrder = async (
+const createOrder = async (
   delivery_country,
   delivery_city,
   delivery_postal_code,
@@ -130,5 +149,5 @@ module.exports = {
   getTrackAndTraceByOrderId,
   getTrackAndTraceByPostalCode,
   getById,
-  postOrder,
+  createOrder,
 };
