@@ -30,8 +30,6 @@ const getFilteredProducts = async (
   const products = getKnex()(tables.product);
   if (inStock) {
     products.where("stock", ">", 0);
-  } else {
-    products.where("stock", "=", 0);
   }
   if (startPrice != null && endPrice != null) {
     products.whereBetween("price", [startPrice, endPrice]);
