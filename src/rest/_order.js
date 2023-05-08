@@ -4,16 +4,6 @@ const Joi = require("joi");
 const validate = require("./_validation.js");
 const { addUserInfo, permissions, hasPermission } = require("../core/auth");
 
-const getOrderByTrackingCodes = async (ctx) => {
-  ctx.body = await orderService.getByTrackingCodes(ctx.query);
-};
-getOrderByTrackingCodes.validationScheme = {
-  query: {
-    verificationCode: Joi.number().positive(),
-    trackAndTraceCode: Joi.string(),
-  },
-};
-
 const getOrderById = async (ctx) => {
   await addUserInfo(ctx);
   ctx.body = await orderService.getById(ctx.params.orderId, ctx.state.user.sub);
@@ -21,6 +11,29 @@ const getOrderById = async (ctx) => {
 getOrderById.validationScheme = {
   params: {
     orderId: Joi.number().positive(),
+  },
+};
+
+const getPackagingById = async (ctx) => {
+  await addUserInfo(ctx);
+  ctx.body = await orderService.getPackagingById(
+    ctx.params.orderId,
+    ctx.state.user.sub
+  );
+};
+getPackagingById.validationScheme = {
+  params: {
+    orderId: Joi.number().positive(),
+  },
+};
+
+const getOrderByTrackingCodes = async (ctx) => {
+  ctx.body = await orderService.getByTrackingCodes(ctx.query);
+};
+getOrderByTrackingCodes.validationScheme = {
+  query: {
+    verificationCode: Joi.number().positive(),
+    trackAndTraceCode: Joi.string(),
   },
 };
 
@@ -60,6 +73,12 @@ module.exports = (app) => {
     hasPermission(permissions.purchase),
     validate(getOrderById.validationScheme),
     getOrderById
+  );
+  router.get(
+    "/:orderId/packaging",
+    hasPermission(permissions.purchase),
+    validate(getPackagingById.validationScheme),
+    getPackagingById
   );
   router.get(
     "/",

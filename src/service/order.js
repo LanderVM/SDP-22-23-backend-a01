@@ -54,6 +54,22 @@ const getById = async (orderId, auth0Id) => {
   return order;
 };
 
+const getPackagingById = async (orderId, auth0Id) => {
+  const { SUPPLIER_supplier_id: supplierId } =
+    await customerService.getSupplierId(auth0Id);
+  const packaging = await orderRepository.getPackagingById(orderId, supplierId);
+
+  if (!packaging) {
+    throw ServiceError.notFound(
+      `There is no packaging for the order with id "${orderId}" for your company`
+    );
+  }
+  return {
+    items: packaging,
+    count: packaging.length || 1,
+  };
+};
+
 const createOrder = async (
   {
     delivery_country,
@@ -94,5 +110,6 @@ const createOrder = async (
 module.exports = {
   getByTrackingCodes,
   getById,
+  getPackagingById,
   createOrder,
 };
