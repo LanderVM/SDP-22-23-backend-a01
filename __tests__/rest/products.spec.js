@@ -74,6 +74,7 @@ const data = {
   ],
 };
 
+//TO DO Duplicate entry
 const dataToDelete = {
   products: [1, 2, 3],
   suppliers: [1, 2],

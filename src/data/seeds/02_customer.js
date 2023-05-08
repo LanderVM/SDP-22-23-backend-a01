@@ -4,6 +4,14 @@ module.exports = {
   seed: async (knex) => {
     await knex(tables.customer).insert([
       {
+        auth0_id: "auth0|64386bcdcaca39fa928508a0", //test account
+        email: "test@mail.com",
+        username: "Test",
+        image_url:
+          "https://s.gravatar.com/avatar/97dfebf4098c0f5c16bca61e2b76c373?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fte.png",
+        SUPPLIER_supplier_id: 1,
+      },
+      {
         auth0_id: "auth0|644ed8f2dfb8300113c88c32",
         email: "erik@janInc.com",
         username: "Erik",

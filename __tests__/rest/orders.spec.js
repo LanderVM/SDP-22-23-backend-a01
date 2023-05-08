@@ -116,6 +116,7 @@ const data = {
   ],
 };
 
+//TO DO werkt niet bij nieuwe db
 describe("orders", () => {
   let request;
   let knex;
@@ -156,7 +157,7 @@ describe("orders", () => {
         delivery_street: "Doodskoplaan",
         delivery_house_number: 73,
         delivery_box: "A1",
-        order_date: "2023-04-16T22:00:00.000Z",
+        order_date: "2023-04-17",
         order_status: 2,
         tracking_code: "testprefixS0CYTUZ6AA8MM",
         CARRIER_carrier_id: 1,
@@ -188,7 +189,7 @@ describe("orders", () => {
         delivery_street: "Bellelaan",
         delivery_house_number: 12,
         delivery_box: "B",
-        order_date: "2023-04-15T22:00:00.000Z",
+        order_date: "2023-04-16",
         order_status: 4,
         tracking_code: "322228968778",
         CARRIER_carrier_id: 3,
