@@ -76,7 +76,17 @@ const getById = async (orderId, supplierId) => {
       "delivery_house_number",
       "delivery_box",
       "order_status",
-      "tracking_code"
+      "tracking_code",
+      "height",
+      "length",
+      "width",
+      "name",
+      "price"
+    )
+    .join(
+      tables.packaging,
+      `${tables.order}.PACKAGING_packaging_id`,
+      `${tables.packaging}.packaging_id`
     )
     .where("order_id", orderId)
     .andWhere("CUSTOMER_supplier_id", supplierId)
