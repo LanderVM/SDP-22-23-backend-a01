@@ -47,6 +47,10 @@ const getFilteredProducts = async ({
   limit,
   skip = 0,
 }) => {
+  if (Number(startPrice) > Number(endPrice)) {
+    [startPrice, endPrice] = [endPrice, startPrice];
+  }
+
   const products = await productRepository.getFilteredProducts(
     Number(startPrice),
     Number(endPrice),

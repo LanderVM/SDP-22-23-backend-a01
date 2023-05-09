@@ -31,9 +31,7 @@ const getFilteredProducts = async (
   if (inStock) {
     products.where("stock", ">", 0);
   }
-  if (startPrice != null && endPrice != null) {
-    products.whereBetween("price", [startPrice, endPrice]);
-  }
+  products.whereBetween("price", [startPrice, endPrice]);
   if (category) {
     products.whereIn("category", category);
   }
