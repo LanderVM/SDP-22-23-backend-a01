@@ -65,6 +65,26 @@ createOrder.validationScheme = {
   },
 };
 
+const updateOrder = async (ctx) => {
+  await addUserInfo(ctx);
+  ctx.body = await orderService.updateOrder(
+    ctx.state.user.sub,
+    ctx.request.body
+  );
+};
+updateOrder.validationScheme = {
+  body: {
+    order_id: Joi.number().integer().positive(),
+    delivery_country: Joi.string().optional(),
+    delivery_city: Joi.string().optional(),
+    delivery_postal_code: Joi.number().integer().positive().optional(),
+    delivery_street: Joi.string().optional(),
+    delivery_house_number: Joi.number().integer().positive().optional(),
+    delivery_box: Joi.number().integer().positive().optional(),
+    PACKAGING_packaging_id: Joi.number().integer().positive().optional(),
+  },
+};
+
 module.exports = (app) => {
   const router = new Router({ prefix: "/orders" });
 
@@ -74,6 +94,7 @@ module.exports = (app) => {
     validate(getOrderById.validationScheme),
     getOrderById
   );
+  // TO DO (mag weg)
   router.get(
     "/:orderId/packaging",
     hasPermission(permissions.purchase),
@@ -90,6 +111,12 @@ module.exports = (app) => {
     hasPermission(permissions.purchase),
     validate(createOrder.validationScheme),
     createOrder
+  );
+  router.put(
+    "/",
+    hasPermission(permissions.purchase),
+    validate(updateOrder.validationScheme),
+    updateOrder
   );
 
   app.use(router.routes()).use(router.allowedMethods());

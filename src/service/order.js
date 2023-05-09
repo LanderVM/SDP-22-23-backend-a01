@@ -107,9 +107,27 @@ const createOrder = async (
   return getById(id, auth0Id);
 };
 
+const updateOrder = async (auth0Id, { order_id, ...body }) => {
+  const { SUPPLIER_supplier_id: supplierId } =
+    await customerService.getSupplierId(auth0Id);
+
+  const order = await orderRepository.updateOrder(supplierId, order_id, body);
+
+  if (!order) {
+    throw ServiceError.notFound(
+      `There is no order with id "${order_id}" that isn't processed for your company`
+    );
+  }
+  return {
+    items: order,
+    count: order.length || 1,
+  };
+};
+
 module.exports = {
   getByTrackingCodes,
   getById,
   getPackagingById,
   createOrder,
+  updateOrder,
 };

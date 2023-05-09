@@ -169,6 +169,29 @@ const createOrder = async (
   }
 };
 
+const updateOrder = async (supplierId, order_id, body) => {
+  try {
+    await getKnex()(tables.order)
+      .update(body)
+      .where("CUSTOMER_supplier_id", supplierId)
+      .andWhere("order_id", order_id)
+      .andWhere("order_status", 0);
+
+    const updatedRows = await getKnex()(tables.order)
+      .where("CUSTOMER_supplier_id", supplierId)
+      .andWhere("order_id", order_id)
+      .andWhere("order_status", 0)
+      .first();
+    return updatedRows;
+  } catch (error) {
+    const logger = getLogger();
+    logger.error("Error in updating order", {
+      error,
+    });
+    throw error;
+  }
+};
+
 module.exports = {
   getVerificationTypeByTrackAndTraceCode,
   getTrackAndTraceByOrderId,
@@ -176,4 +199,5 @@ module.exports = {
   getById,
   getPackagingById,
   createOrder,
+  updateOrder,
 };
