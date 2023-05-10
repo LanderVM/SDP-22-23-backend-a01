@@ -13,7 +13,7 @@ const data = {
       category: "smartphones",
       image_URL: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
       delivery_time: "12h",
-      supplier_id: 1,
+      supplier_id: 8,
     },
     {
       product_id: 2,
@@ -26,7 +26,7 @@ const data = {
       category: "smartphones",
       image_URL: "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
       delivery_time: "1d",
-      supplier_id: 1,
+      supplier_id: 8,
     },
     {
       product_id: 3,
@@ -39,12 +39,12 @@ const data = {
       category: "smartphones",
       image_URL: "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
       delivery_time: "3d",
-      supplier_id: 2,
+      supplier_id: 8,
     },
   ],
   suppliers: [
     {
-      supplier_id: 1,
+      supplier_id: 8,
       delivery_country: "Belgium",
       delivery_city: "Brussel",
       delivery_postal_code: "1200",
@@ -57,27 +57,13 @@ const data = {
       logo_URL:
         "https://static.vecteezy.com/system/resources/previews/002/534/045/original/social-media-twitter-logo-blue-isolated-free-vector.jpg",
     },
-    {
-      supplier_id: 2,
-      delivery_country: "Belgium",
-      delivery_city: "Aalst",
-      delivery_postal_code: "9300",
-      delivery_street: "Merestraat",
-      delivery_house_number: "80",
-      delivery_box: "B",
-      supplier_email: "sales@timCo.com",
-      name: "Jan INC",
-      phone_number: "0456443212",
-      logo_URL:
-        "https://static.vecteezy.com/ti/gratis-vector/p3/2520838-apple-logo-zwart-geisoleerd-op-transparante-achtergrond-gratis-vector.jpg",
-    },
   ],
 };
 
 //TO DO Duplicate entry
 const dataToDelete = {
   products: [1, 2, 3],
-  suppliers: [1, 2],
+  suppliers: [8],
 };
 
 describe("products", () => {
@@ -100,8 +86,11 @@ describe("products", () => {
     });
     afterAll(async () => {
       await knex(tables.product)
-        .whereIn("supplier_id", dataToDelete.suppliers)
         .whereIn("product_id", dataToDelete.products)
+        .delete();
+
+      await knex(tables.supplier)
+        .whereIn("supplier_id", dataToDelete.suppliers)
         .delete();
     });
 
@@ -119,7 +108,7 @@ describe("products", () => {
         category: "smartphones",
         image_URL: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
         delivery_time: "12h",
-        supplier_id: 1,
+        supplier_id: 8,
       });
       expect(response.body.items[1]).toEqual({
         product_id: 3,
@@ -132,7 +121,7 @@ describe("products", () => {
         category: "smartphones",
         image_URL: "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
         delivery_time: "3d",
-        supplier_id: 2,
+        supplier_id: 8,
       });
     });
 
@@ -164,11 +153,16 @@ describe("products", () => {
 
   describe("GET /api/products/ids/:productId", () => {
     beforeAll(async () => {
+      await knex(tables.supplier).insert(data.suppliers);
       await knex(tables.product).insert(data.products);
     });
     afterAll(async () => {
       await knex(tables.product)
         .whereIn("product_id", dataToDelete.products)
+        .delete();
+
+      await knex(tables.supplier)
+        .whereIn("supplier_id", dataToDelete.suppliers)
         .delete();
     });
 
@@ -192,11 +186,16 @@ describe("products", () => {
 
   describe("GET /api/products/name", () => {
     beforeAll(async () => {
+      await knex(tables.supplier).insert(data.suppliers);
       await knex(tables.product).insert(data.products);
     });
     afterAll(async () => {
       await knex(tables.product)
         .whereIn("product_id", dataToDelete.products)
+        .delete();
+
+      await knex(tables.supplier)
+        .whereIn("supplier_id", dataToDelete.suppliers)
         .delete();
     });
 
@@ -215,11 +214,16 @@ describe("products", () => {
 
   describe("GET /api/products/categories", () => {
     beforeAll(async () => {
+      await knex(tables.supplier).insert(data.suppliers);
       await knex(tables.product).insert(data.products);
     });
     afterAll(async () => {
       await knex(tables.product)
         .whereIn("product_id", dataToDelete.products)
+        .delete();
+
+      await knex(tables.supplier)
+        .whereIn("supplier_id", dataToDelete.suppliers)
         .delete();
     });
 
@@ -233,11 +237,16 @@ describe("products", () => {
 
   describe("GET /api/products/brands", () => {
     beforeAll(async () => {
+      await knex(tables.supplier).insert(data.suppliers);
       await knex(tables.product).insert(data.products);
     });
     afterAll(async () => {
       await knex(tables.product)
         .whereIn("product_id", dataToDelete.products)
+        .delete();
+
+      await knex(tables.supplier)
+        .whereIn("supplier_id", dataToDelete.suppliers)
         .delete();
     });
 
@@ -252,11 +261,16 @@ describe("products", () => {
 
   describe("GET /api/products/brands", () => {
     beforeAll(async () => {
+      await knex(tables.supplier).insert(data.suppliers);
       await knex(tables.product).insert(data.products);
     });
     afterAll(async () => {
       await knex(tables.product)
         .whereIn("product_id", dataToDelete.products)
+        .delete();
+
+      await knex(tables.supplier)
+        .whereIn("supplier_id", dataToDelete.suppliers)
         .delete();
     });
 

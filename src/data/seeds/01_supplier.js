@@ -29,7 +29,7 @@ module.exports = {
         name: "Jan INC",
         phone_number: "0456443212",
         logo_URL:
-          "https://static.vecteezy.com/ti/gratis-vector/p3/2520838-apple-logo-zwart-geisoleerd-op-transparante-achtergrond-gratis-vector.jpg",
+          "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png",
       },
       {
         supplier_id: 3,

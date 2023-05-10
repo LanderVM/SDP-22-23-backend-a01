@@ -63,7 +63,7 @@ const data = {
 const dataToDelete = {
   customers: [
     "auth0|64386bcdcaca39fa928508a0",
-    "auth0|6457cab093ce6d0d9f4dc5fb",
+    "auth0|644ed8f2dfb8300113c88c32",
     "auth0|64439bc8bc6509196a8e5990",
   ],
   suppliers: [1, 2],
@@ -88,7 +88,9 @@ describe("customers", () => {
       await knex(tables.customer).insert(data.customers);
     });
     afterAll(async () => {
-      await knex(tables.customer).delete();
+      await knex(tables.customer)
+        .whereIn("auth0_id", dataToDelete.customers)
+        .delete();
       await knex(tables.supplier).delete();
     });
 
