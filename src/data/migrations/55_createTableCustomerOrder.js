@@ -7,9 +7,9 @@ module.exports = {
       table.string("order_date").notNullable();
       table.string("delivery_country").notNullable();
       table.string("delivery_city").notNullable();
-      table.integer("delivery_postal_code").notNullable();
+      table.string("delivery_postal_code").notNullable();
       table.string("delivery_street").notNullable();
-      table.integer("delivery_house_number").notNullable();
+      table.string("delivery_house_number").notNullable();
       table.string("delivery_box");
       table.integer("order_status").notNullable();
       table.string("tracking_code");
@@ -20,9 +20,9 @@ module.exports = {
       table.integer("PACKAGING_packaging_id").notNullable();
       table.integer("SUPPLIER_supplier_id").notNullable();
       table
-          .integer("CUSTOMER_supplier_id")
-          .unsigned()
-          .references(`${tables.customer}.SUPPLIER_supplier_id`);
+        .integer("CUSTOMER_supplier_id")
+        .unsigned()
+        .references(`${tables.customer}.SUPPLIER_supplier_id`);
     });
   },
   down: (knex) => {

@@ -49,13 +49,12 @@ createOrder.validationScheme = {
   body: {
     delivery_country: Joi.string(),
     delivery_city: Joi.string(),
-    delivery_postal_code: Joi.number().integer().positive(),
+    delivery_postal_code: Joi.string(),
     delivery_street: Joi.string(),
-    delivery_house_number: Joi.number().integer().positive().allow(0),
-    delivery_box: Joi.string().optional(), // ingeven
-    CARRIER_carrier_id: Joi.number().integer().positive().optional(), // kiezen
-    PACKAGING_packaging_id: Joi.number().integer().positive().optional(), // kiezen
-    SUPPLIER_supplier_id: Joi.number().integer().positive().optional(), // kiezen
+    delivery_house_number: Joi.string(),
+    delivery_box: Joi.string().optional(),
+    PACKAGING_packaging_id: Joi.number().integer().positive(), // kiezen
+    SUPPLIER_supplier_id: Joi.number().integer().positive(), // kiezen
     order_lines: Joi.array().items(
       Joi.object({
         PRODUCT_product_id: Joi.number().integer().positive(),

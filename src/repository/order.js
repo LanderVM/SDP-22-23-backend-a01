@@ -138,7 +138,6 @@ const createOrder = async (
   order_date,
   order_status,
   tracking_code,
-  CARRIER_carrier_id,
   CUSTOMER_supplier_id,
   PACKAGING_packaging_id,
   SUPPLIER_supplier_id
@@ -154,7 +153,6 @@ const createOrder = async (
       order_date,
       order_status,
       tracking_code,
-      CARRIER_carrier_id,
       CUSTOMER_supplier_id,
       PACKAGING_packaging_id,
       SUPPLIER_supplier_id,
