@@ -79,7 +79,7 @@ updateOrder.validationScheme = {
     delivery_postal_code: Joi.string().optional(),
     delivery_street: Joi.string().optional(),
     delivery_house_number: Joi.string().optional(),
-    delivery_box: Joi.string().optional(),
+    delivery_box: Joi.optional(),
     PACKAGING_packaging_id: Joi.number().integer().positive().optional(),
   },
 };
