@@ -41,7 +41,7 @@ const getByName = async (name) => {
 const getFilteredProducts = async ({
   startPrice = 0,
   endPrice = Number.MAX_SAFE_INTEGER,
-  inStock = true,
+  inStock = false,
   brand = null,
   category = null,
   limit,
