@@ -12,7 +12,7 @@ module.exports = {
         delivery_house_number: "10",
         delivery_box: "",
         supplier_email: "sales@janInc.com",
-        name: "Tim CO",
+        name: "Jan INC",
         phone_number: "0426343211",
         logo_URL:
           "https://static.vecteezy.com/system/resources/previews/002/534/045/original/social-media-twitter-logo-blue-isolated-free-vector.jpg",
@@ -26,7 +26,7 @@ module.exports = {
         delivery_house_number: "80",
         delivery_box: "B",
         supplier_email: "sales@timCo.com",
-        name: "Jan INC",
+        name: "Tim CO",
         phone_number: "0456443212",
         logo_URL:
           "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png",
