@@ -61,7 +61,7 @@ module.exports = {
                 delivery_house_number: 73,
                 delivery_box: "A1",
                 order_status: 2,
-                tracking_code: "testprefixS0CYTUZ6AA8MM",
+                tracking_code: "bpost_S0CYTUZ6AA8MM",
                 CARRIER_carrier_id: 1,
                 PACKAGING_packaging_id: 4,
                 SUPPLIER_supplier_id: 1,

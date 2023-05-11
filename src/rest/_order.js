@@ -52,7 +52,7 @@ createOrder.validationScheme = {
     delivery_postal_code: Joi.string(),
     delivery_street: Joi.string(),
     delivery_house_number: Joi.string(),
-    delivery_box: Joi.string().optional(),
+    delivery_box: Joi.string().allow('', null).optional(),
     PACKAGING_packaging_id: Joi.number().integer().positive(), // kiezen
     SUPPLIER_supplier_id: Joi.number().integer().positive(), // kiezen
     order_lines: Joi.array().items(
