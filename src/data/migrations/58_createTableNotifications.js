@@ -2,7 +2,7 @@ const { tables } = require("../index");
 
 module.exports = {
   up: async (knex)=>{
-    knex.schema.createTable(tables.order_notification,(table) =>{
+    await knex.schema.createTable(tables.order_notification,(table) =>{
       table.increments("notification_id");
       table.date("order_date");
       table.integer("CUSTOMER_supplier_id").notNullable().unsigned()
