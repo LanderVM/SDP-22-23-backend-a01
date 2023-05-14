@@ -31,20 +31,6 @@ module.exports = {
         logo_URL:
           "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png",
       },
-      {
-        supplier_id: 3,
-        delivery_country: "Belgium",
-        delivery_city: "Aalst",
-        delivery_postal_code: "9300",
-        delivery_street: "Bosstraat",
-        delivery_house_number: "72",
-        delivery_box: "A",
-        supplier_email: "sales@bartInc.com",
-        name: "Bart INC",
-        phone_number: "0488449921",
-        logo_URL:
-          "https://w7.pngwing.com/pngs/716/152/png-transparent-rolex-daytona-logo-brand-watch-rolex-text-rolex-ai-thumbnail.png",
-      },
     ]);
   },
 };

@@ -3,7 +3,8 @@ const { tables } = require("../index");
 module.exports = {
   up: async (knex) => {
     await knex.schema.createTable(tables.customer, (table) => {
-      table.string("auth0_id").primary();
+      table.increments("id");
+      table.string("auth0_id");
       table.string("email").notNullable();
       table.string("username").notNullable();
       table.longText("image_URL").notNullable();

@@ -48,7 +48,7 @@ module.exports = {
                 tracking_code: null,
                 CARRIER_carrier_id: null,
                 PACKAGING_packaging_id: 1,
-                SUPPLIER_supplier_id: 3,
+                SUPPLIER_supplier_id: 2,
                 CUSTOMER_supplier_id: 1,
             },
             {
