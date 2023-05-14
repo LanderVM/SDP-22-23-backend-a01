@@ -9,6 +9,7 @@ module.exports = {
       .references(`${tables.supplier}.supplier_id`);
       table.integer("ORDER_order_id").notNullable().unsigned()
       .references(`${tables.order}.order_id`);
+      table.boolean("is_read");
     }
     );
   },
