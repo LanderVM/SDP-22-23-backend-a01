@@ -2,10 +2,9 @@ const Router = require("@koa/router");
 const carrierService = require("../service/carrier");
 const Joi = require("joi");
 const validate = require("./_validation.js");
-const { addUserInfo, permissions, hasPermission } = require("../core/auth");
+const { permissions, hasPermission } = require("../core/auth");
 
 const getCarriers = async (ctx) => {
-  await addUserInfo(ctx);
   ctx.body = await carrierService.getBySupplierId(ctx.state.user.sub);
 };
 getCarriers.validationScheme = null;

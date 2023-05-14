@@ -2,10 +2,9 @@ const Router = require("@koa/router");
 const packagingService = require("../service/packaging");
 const Joi = require("joi");
 const validate = require("./_validation.js");
-const { addUserInfo, permissions, hasPermission } = require("../core/auth");
+const { permissions, hasPermission } = require("../core/auth");
 
 const getpackagings = async (ctx) => {
-  await addUserInfo(ctx);
   ctx.body = await packagingService.getBySupplierId(ctx.state.user.sub);
 };
 getpackagings.validationScheme = null;

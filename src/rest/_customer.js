@@ -2,22 +2,19 @@ const Router = require("@koa/router");
 const customerService = require("../service/customer");
 const Joi = require("joi");
 const validate = require("./_validation.js");
-const { addUserInfo, permissions, hasPermission } = require("../core/auth");
+const { permissions, hasPermission } = require("../core/auth");
 
 const getCustomerByAuthId = async (ctx) => {
-  await addUserInfo(ctx);
   ctx.body = await customerService.getByAuthId(ctx.state.user.sub);
 };
 getCustomerByAuthId.validationScheme = null;
 
 const getAllColleagues = async (ctx) => {
-  await addUserInfo(ctx);
   ctx.body = await customerService.getAllColleagues(ctx.state.user.sub);
 };
 getAllColleagues.validationScheme = null;
 
 const getAllOrders = async (ctx) => {
-  await addUserInfo(ctx);
   ctx.body = await customerService.getAllOrders(ctx.state.user.sub);
 };
 getAllOrders.validationScheme = null;
