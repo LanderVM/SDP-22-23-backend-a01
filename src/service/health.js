@@ -2,7 +2,6 @@ const packageJSON = require("../../package.json");
 
 const ping = () => ({
   pong: true,
-  test: "yes"
 });
 
 const getVersion = () => ({
