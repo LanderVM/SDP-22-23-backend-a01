@@ -19,10 +19,9 @@ const getAllOrders = async (ctx) => {
 };
 getAllOrders.validationScheme = {
   query: {
-    statuses: Joi.alternatives().try(
-      Joi.array().items(Joi.number().integer()),
-      Joi.number().integer()
-    ).optional(),
+    statuses: Joi.alternatives()
+      .try(Joi.array().items(Joi.number().integer()), Joi.number().integer())
+      .optional(),
   }
 };
 

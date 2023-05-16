@@ -65,8 +65,7 @@ const getAllColleagues = async (auth0Id, supplierId) => {
 };
 
 const getAllOrders = async (statuses, auth0Id) => {
-  const subOrders = await test(statuses, auth0Id);
-  
+  const subOrders = await getOrders(statuses, auth0Id);
   const productsGroupedByOrderId = subOrders.reduce((orderList, product) => {
     const order_id = product.order_id;
     if (!orderList[order_id]) {
@@ -79,7 +78,7 @@ const getAllOrders = async (statuses, auth0Id) => {
   return productsGroupedByOrderId;
 };
 
-async function test(statuses, auth0Id) {
+async function getOrders(statuses, auth0Id) {
  const subOrders = getKnex()(tables.customer)
     subOrders.select(
       `${tables.order}.order_id`,
@@ -112,11 +111,9 @@ async function test(statuses, auth0Id) {
       moment().subtract(3, "months").toDate()
     )
     .orderBy(`${tables.order}.order_date`)
-    
+
     if (statuses) {
-      
-      subOrders.whereIn("order_status", statuses);
-      console.log(statuses);
+      subOrders.whereIn(`${tables.order}.order_status`, statuses);
     }
   return subOrders;
 }

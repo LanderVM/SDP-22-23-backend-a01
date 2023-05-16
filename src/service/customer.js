@@ -38,7 +38,7 @@ const getAllColleagues = async (auth0Id) => {
 };
 
 const getAllOrders = async (
-  statuses,
+  { statuses = null },
   auth0Id
 ) => {
   const orders = await customerRepository.getAllOrders(
