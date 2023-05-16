@@ -8,25 +8,37 @@ const getAllByCustomer = async (ctx) => {
   
   ctx.body = await notificationService.getAllByAuthId(ctx.state.user.sub);
 };
+getAllByCustomer.validationScheme = null;
 
 const getNotReadByCustomer = async (ctx) => {
   ctx.body = await notificationService.getNotReadByAuthId(ctx.state.user.sub);
 }
+getNotReadByCustomer.validationScheme = null;
 
 const updateNotification = async (ctx) => {
   ctx.body = await notificationService.updateById(ctx.request.body);
 }
+updateNotification.validationScheme = {
+  body: {
+    notification_id:Joi.number().integer().positive(),
+    order_date: Joi.string(),
+    CUSTOMER_supplier_id: Joi.number().integer().positive(),
+    ORDER_order_id: Joi.number().integer().positive(),
+    is_read: Joi.number().integer(),
+    message: Joi.string(),
+}
+};
 
 
 
 module.exports = (app) => {
   const router = new Router({ prefix: "/notifications" });
 
-  router.get("/",getAllByCustomer);
+  router.get("/",validate(getAllByCustomer.validationScheme),getAllByCustomer);
 
-  router.get("/notRead",getNotReadByCustomer);
+  router.get("/notRead",validate(getNotReadByCustomer.validationScheme),getNotReadByCustomer);
 
-  router.put("/",updateNotification);
+  router.put("/",validate(updateNotification.validationScheme),updateNotification);
 
   app.use(router.routes()).use(router.allowedMethods());
 }
