@@ -16,6 +16,7 @@ module.exports = {
         .unsigned()
         .references(`${tables.order}.order_id`);
       table.boolean("is_read");
+      table.string("message").notNullable();
     });
   },
   down: (knex) => {
