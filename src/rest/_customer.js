@@ -15,9 +15,16 @@ const getAllColleagues = async (ctx) => {
 getAllColleagues.validationScheme = null;
 
 const getAllOrders = async (ctx) => {
-  ctx.body = await customerService.getAllOrders(ctx.state.user.sub);
+  ctx.body = await customerService.getAllOrders(ctx.query, ctx.state.user.sub);
 };
-getAllOrders.validationScheme = null;
+getAllOrders.validationScheme = {
+  query: {
+    statuses: Joi.alternatives().try(
+      Joi.array().items(Joi.number().integer()),
+      Joi.number().integer()
+    ).optional(),
+  }
+};
 
 module.exports = (app) => {
   const router = new Router({ prefix: "/customers" });

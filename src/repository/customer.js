@@ -64,9 +64,24 @@ const getAllColleagues = async (auth0Id, supplierId) => {
   return colleagues;
 };
 
-const getAllOrders = async (auth0Id) => {
-  const subOrders = await getKnex()(tables.customer)
-    .select(
+const getAllOrders = async (statuses, auth0Id) => {
+  const subOrders = await test(statuses, auth0Id);
+  
+  const productsGroupedByOrderId = subOrders.reduce((orderList, product) => {
+    const order_id = product.order_id;
+    if (!orderList[order_id]) {
+      orderList[order_id] = [];
+    }
+    orderList[order_id].push(product);
+    return orderList;
+  }, {});
+
+  return productsGroupedByOrderId;
+};
+
+async function test(statuses, auth0Id) {
+ const subOrders = getKnex()(tables.customer)
+    subOrders.select(
       `${tables.order}.order_id`,
       `${tables.order}.order_date`,
       `${tables.order}.order_status`,
@@ -96,18 +111,15 @@ const getAllOrders = async (auth0Id) => {
       ">=",
       moment().subtract(3, "months").toDate()
     )
-    .orderBy(`${tables.order}.order_date`);
-  const productsGroupedByOrderId = subOrders.reduce((orderList, product) => {
-    const order_id = product.order_id;
-    if (!orderList[order_id]) {
-      orderList[order_id] = [];
+    .orderBy(`${tables.order}.order_date`)
+    
+    if (statuses) {
+      
+      subOrders.whereIn("order_status", statuses);
+      console.log(statuses);
     }
-    orderList[order_id].push(product);
-    return orderList;
-  }, {});
-
-  return productsGroupedByOrderId;
-};
+  return subOrders;
+}
 
 module.exports = {
   getByAuthId,
