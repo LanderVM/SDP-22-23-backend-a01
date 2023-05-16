@@ -9,6 +9,14 @@ const getAllByCustomer = async (ctx) => {
   ctx.body = await notificationService.getAllByAuthId(ctx.state.user.sub);
 };
 
+const getNotReadByCustomer = async (ctx) => {
+  ctx.body = await notificationService.getNotReadByAuthId(ctx.state.user.sub);
+}
+
+const updateNotification = async (ctx) => {
+  ctx.body = await notificationService.updateById(ctx.request.body);
+}
+
 
 
 module.exports = (app) => {
@@ -16,6 +24,9 @@ module.exports = (app) => {
 
   router.get("/",getAllByCustomer);
 
+  router.get("/notRead",getNotReadByCustomer);
+
+  router.put("/",updateNotification);
 
   app.use(router.routes()).use(router.allowedMethods());
 }
