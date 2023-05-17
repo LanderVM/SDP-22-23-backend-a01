@@ -46,6 +46,7 @@ const getFilteredProducts = async ({
   category = null,
   limit,
   skip = 0,
+  sortBy,
 }) => {
   if (Number(startPrice) > Number(endPrice)) {
     [startPrice, endPrice] = [endPrice, startPrice];
@@ -58,7 +59,8 @@ const getFilteredProducts = async ({
     Array.isArray(brand) ? brand : brand ? Array(brand) : null,
     Array.isArray(category) ? category : category ? Array(category) : null,
     Number(limit),
-    Number(skip)
+    Number(skip),
+    sortBy,
   );
   //Komt niet in
   /*if (!products) {

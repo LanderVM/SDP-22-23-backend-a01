@@ -40,6 +40,7 @@ getFilteredProducts.validationScheme = {
       .optional(),
     limit: Joi.number().integer().positive().optional(),
     skip: Joi.number().integer().positive().allow(0).optional(),
+    sortBy: Joi.string().optional(),
   },
 };
 

@@ -25,7 +25,8 @@ const getFilteredProducts = async (
   brand,
   category,
   limit,
-  skip
+  skip,
+  sortBy,
 ) => {
   const products = getKnex()(tables.product);
   if (inStock) {
@@ -42,7 +43,17 @@ const getFilteredProducts = async (
     products.limit(limit);
   }
   products.offset(skip);
+  if (sortBy) {
+    products.orderBy(`${tables.product}.${sortBy}`);
+  }
   return products;
+};
+
+const getSortItems = async () => {
+  const categories = await getKnex()(tables.product)
+    .select("category")
+    .distinct();
+  return categories;
 };
 
 const getCategories = async () => {
@@ -69,6 +80,7 @@ module.exports = {
   getByIds,
   getByName,
   getFilteredProducts,
+  getSortItems,
   getCategories,
   getBrands,
   getHighestPrice,
