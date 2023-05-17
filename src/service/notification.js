@@ -29,6 +29,12 @@ const getNotReadByAuthId = async (auth0Id) => {
   };
 };
 
+const getAmountNotReadByAuthId = async (auth0Id) => {
+  const notifications = await notificationRepository.getNotReadByAuthId(auth0Id);
+
+  return {count:notifications.length || 0,};
+}
+
 const updateById = async (notification) => {
 
   let existingNotification
@@ -47,5 +53,5 @@ const updateById = async (notification) => {
 };
 
 module.exports = {
-  getAllByAuthId,getNotReadByAuthId,updateById,
+  getAllByAuthId,getNotReadByAuthId,updateById,getAmountNotReadByAuthId,
 }

@@ -15,6 +15,11 @@ const getNotReadByCustomer = async (ctx) => {
 }
 getNotReadByCustomer.validationScheme = null;
 
+const getAmountNotReadByCustomer = async (ctx) => {
+  ctx.body = await notificationService.getAmountNotReadByAuthId(ctx.state.user.sub);
+}
+getAmountNotReadByCustomer.validationScheme = null;
+
 const updateNotification = async (ctx) => {
   ctx.body = await notificationService.updateById(ctx.request.body);
 }
@@ -37,6 +42,8 @@ module.exports = (app) => {
   router.get("/",validate(getAllByCustomer.validationScheme),getAllByCustomer);
 
   router.get("/notRead",validate(getNotReadByCustomer.validationScheme),getNotReadByCustomer);
+
+  router.get("/amountNotRead",validate(getAmountNotReadByCustomer.validationScheme),getAmountNotReadByCustomer);
 
   router.put("/",validate(updateNotification.validationScheme),updateNotification);
 
