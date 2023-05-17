@@ -15,20 +15,12 @@ getProductByIds.validationScheme = {
   },
 };
 
-const getProductByName = async (ctx) => {
-  ctx.body = await productService.getByName(ctx.params.productName);
-};
-getProductByName.validationScheme = {
-  params: {
-    productName: Joi.string(),
-  },
-};
-
 const getFilteredProducts = async (ctx) => {
   ctx.body = await productService.getFilteredProducts(ctx.query);
 };
 getFilteredProducts.validationScheme = {
   query: {
+    name: Joi.string().optional(),
     startPrice: Joi.number().integer().positive().allow(0).optional(),
     endPrice: Joi.number().integer().positive().allow(0).optional(),
     inStock: Joi.boolean().optional(),
@@ -71,11 +63,6 @@ module.exports = (app) => {
     "/ids",
     validate(getProductByIds.validationScheme),
     getProductByIds
-  );
-  router.get(
-    "/name/:productName",
-    validate(getProductByName.validationScheme),
-    getProductByName
   );
   router.get(
     "/categories",

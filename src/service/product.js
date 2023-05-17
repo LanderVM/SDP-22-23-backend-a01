@@ -27,18 +27,8 @@ const getByIds = async ({ productId = null }) => {
   };
 };
 
-const getByName = async (name) => {
-  const product = await productRepository.getByName(name);
-  if (!product) {
-    throw ServiceError.notFound(`There is no product with name ${name}`);
-  }
-  return {
-    items: product,
-    count: product.length || 1,
-  };
-};
-
 const getFilteredProducts = async ({
+  name,
   startPrice = 0,
   endPrice = Number.MAX_SAFE_INTEGER,
   inStock = false,
@@ -53,6 +43,7 @@ const getFilteredProducts = async ({
   }
 
   const products = await productRepository.getFilteredProducts(
+    name,
     Number(startPrice),
     Number(endPrice),
     Boolean(JSON.parse(inStock)),
@@ -108,7 +99,6 @@ const getHighestPrice = async () => {
 module.exports = {
   getAll,
   getByIds,
-  getByName,
   getFilteredProducts,
   getCategories,
   getBrands,

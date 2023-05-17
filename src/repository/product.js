@@ -13,12 +13,8 @@ const getByIds = async (productId) => {
   return products;
 };
 
-const getByName = async (name) => {
-  const product = await getKnex()(tables.product).where("name", name).first();
-  return product;
-};
-
 const getFilteredProducts = async (
+  name,
   startPrice,
   endPrice,
   inStock,
@@ -29,6 +25,10 @@ const getFilteredProducts = async (
   sortBy,
 ) => {
   const products = getKnex()(tables.product);
+  if (name) {
+    products.whereILike("name", `%${name}%`);
+    console.log(name)
+  }
   if (inStock) {
     products.where("stock", ">", 0);
   }
@@ -78,7 +78,6 @@ const getHighestPrice = async () => {
 module.exports = {
   getAll,
   getByIds,
-  getByName,
   getFilteredProducts,
   getSortItems,
   getCategories,
