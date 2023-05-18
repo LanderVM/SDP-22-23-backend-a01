@@ -13,18 +13,6 @@ getOrderById.validationScheme = {
   },
 };
 
-const getPackagingById = async (ctx) => {
-  ctx.body = await orderService.getPackagingById(
-    ctx.params.orderId,
-    ctx.state.user.sub
-  );
-};
-getPackagingById.validationScheme = {
-  params: {
-    orderId: Joi.number().positive(),
-  },
-};
-
 const getOrderByTrackingCodes = async (ctx) => {
   ctx.body = await orderService.getByTrackingCodes(ctx.query);
 };
@@ -50,7 +38,7 @@ createOrder.validationScheme = {
     delivery_postal_code: Joi.string(),
     delivery_street: Joi.string(),
     delivery_house_number: Joi.string(),
-    delivery_box: Joi.string().allow('', null).optional(),
+    delivery_box: Joi.string().allow("", null).optional(),
     PACKAGING_packaging_id: Joi.number().integer().positive(), // kiezen
     SUPPLIER_supplier_id: Joi.number().integer().positive(), // kiezen
     order_lines: Joi.array().items(
@@ -77,7 +65,7 @@ updateOrder.validationScheme = {
     delivery_postal_code: Joi.string().optional(),
     delivery_street: Joi.string().optional(),
     delivery_house_number: Joi.string().optional(),
-    delivery_box: Joi.string().allow(null, '').optional(),
+    delivery_box: Joi.string().allow(null, "").optional(),
     PACKAGING_packaging_id: Joi.number().integer().positive().optional(),
   },
 };
@@ -90,13 +78,6 @@ module.exports = (app) => {
     hasPermission(permissions.purchase),
     validate(getOrderById.validationScheme),
     getOrderById
-  );
-  // TO DO (mag weg)
-  router.get(
-    "/:orderId/packaging",
-    hasPermission(permissions.purchase),
-    validate(getPackagingById.validationScheme),
-    getPackagingById
   );
   router.get(
     "/",

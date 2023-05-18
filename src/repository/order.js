@@ -113,21 +113,6 @@ const getById = async (orderId, supplierId) => {
   };
 };
 
-const getPackagingById = async (orderId, supplierId) => {
-  const packaging = await getKnex()(tables.order)
-    .select(`${tables.packaging}.*`)
-    .join(
-      tables.packaging,
-      `${tables.order}.PACKAGING_packaging_id`,
-      `${tables.packaging}.packaging_id`
-    )
-    .where("order_id", orderId)
-    .andWhere("CUSTOMER_supplier_id", supplierId)
-    .first();
-
-  return packaging;
-};
-
 const createOrder = async (
   delivery_country,
   delivery_city,
@@ -195,7 +180,6 @@ module.exports = {
   getTrackAndTraceByOrderId,
   getTrackAndTraceByPostalCode,
   getById,
-  getPackagingById,
   createOrder,
   updateOrder,
 };
