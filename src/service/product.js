@@ -39,7 +39,7 @@ const getFilteredProducts = async ({
   sortBy,
 }) => {
   if (Number(startPrice) > Number(endPrice)) {
-    [startPrice, endPrice] = [endPrice, startPrice];
+    endPrice = Number.MAX_SAFE_INTEGER;
   }
 
   const products = await productRepository.getFilteredProducts(
