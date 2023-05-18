@@ -15,7 +15,7 @@ module.exports = {
         .notNullable()
         .unsigned()
         .references(`${tables.order}.order_id`);
-      table.boolean("is_read");
+      table.string("status").notNullable();
       table.string("message").notNullable();
     });
   },

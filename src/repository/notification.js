@@ -25,7 +25,7 @@ const getNotReadByAuthId = async (auth0Id) => {
   const notifications = await getKnex()(tables.order_notification)
   .join(tables.order,`${tables.order_notification}.ORDER_order_id`,"=",`${tables.order}.order_id`)
   .where(`${tables.order_notification}.CUSTOMER_supplier_id`,supplierId[0].SUPPLIER_supplier_id.toString())
-  .andWhere("is_read",0).select("*");
+  .andWhereNot("status","read").select("*");
   
   return notifications;
 }
