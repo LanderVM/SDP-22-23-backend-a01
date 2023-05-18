@@ -35,6 +35,17 @@ const getAmountNotReadByAuthId = async (auth0Id) => {
   return {count:notifications.length || 0,};
 }
 
+const getFiveMostRecentByAuthId = async (auth0Id) => {
+  const notifications = await notificationRepository.getSortedOnDateDescByAuthId(auth0Id);
+  
+  const notifications2 = notifications.slice(0,5);
+
+  return {
+    items:notifications2,
+    count:notifications2.length || 1,
+  };
+}
+
 const updateById = async (notification) => {
 
   let existingNotification
@@ -53,5 +64,5 @@ const updateById = async (notification) => {
 };
 
 module.exports = {
-  getAllByAuthId,getNotReadByAuthId,updateById,getAmountNotReadByAuthId,
+  getAllByAuthId,getNotReadByAuthId,updateById,getAmountNotReadByAuthId,getFiveMostRecentByAuthId,
 }

@@ -4,7 +4,7 @@ module.exports = {
   up: async (knex) => {
     await knex.schema.createTable(tables.order_notification, (table) => {
       table.increments("notification_id");
-      table.date("order_date");
+      table.date("notification_date");
       table
         .integer("CUSTOMER_supplier_id")
         .notNullable()

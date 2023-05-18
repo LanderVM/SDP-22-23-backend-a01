@@ -30,6 +30,18 @@ const getNotReadByAuthId = async (auth0Id) => {
   return notifications;
 }
 
+const getSortedOnDateDescByAuthId = async (auth0Id) => {
+  const supplierId = await getKnex()(tables.customer).select("SUPPLIER_supplier_id").where("auth0_id", auth0Id);
+
+  const notifications = await getKnex()(tables.order_notification)
+  .join(tables.order,`${tables.order_notification}.ORDER_order_id`,"=",`${tables.order}.order_id`)
+  .where(`${tables.order_notification}.CUSTOMER_supplier_id`,supplierId[0].SUPPLIER_supplier_id.toString())
+  .orderBy("notification_date","desc")
+  .select("*");
+  
+  return notifications;
+}
+
 const updateById = async (id,{order_date,CUSTOMER_supplier_id,ORDER_order_id,is_read,message}) => {
   try {
     await getKnex()(tables.order_notification).update({
@@ -49,5 +61,5 @@ const updateById = async (id,{order_date,CUSTOMER_supplier_id,ORDER_order_id,is_
 }
 
 module.exports = {
-  getAllByAuthId,getNotReadByAuthId,updateById,getById,
+  getAllByAuthId,getNotReadByAuthId,updateById,getById,getSortedOnDateDescByAuthId,
 }
