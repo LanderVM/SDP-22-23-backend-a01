@@ -23,6 +23,7 @@ getAmountNotReadByCustomer.validationScheme = null;
 const getFiveMostRecentByCustomer = async (ctx) => {
   ctx.body = await notificationService.getFiveMostRecentByAuthId(ctx.state.user.sub);
 }
+getFiveMostRecentByCustomer.validationScheme = null;
 
 const updateNotification = async (ctx) => {
   ctx.body = await notificationService.updateById(ctx.request.body);
@@ -49,7 +50,7 @@ module.exports = (app) => {
 
   router.get("/amountNotRead",validate(getAmountNotReadByCustomer.validationScheme),getAmountNotReadByCustomer);
 
-  router.get("/fiveMostRecent",getFiveMostRecentByCustomer);
+  router.get("/fiveMostRecent",validate(getFiveMostRecentByCustomer.validationScheme),getFiveMostRecentByCustomer);
 
   router.put("/",validate(updateNotification.validationScheme),updateNotification);
 
