@@ -4,7 +4,7 @@ const { getLogger } = require("../core/logging");
 
 const getAllByAuthId = async (auth0Id) => {
   
-  const notifications = await notificationRepository.getAllByAuthId(auth0Id);
+  const notifications = await notificationRepository.getSortedOnDateDescByAuthId(auth0Id);
   
   if (!notifications) {
     throw ServiceError.notFound("there are no notifications for this auth0Id");
