@@ -63,6 +63,10 @@ const updateById = async (notification) => {
 
 };
 
+const updateByArray = async (body) => {
+  return await notificationRepository.updateByArray(body.notifications);
+}
+
 module.exports = {
-  getAllByAuthId,getNotReadByAuthId,updateById,getAmountNotReadByAuthId,getFiveMostRecentByAuthId,
+  getAllByAuthId,getNotReadByAuthId,updateById,getAmountNotReadByAuthId,getFiveMostRecentByAuthId,updateByArray,
 }

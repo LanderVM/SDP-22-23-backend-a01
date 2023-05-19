@@ -38,7 +38,14 @@ updateNotification.validationScheme = {
     message: Joi.string(),
 }
 };
-
+const updateToUnread = async (ctx) => {
+  ctx.body = await notificationService.updateByArray(ctx.request.body);
+}
+updateToUnread.validationScheme = {
+  body: {
+    notifications: Joi.array(),
+  }
+}
 
 
 module.exports = (app) => {
@@ -53,6 +60,8 @@ module.exports = (app) => {
   router.get("/fiveMostRecent",validate(getFiveMostRecentByCustomer.validationScheme),getFiveMostRecentByCustomer);
 
   router.put("/",validate(updateNotification.validationScheme),updateNotification);
+
+  router.put("/updateToUnread",validate(updateToUnread.validationScheme),updateToUnread);
 
   app.use(router.routes()).use(router.allowedMethods());
 }

@@ -62,6 +62,21 @@ const updateById = async (id,{notification_date,CUSTOMER_supplier_id,ORDER_order
   }
 }
 
+const updateByArray = async (array) => {
+  try {
+    await getKnex()(tables.order_notification)
+    .whereIn(`${tables.order_notification}.notification_id`,array)
+    .update({
+      status:"unread",
+    })
+
+    return await getKnex()(tables.order_notification).select("*").whereIn(`${tables.order_notification}.notification_id`,array);
+  } catch (error) {
+    logger.error('Error in repository update notification by array', {error});
+    throw error;
+  }
+}
+
 module.exports = {
-  getAllByAuthId,getNotReadByAuthId,updateById,getById,getSortedOnDateDescByAuthId,
+  getAllByAuthId,getNotReadByAuthId,updateById,getById,getSortedOnDateDescByAuthId,updateByArray,
 }
