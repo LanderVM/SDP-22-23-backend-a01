@@ -42,14 +42,16 @@ const getSortedOnDateDescByAuthId = async (auth0Id) => {
   return notifications;
 }
 
-const updateById = async (id,{order_date,CUSTOMER_supplier_id,ORDER_order_id,is_read,message}) => {
+const updateById = async (id,{notification_date,CUSTOMER_supplier_id,ORDER_order_id,status,message}) => {
   try {
+    const theDate = new Date(notification_date);
+
     await getKnex()(tables.order_notification).update({
-      order_date,
+      notification_date:theDate,
       CUSTOMER_supplier_id,
       ORDER_order_id,
-      is_read,
-      message
+      status,
+      message,
     }).where(`${tables.order_notification}.notification_id`, id);
 
     return await getById(id);
