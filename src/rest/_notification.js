@@ -31,10 +31,10 @@ const updateNotification = async (ctx) => {
 updateNotification.validationScheme = {
   body: {
     notification_id:Joi.number().integer().positive(),
-    order_date: Joi.string(),
+    notification_date: Joi.string(),
     CUSTOMER_supplier_id: Joi.number().integer().positive(),
     ORDER_order_id: Joi.number().integer().positive(),
-    is_read: Joi.number().integer(),
+    status: Joi.string(),
     message: Joi.string(),
 }
 };
