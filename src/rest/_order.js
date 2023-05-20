@@ -24,7 +24,6 @@ getOrderByTrackingCodes.validationScheme = {
 };
 
 const createOrder = async (ctx) => {
-  await addUserInfo(ctx);
   ctx.body = await orderService.createOrder(
     ctx.request.body,
     ctx.state.user.sub
@@ -51,7 +50,6 @@ createOrder.validationScheme = {
 };
 
 const updateOrder = async (ctx) => {
-  await addUserInfo(ctx);
   ctx.body = await orderService.updateOrder(
     ctx.state.user.sub,
     ctx.request.body
