@@ -81,7 +81,8 @@ const getById = async (orderId, supplierId) => {
       "length",
       "width",
       "name",
-      "price"
+      "price",
+      "PACKAGING_packaging_id as packaging_id"
     )
     .join(
       tables.packaging,
@@ -161,6 +162,19 @@ const updateOrder = async (supplierId, order_id, body) => {
       .andWhere("order_status", 0);
 
     const updatedRows = await getKnex()(tables.order)
+        .select('delivery_box',
+            'delivery_city',
+            'delivery_country',
+            'delivery_house_number',
+            'delivery_postal_code',
+            'delivery_street',
+            'name as packaging_name',
+            'PACKAGING_packaging_id as packaging_id')
+        .join(
+            tables.packaging,
+            `${tables.order}.PACKAGING_packaging_id`,
+            `${tables.packaging}.packaging_id`
+        )
       .where("CUSTOMER_supplier_id", supplierId)
       .andWhere("order_id", order_id)
       .andWhere("order_status", 0)

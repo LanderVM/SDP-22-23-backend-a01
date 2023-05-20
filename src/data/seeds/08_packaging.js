@@ -37,6 +37,17 @@ module.exports = {
         SUPPLIER_supplier_id: 1,
       },
       {
+        packaging_id: 5,
+        is_active: true,
+        height: 5,
+        length: 7,
+        width: 8,
+        name: "Large",
+        price: 15,
+        packaging_type: 1,
+        SUPPLIER_supplier_id: 1,
+      },
+      {
         packaging_id: 4,
         is_active: false,
         height: 3,
