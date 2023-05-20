@@ -6,9 +6,9 @@ module.exports = {
       table.increments("supplier_id");
       table.string("delivery_country").notNullable();
       table.string("delivery_city").notNullable();
-      table.integer("delivery_postal_code").notNullable();
+      table.string("delivery_postal_code").notNullable();
       table.string("delivery_street").notNullable();
-      table.integer("delivery_house_number").notNullable();
+      table.string("delivery_house_number").notNullable();
       table.string("delivery_box");
       table.string("supplier_email").notNullable();
       table.string("name").notNullable();
