@@ -37,6 +37,10 @@ const getAmountNotReadByAuthId = async (auth0Id) => {
 
 const getFiveMostRecentByAuthId = async (auth0Id) => {
   const notifications = await notificationRepository.getSortedOnDateDescByAuthId(auth0Id);
+
+  if(notifications.info) {
+    return notifications;
+  }
   
   const notifications2 = notifications.slice(0,5);
 
