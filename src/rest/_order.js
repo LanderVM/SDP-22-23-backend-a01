@@ -60,10 +60,10 @@ updateOrder.validationScheme = {
     order_id: Joi.number().integer().positive(),
     delivery_country: Joi.string().optional(),
     delivery_city: Joi.string().optional(),
-    delivery_postal_code: Joi.string().optional(),
+    delivery_postal_code: Joi.optional(),
     delivery_street: Joi.string().optional(),
-    delivery_house_number: Joi.string().optional(),
-    delivery_box: Joi.string().allow(null, "").optional(),
+    delivery_house_number: Joi.optional(),
+    delivery_box: Joi.allow(null, "").optional(),
     PACKAGING_packaging_id: Joi.number().integer().positive().optional(),
   },
 };
