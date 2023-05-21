@@ -149,7 +149,7 @@ function getKnex() {
 const tables = {
   carrier: "carrier",
   carrier_contact_person: "carrier_contact_person",
-  company_log: "company_log",
+  company_logo: "company_logo",
   contact_person: "contact_person",
   order: "customer_order",
   order_line: "customer_order_line",
