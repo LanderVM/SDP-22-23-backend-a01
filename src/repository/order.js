@@ -42,6 +42,26 @@ const getProductsByTrackingCodes = async (
   return product;
 };
 
+const getCodesByOrder = async (
+  orderId,
+  auth0Id
+) => {
+  const trackCodes = await getKnex()(tables.order)
+    .join(
+      tables.carrier,
+      `${tables.carrier}.carrier_id`,
+      `${tables.order}.CARRIER_carrier_id`
+    )
+    .join(
+      tables.tracking_code_details,
+      `${tables.tracking_code_details}.tracking_code_details_id`,
+      `${tables.carrier}.TRACKINGCODEDETAILS_tracking_code_details_id`
+    )
+    .where("order_id", orderId)
+    .first();
+
+  return trackCodes;
+};
 const getTrackAndTraceByOrderId = async (
   trackAndTraceCode,
   verificationCode
@@ -193,6 +213,7 @@ module.exports = {
   getVerificationTypeByTrackAndTraceCode,
   getTrackAndTraceByOrderId,
   getTrackAndTraceByPostalCode,
+  getCodesByOrder,
   getById,
   createOrder,
   updateOrder,

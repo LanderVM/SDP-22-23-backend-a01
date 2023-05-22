@@ -23,6 +23,15 @@ getOrderByTrackingCodes.validationScheme = {
   },
 };
 
+const getCodesByOrder = async (ctx) => {
+  ctx.body = await orderService.getCodesByOrder(ctx.params.orderId, ctx.state.user.sub);
+};
+getCodesByOrder.validationScheme = {
+  params: {
+    orderId: Joi.number().positive(),
+  },
+};
+
 const createOrder = async (ctx) => {
   ctx.body = await orderService.createOrder(
     ctx.request.body,
@@ -71,6 +80,12 @@ updateOrder.validationScheme = {
 module.exports = (app) => {
   const router = new Router({ prefix: "/orders" });
 
+  router.get(
+    "/codes/:orderId",
+    hasPermission(permissions.purchase),
+    validate(getCodesByOrder.validationScheme),
+    getCodesByOrder
+  );
   router.get(
     "/:orderId",
     hasPermission(permissions.purchase),

@@ -41,6 +41,29 @@ const getByTrackingCodes = async ({ trackAndTraceCode, verificationCode }) => {
   };
 };
 
+const getCodesByOrder = async (orderId, auth0Id) => {
+  const { SUPPLIER_supplier_id: supplierId } =
+    await customerService.getSupplierId(auth0Id);
+  const order = await orderRepository.getCodesByOrder(orderId, supplierId);
+  let details;
+
+  if (!(order)) {
+    throw ServiceError.notFound(
+      `A error occured while trying to fetch tracking details`
+    );
+  }
+
+  switch (order.verification_type) {
+    case "POST_CODE":
+      details = { trackingCode: order.tracking_code, verificationCode: order.delivery_postal_code }
+      break;
+    case "ORDER_ID":
+      details = { trackingCode: order.tracking_code, verificationCode: order.order_id }
+  }
+
+  return details;
+};
+
 const getById = async (orderId, auth0Id) => {
   const { SUPPLIER_supplier_id: supplierId } =
     await customerService.getSupplierId(auth0Id);
@@ -108,6 +131,7 @@ const updateOrder = async (auth0Id, { order_id, ...body }) => {
 
 module.exports = {
   getByTrackingCodes,
+  getCodesByOrder,
   getById,
   createOrder,
   updateOrder,
