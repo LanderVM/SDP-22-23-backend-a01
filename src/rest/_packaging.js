@@ -5,7 +5,7 @@ const validate = require("./_validation.js");
 const { permissions, hasPermission } = require("../core/auth");
 
 const getpackagings = async (ctx) => {
-  ctx.body = await packagingService.getBySupplierId(ctx.state.user.sub);
+  ctx.body = await packagingService.getAll();
 };
 getpackagings.validationScheme = null;
 

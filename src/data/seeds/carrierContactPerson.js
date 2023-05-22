@@ -16,15 +16,15 @@ module.exports = {
         contactPersonList_contact_person_id: 6,
       },
       {
-        Carrier_carrier_id: 3,
+        Carrier_carrier_id: 1,
         contactPersonList_contact_person_id: 2,
       },
       {
-        Carrier_carrier_id: 3,
+        Carrier_carrier_id: 1,
         contactPersonList_contact_person_id: 3,
       },
       {
-        Carrier_carrier_id: 4,
+        Carrier_carrier_id: 2,
         contactPersonList_contact_person_id: 1,
       },
     ]);

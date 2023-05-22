@@ -31,6 +31,20 @@ module.exports = {
         logo_URL:
           "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png",
       },
+      {
+        supplier_id: 3,
+        delivery_country: "Belgium",
+        delivery_city: "Zottegem",
+        delivery_postal_code: "9620",
+        delivery_street: "Kastanjelaan",
+        delivery_house_number: "12",
+        delivery_box: "",
+        supplier_email: "sales@metaverse.com",
+        name: "Meta Verse",
+        phone_number: "0479845110",
+        logo_URL:
+          "https://w7.pngwing.com/pngs/890/957/png-transparent-facebook-metaverse-logo-thumbnail.png",
+      },
     ]);
   },
 };
