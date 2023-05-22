@@ -42,12 +42,13 @@ const getByTrackingCodes = async ({ trackAndTraceCode, verificationCode }) => {
 };
 
 const getCodesByOrder = async (orderId, auth0Id) => {
-  const { SUPPLIER_supplier_id: supplierId } =
-    await customerService.getSupplierId(auth0Id);
+  const { supplier_id: supplierId } = await customerService.getSupplierId(
+    auth0Id
+  );
   const order = await orderRepository.getCodesByOrder(orderId, supplierId);
   let details;
 
-  if (!(order)) {
+  if (!order) {
     throw ServiceError.notFound(
       `A error occured while trying to fetch tracking details`
     );
@@ -55,18 +56,25 @@ const getCodesByOrder = async (orderId, auth0Id) => {
 
   switch (order.verification_type) {
     case "POST_CODE":
-      details = { trackingCode: order.tracking_code, verificationCode: order.delivery_postal_code }
+      details = {
+        trackingCode: order.tracking_code,
+        verificationCode: order.delivery_postal_code,
+      };
       break;
     case "ORDER_ID":
-      details = { trackingCode: order.tracking_code, verificationCode: order.order_id }
+      details = {
+        trackingCode: order.tracking_code,
+        verificationCode: order.order_id,
+      };
   }
 
   return details;
 };
 
 const getById = async (orderId, auth0Id) => {
-  const { SUPPLIER_supplier_id: supplierId } =
-    await customerService.getSupplierId(auth0Id);
+  const { supplier_id: supplierId } = await customerService.getSupplierId(
+    auth0Id
+  );
   const order = await orderRepository.getById(orderId, supplierId);
 
   if (!(order && order.order_info)) {
@@ -87,6 +95,7 @@ const createOrder = async (
     delivery_box,
     PACKAGING_packaging_id,
     SUPPLIER_supplier_id,
+    supplier_id,
     order_lines,
   },
   auth0Id
@@ -101,20 +110,23 @@ const createOrder = async (
     (order_date = new Date()),
     (order_status = 0),
     (tracking_code = null),
-    (CUSTOMER_supplier_id = (await getByAuthId(auth0Id)).items.supplier_id),
+    (CUSTOMER_supplier_id = supplier_id),
     PACKAGING_packaging_id,
     SUPPLIER_supplier_id,
     auth0Id
   );
+  console.log("CUSTOMER_supplier_id: ", CUSTOMER_supplier_id);
+  console.log("supplier_id: ", supplier_id);
 
   await orderLineService.create(order_lines, id);
-
+  console.log("ok");
   return getById(id, auth0Id);
 };
 
 const updateOrder = async (auth0Id, { order_id, ...body }) => {
-  const { SUPPLIER_supplier_id: supplierId } =
-    await customerService.getSupplierId(auth0Id);
+  const { supplier_id: supplierId } = await customerService.getSupplierId(
+    auth0Id
+  );
 
   const order = await orderRepository.updateOrder(supplierId, order_id, body);
 

@@ -13,7 +13,12 @@ module.exports = {
       {
         logo_id: 1,
         LOGO: logoBuffer,
-        SUPPLIER_supplier_id: 3,
+        SUPPLIER_supplier_id: 1,
+      },
+      {
+        logo_id: 2,
+        LOGO: logoBuffer,
+        SUPPLIER_supplier_id: 2,
       },
     ]);
   },

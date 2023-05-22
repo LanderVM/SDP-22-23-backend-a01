@@ -23,7 +23,7 @@ const getSupplierId = async (auth0Id) => {
 };
 
 const getAllColleagues = async (auth0Id) => {
-  const { SUPPLIER_supplier_id: supplierId } = await getSupplierId(auth0Id);
+  const { supplier_id: supplierId } = await getSupplierId(auth0Id);
   const colleagues = await customerRepository.getAllColleagues(
     auth0Id,
     supplierId
@@ -37,10 +37,7 @@ const getAllColleagues = async (auth0Id) => {
   };
 };
 
-const getAllOrders = async (
-  { statuses = null },
-  auth0Id
-) => {
+const getAllOrders = async ({ statuses = null }, auth0Id) => {
   const orders = await customerRepository.getAllOrders(
     Array.isArray(statuses) ? statuses : statuses ? Array(statuses) : null,
     auth0Id

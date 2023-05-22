@@ -24,7 +24,10 @@ getOrderByTrackingCodes.validationScheme = {
 };
 
 const getCodesByOrder = async (ctx) => {
-  ctx.body = await orderService.getCodesByOrder(ctx.params.orderId, ctx.state.user.sub);
+  ctx.body = await orderService.getCodesByOrder(
+    ctx.params.orderId,
+    ctx.state.user.sub
+  );
 };
 getCodesByOrder.validationScheme = {
   params: {
@@ -47,8 +50,9 @@ createOrder.validationScheme = {
     delivery_street: Joi.string(),
     delivery_house_number: Joi.string(),
     delivery_box: Joi.string().allow("", null).optional(),
-    PACKAGING_packaging_id: Joi.number().integer().positive(), // kiezen
-    SUPPLIER_supplier_id: Joi.number().integer().positive(), // kiezen
+    PACKAGING_packaging_id: Joi.number().integer().positive(),
+    SUPPLIER_supplier_id: Joi.number().integer().positive(),
+    supplier_id: Joi.number().integer().positive(),
     order_lines: Joi.array().items(
       Joi.object({
         PRODUCT_product_id: Joi.number().integer().positive(),

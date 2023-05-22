@@ -8,6 +8,7 @@ const getByAuthId = async (auth0Id) => {
     username,
     image_URL,
     supplier_id,
+    SUPPLIER_supplier_id,
     delivery_country,
     delivery_city,
     delivery_postal_code,
@@ -24,6 +25,7 @@ const getByAuthId = async (auth0Id) => {
     username,
     image_URL,
     supplier_id,
+    SUPPLIER_supplier_id,
     delivery_country,
     delivery_city,
     delivery_postal_code,
@@ -41,7 +43,7 @@ const getByAuthId = async (auth0Id) => {
     .join(
       tables.supplier,
       `${tables.supplier}.supplier_id`,
-      `${tables.customer}.SUPPLIER_supplier_id`
+      `${tables.customer}.supplier_id`
     )
     .first();
   return formatProfile(profile);
@@ -49,7 +51,7 @@ const getByAuthId = async (auth0Id) => {
 
 const getSupplierId = async (auth0Id) => {
   supplierId = await getKnex()(tables.customer)
-    .select("SUPPLIER_supplier_id")
+    .select("supplier_id")
     .where("auth0_id", auth0Id)
     .first();
   return supplierId;
@@ -58,7 +60,7 @@ const getSupplierId = async (auth0Id) => {
 const getAllColleagues = async (auth0Id, supplierId) => {
   const colleagues = await getKnex()(tables.customer)
     .select("username", "email", "image_URL")
-    .where("SUPPLIER_supplier_id", supplierId)
+    .where("supplier_id", supplierId)
     .andWhere("auth0_id", "!=", auth0Id);
 
   return colleagues;
@@ -79,8 +81,9 @@ const getAllOrders = async (statuses, auth0Id) => {
 };
 
 async function getOrders(statuses, auth0Id) {
- const subOrders = getKnex()(tables.customer)
-    subOrders.select(
+  const subOrders = getKnex()(tables.customer);
+  subOrders
+    .select(
       `${tables.order}.order_id`,
       `${tables.order}.order_date`,
       `${tables.order}.order_status`,
@@ -92,7 +95,7 @@ async function getOrders(statuses, auth0Id) {
     .where("auth0_id", auth0Id)
     .join(
       tables.order,
-      `${tables.customer}.SUPPLIER_supplier_id`,
+      `${tables.customer}.supplier_id`,
       `${tables.order}.CUSTOMER_supplier_id`
     )
     .join(
@@ -110,11 +113,11 @@ async function getOrders(statuses, auth0Id) {
       ">=",
       moment().subtract(3, "months").toDate()
     )
-    .orderBy(`${tables.order}.order_date`)
+    .orderBy(`${tables.order}.order_date`);
 
-    if (statuses) {
-      subOrders.whereIn(`${tables.order}.order_status`, statuses);
-    }
+  if (statuses) {
+    subOrders.whereIn(`${tables.order}.order_status`, statuses);
+  }
   return subOrders;
 }
 

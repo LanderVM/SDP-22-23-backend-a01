@@ -10,7 +10,8 @@ module.exports = {
         username: "Test",
         image_url:
           "https://s.gravatar.com/avatar/97dfebf4098c0f5c16bca61e2b76c373?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fte.png",
-        SUPPLIER_supplier_id: 1,
+        supplier_id: 1,
+        SUPPLIER_supplier_id: 3,
       },
       {
         id: 2,
@@ -19,7 +20,8 @@ module.exports = {
         username: "Erik",
         image_url:
           "https://s.gravatar.com/avatar/2463d6b2a517deaaa2e1f4d61a299eed?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fer.png",
-        SUPPLIER_supplier_id: 1,
+        supplier_id: 1,
+        SUPPLIER_supplier_id: 3,
       },
       {
         id: 3,
@@ -28,7 +30,8 @@ module.exports = {
         username: "Erika",
         image_url:
           "https://s.gravatar.com/avatar/2968a161670d0ed0c6d26961529ac953?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fer.png",
-        SUPPLIER_supplier_id: 1,
+        supplier_id: 1,
+        SUPPLIER_supplier_id: 3,
       },
       {
         id: 4,
@@ -37,7 +40,8 @@ module.exports = {
         username: "Bert",
         image_url:
           "https://s.gravatar.com/avatar/74d81d6aada690a1b114800a2c3dcec8?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fbe.png",
-        SUPPLIER_supplier_id: 2,
+        supplier_id: 2,
+        SUPPLIER_supplier_id: 3,
       },
       {
         id: 5,
@@ -46,7 +50,8 @@ module.exports = {
         username: "Bart",
         image_url:
           "https://s.gravatar.com/avatar/bfcfa4a79d8e219a21cd65a1759a6205?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fba.png",
-        SUPPLIER_supplier_id: 2,
+        supplier_id: 2,
+        SUPPLIER_supplier_id: 3,
       },
       {
         id: 6,
@@ -55,7 +60,8 @@ module.exports = {
         username: "Berta",
         image_url:
           "https://s.gravatar.com/avatar/ec14e0034e64ea808a11a89cce82765e?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fbe.png",
-        SUPPLIER_supplier_id: 2,
+        supplier_id: 2,
+        SUPPLIER_supplier_id: 3,
       },
     ]);
   },

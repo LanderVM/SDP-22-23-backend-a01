@@ -22,7 +22,7 @@ module.exports = {
       table
         .integer("CUSTOMER_supplier_id")
         .unsigned()
-        .references(`${tables.customer}.SUPPLIER_supplier_id`);
+        .references(`${tables.customer}.supplier_id`);
     });
   },
   down: (knex) => {
