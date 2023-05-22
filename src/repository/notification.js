@@ -11,7 +11,7 @@ const getById = async (id) => {
 
 const getAllByAuthId = async (auth0Id) => {
   const supplierId = await getKnex()(tables.customer)
-    .select("SUPPLIER_supplier_id")
+    .select("supplier_id")
     .where("auth0_id", auth0Id);
 
   const notifications = await getKnex()(tables.order_notification)
@@ -24,7 +24,7 @@ const getAllByAuthId = async (auth0Id) => {
     .select("*")
     .where(
       `${tables.order_notification}.CUSTOMER_supplier_id`,
-      supplierId[0].SUPPLIER_supplier_id.toString()
+      supplierId[0].supplier_id.toString()
     );
 
   return notifications;
@@ -32,7 +32,7 @@ const getAllByAuthId = async (auth0Id) => {
 
 const getNotReadByAuthId = async (auth0Id) => {
   const supplierId = await getKnex()(tables.customer)
-    .select("SUPPLIER_supplier_id")
+    .select("supplier_id")
     .where("auth0_id", auth0Id);
 
   if (supplierId.length === 0) {
@@ -48,7 +48,7 @@ const getNotReadByAuthId = async (auth0Id) => {
     )
     .where(
       `${tables.order_notification}.CUSTOMER_supplier_id`,
-      supplierId[0].SUPPLIER_supplier_id.toString()
+      supplierId[0].supplier_id.toString()
     )
     .andWhereNot("status", "read")
     .select("*");
@@ -58,7 +58,7 @@ const getNotReadByAuthId = async (auth0Id) => {
 
 const getSortedOnDateDescByAuthId = async (auth0Id) => {
   const supplierId = await getKnex()(tables.customer)
-    .select("SUPPLIER_supplier_id")
+    .select("supplier_id")
     .where("auth0_id", auth0Id);
 
   if (supplierId.length === 0) {
@@ -74,7 +74,7 @@ const getSortedOnDateDescByAuthId = async (auth0Id) => {
     )
     .where(
       `${tables.order_notification}.CUSTOMER_supplier_id`,
-      supplierId[0].SUPPLIER_supplier_id.toString()
+      supplierId[0].supplier_id.toString()
     )
     .orderBy("notification_date", "desc")
     .select("*");
