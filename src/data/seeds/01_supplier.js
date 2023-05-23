@@ -39,11 +39,11 @@ module.exports = {
         delivery_street: "Kastanjelaan",
         delivery_house_number: "12",
         delivery_box: "",
-        supplier_email: "sales@metaverse.com",
-        name: "Meta Verse",
+        supplier_email: "sales@delaware.be",
+        name: "Delaware",
         phone_number: "0479845110",
         logo_URL:
-          "https://w7.pngwing.com/pngs/890/957/png-transparent-facebook-metaverse-logo-thumbnail.png",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Delaware-logo.svg/2560px-Delaware-logo.svg.png",
       },
     ]);
   },
