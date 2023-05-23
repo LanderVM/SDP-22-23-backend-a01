@@ -115,11 +115,8 @@ const createOrder = async (
     SUPPLIER_supplier_id,
     auth0Id
   );
-  console.log("CUSTOMER_supplier_id: ", CUSTOMER_supplier_id);
-  console.log("supplier_id: ", supplier_id);
 
   await orderLineService.create(order_lines, id);
-  console.log("ok");
   return getById(id, auth0Id);
 };
 

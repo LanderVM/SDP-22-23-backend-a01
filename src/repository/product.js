@@ -22,12 +22,11 @@ const getFilteredProducts = async (
   category,
   limit,
   skip,
-  sortBy,
+  sortBy
 ) => {
   const products = getKnex()(tables.product);
   if (name) {
     products.whereILike("name", `%${name}%`);
-    console.log(name)
   }
   if (inStock) {
     products.where("stock", ">", 0);
