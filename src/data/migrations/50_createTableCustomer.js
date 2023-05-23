@@ -8,7 +8,11 @@ module.exports = {
       table.string("email").notNullable();
       table.string("username").notNullable();
       table.longText("image_URL").notNullable();
-      table.integer("SUPPLIER_supplier_id").notNullable();
+      table
+        .integer("SUPPLIER_supplier_id")
+        .notNullable()
+        .unsigned()
+        .references(`${tables.supplier}.supplier_id`);
       table
         .integer("supplier_id")
         .notNullable()

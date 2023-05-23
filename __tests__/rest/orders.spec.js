@@ -5,67 +5,67 @@ const data = {
   orders: [
     {
       order_id: 1,
+      order_date: "2023-02-20",
       delivery_country: "Belgium",
       delivery_city: "Bilzen",
       delivery_postal_code: 3740,
       delivery_street: "Bekerstraat",
       delivery_house_number: 66,
-      order_date: "2023-04-18",
       delivery_box: null,
       order_status: 0,
       tracking_code: null,
       CARRIER_carrier_id: null,
-      CUSTOMER_supplier_id: 5,
       PACKAGING_packaging_id: 1,
-      SUPPLIER_supplier_id: 6,
+      SUPPLIER_supplier_id: 8,
+      CUSTOMER_supplier_id: 5,
     },
     {
       order_id: 2,
+      order_date: "2023-05-01",
       delivery_country: "Belgium",
       delivery_city: "Haaltert",
       delivery_postal_code: 9451,
       delivery_street: "Bellelaan",
       delivery_house_number: 12,
       delivery_box: "B",
-      order_date: "2023-04-16",
       order_status: 4,
       tracking_code: "322228968778",
-      CARRIER_carrier_id: 3,
-      CUSTOMER_supplier_id: 6,
+      CARRIER_carrier_id: 2,
       PACKAGING_packaging_id: 3,
-      SUPPLIER_supplier_id: 5,
+      SUPPLIER_supplier_id: 8,
+      CUSTOMER_supplier_id: 5,
     },
     {
       order_id: 3,
+      order_date: "2023-04-18",
       delivery_country: "Belgium",
       delivery_city: "Lokeren",
       delivery_postal_code: 9160,
       delivery_street: "Honkstraat",
       delivery_house_number: 33,
-      order_date: "2023-04-15",
       delivery_box: null,
       order_status: 0,
       tracking_code: null,
       CARRIER_carrier_id: null,
-      CUSTOMER_supplier_id: 5,
       PACKAGING_packaging_id: 1,
-      SUPPLIER_supplier_id: 6,
+      SUPPLIER_supplier_id: 8,
+      CUSTOMER_supplier_id: 5,
     },
     {
       order_id: 4,
+      order_date: "2023-04-15",
       delivery_country: "Belgium",
       delivery_city: "Gent",
       delivery_postal_code: 9000,
       delivery_street: "Doodskoplaan",
       delivery_house_number: 73,
-      order_date: "2023-04-17",
       delivery_box: "A1",
       order_status: 2,
-      tracking_code: "testprefixS0CYTUZ6AA8MM",
+      tracking_code: "bpost_S0CYTUZ6AA8MM",
       CARRIER_carrier_id: 1,
-      CUSTOMER_supplier_id: 5,
       PACKAGING_packaging_id: 4,
-      SUPPLIER_supplier_id: 6,
+      SUPPLIER_supplier_id: 8,
+      CUSTOMER_supplier_id: 5,
     },
   ],
   carriers: [
@@ -73,14 +73,14 @@ const data = {
       carrier_id: 1,
       is_active: true,
       name: "postnl",
-      SUPPLIER_supplier_id: 6,
+      SUPPLIER_supplier_id: 8,
       TRACKINGCODEDETAILS_tracking_code_details_id: 1,
     },
     {
-      carrier_id: 3,
+      carrier_id: 2,
       is_active: true,
       name: "bpost",
-      SUPPLIER_supplier_id: 5,
+      SUPPLIER_supplier_id: 8,
       TRACKINGCODEDETAILS_tracking_code_details_id: 2,
     },
   ],
@@ -110,58 +110,48 @@ const data = {
       delivery_house_number: "10",
       delivery_box: "",
       supplier_email: "sales@janInc.com",
-      name: "Tim CO",
+      name: "Jan INC",
       phone_number: "0426343211",
       logo_URL:
         "https://static.vecteezy.com/system/resources/previews/002/534/045/original/social-media-twitter-logo-blue-isolated-free-vector.jpg",
     },
     {
-      supplier_id: 6,
+      supplier_id: 8,
       delivery_country: "Belgium",
-      delivery_city: "Aalst",
-      delivery_postal_code: "9300",
-      delivery_street: "Merestraat",
-      delivery_house_number: "80",
-      delivery_box: "B",
-      supplier_email: "sales@timCo.com",
-      name: "Jan INC",
-      phone_number: "0456443212",
+      delivery_city: "Zottegem",
+      delivery_postal_code: "9620",
+      delivery_street: "Kastanjelaan",
+      delivery_house_number: "12",
+      delivery_box: "",
+      supplier_email: "sales@metaverse.com",
+      name: "Meta Verse",
+      phone_number: "0479845110",
       logo_URL:
-        "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png",
+        "https://w7.pngwing.com/pngs/890/957/png-transparent-facebook-metaverse-logo-thumbnail.png",
     },
   ],
   customers: [
     {
+      id: 6,
       auth0_id: "auth0|6457cb4fdad598694bc7f6cf",
       email: "berta@timCo.com",
       username: "Berta",
       image_url:
         "https://s.gravatar.com/avatar/ec14e0034e64ea808a11a89cce82765e?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fbe.png",
-      SUPPLIER_supplier_id: 5,
-    },
-    {
-      auth0_id: "auth0|644fe09f2d805379de3c9ab6",
-      email: "job@bartInc.com",
-      username: "Job",
-      image_url:
-        "https://s.gravatar.com/avatar/2e161b057ddca5c40178441d5f9a3feb?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fjo.png",
-      SUPPLIER_supplier_id: 6,
+      supplier_id: 5,
+      SUPPLIER_supplier_id: 8,
     },
   ],
 };
 
 const dataToDelete = {
   orders: [1, 2, 3, 4],
-  carriers: [1, 3],
+  carriers: [1, 2],
   trackingCodeDetails: [1, 2],
-  suppliers: [5, 6],
-  customers: [
-    "auth0|6457cb4fdad598694bc7f6cf",
-    "auth0|644fe09f2d805379de3c9ab6",
-  ],
+  suppliers: [5, 6, 8],
+  customers: [6],
 };
 
-//TO DO werkt niet bij nieuwe db
 describe("orders", () => {
   let request;
   let knex;
@@ -195,7 +185,7 @@ describe("orders", () => {
         .whereIn("tracking_code_details_id", dataToDelete.trackingCodeDetails)
         .delete();
       await knex(tables.customer)
-        .whereIn("auth0_id", dataToDelete.customers)
+        .whereIn("id", dataToDelete.customers)
         .delete();
       await knex(tables.supplier)
         .whereIn("supplier_id", dataToDelete.suppliers)
@@ -204,7 +194,7 @@ describe("orders", () => {
 
     it("should be 200 and return order with order_id 4", async () => {
       const response = await request.get(
-        `${url}/?trackAndTraceCode=testprefixS0CYTUZ6AA8MM&verificationCode=9000`
+        `${url}/?trackAndTraceCode=bpost_S0CYTUZ6AA8MM&verificationCode=9000`
       );
       expect(response.status).toBe(200);
       expect(response.body.count).toBe(1);
@@ -212,17 +202,17 @@ describe("orders", () => {
         order_id: 4,
         delivery_country: "Belgium",
         delivery_city: "Gent",
-        delivery_postal_code: 9000,
+        delivery_postal_code: "9000",
         delivery_street: "Doodskoplaan",
-        delivery_house_number: 73,
+        delivery_house_number: "73",
         delivery_box: "A1",
-        order_date: "2023-04-17",
+        order_date: "2023-04-15",
         order_status: 2,
-        tracking_code: "testprefixS0CYTUZ6AA8MM",
+        tracking_code: "bpost_S0CYTUZ6AA8MM",
         CARRIER_carrier_id: 1,
         CUSTOMER_supplier_id: 5,
         PACKAGING_packaging_id: 4,
-        SUPPLIER_supplier_id: 6,
+        SUPPLIER_supplier_id: 8,
         carrier_id: 1,
         is_active: 1,
         name: "postnl",
@@ -244,18 +234,18 @@ describe("orders", () => {
         order_id: 2,
         delivery_country: "Belgium",
         delivery_city: "Haaltert",
-        delivery_postal_code: 9451,
+        delivery_postal_code: "9451",
         delivery_street: "Bellelaan",
-        delivery_house_number: 12,
+        delivery_house_number: "12",
         delivery_box: "B",
-        order_date: "2023-04-16",
+        order_date: "2023-05-01",
         order_status: 4,
         tracking_code: "322228968778",
-        CARRIER_carrier_id: 3,
-        CUSTOMER_supplier_id: 6,
+        CARRIER_carrier_id: 2,
+        CUSTOMER_supplier_id: 5,
         PACKAGING_packaging_id: 3,
-        SUPPLIER_supplier_id: 5,
-        carrier_id: 3,
+        SUPPLIER_supplier_id: 8,
+        carrier_id: 2,
         is_active: 1,
         name: "bpost",
         TRACKINGCODEDETAILS_tracking_code_details_id: 2,
