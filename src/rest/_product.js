@@ -51,6 +51,11 @@ const getProductsHighestPrice = async (ctx) => {
 };
 getProductsHighestPrice.validationScheme = null;
 
+const getPopularProducts = async(ctx) => {
+  ctx.body = await productService.getPopularProducts();
+};
+getPopularProducts.validationScheme = null;
+
 module.exports = (app) => {
   const router = new Router({ prefix: "/products" });
 
@@ -79,6 +84,11 @@ module.exports = (app) => {
     validate(getProductsHighestPrice.validationScheme),
     getProductsHighestPrice
   );
+  router.get(
+    "/popular",
+    validate(getPopularProducts.validationScheme),
+    getPopularProducts
+  )
 
   app.use(router.routes()).use(router.allowedMethods());
 };

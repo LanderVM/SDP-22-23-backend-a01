@@ -74,6 +74,26 @@ const getHighestPrice = async () => {
   return highestPrice;
 };
 
+const getPopularProducts = async () => {
+  const popular = await getKnex()(tables.order_line)
+    .select('PRODUCT_product_id')
+    .sum('product_count AS amount')
+    .groupBy('PRODUCT_product_id')
+    .orderBy('amount', 'DESC')
+    .limit(10)
+  const popular_ids = popular.map(e => e.PRODUCT_product_id);
+  console.log(popular_ids);
+  return await getByIdsOrdered(popular_ids)
+}
+
+const getByIdsOrdered = async (productId) => {
+  const products = getKnex()(tables.product);
+  if (productId) {
+    products.whereIn("product_id", productId).orderByRaw(`FIELD(product_id, ${productId.join(',')})`);
+  }
+  return products;
+};
+
 module.exports = {
   getAll,
   getByIds,
@@ -82,4 +102,5 @@ module.exports = {
   getCategories,
   getBrands,
   getHighestPrice,
+  getPopularProducts,
 };

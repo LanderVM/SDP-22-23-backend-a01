@@ -96,6 +96,17 @@ const getHighestPrice = async () => {
   };
 };
 
+const getPopularProducts = async () => {
+  const popular = await productRepository.getPopularProducts();
+  if (!popular) {
+    throw ServiceError.notFound(`No products found`);
+  }
+  return {
+    items: popular,
+    count: popular.length || 1,
+  };
+}
+
 module.exports = {
   getAll,
   getByIds,
@@ -103,4 +114,5 @@ module.exports = {
   getCategories,
   getBrands,
   getHighestPrice,
+  getPopularProducts,
 };
