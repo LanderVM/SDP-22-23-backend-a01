@@ -68,7 +68,7 @@ module.exports = {
         email: "roberto@timco.com",
         username: "Roberto",
         image_url:
-          "https://s.gravatar.com/avatar/d6784ae6d18b03dca6ce6869670a0a9f?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fro.png",
+          "https://images.pexels.com/photos/5384445/pexels-photo-5384445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         supplier_id: 2,
         SUPPLIER_supplier_id: 3,
       },
