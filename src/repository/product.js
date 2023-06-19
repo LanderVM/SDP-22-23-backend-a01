@@ -82,7 +82,6 @@ const getPopularProducts = async () => {
     .orderBy('amount', 'DESC')
     .limit(10)
   const popular_ids = popular.map(e => e.PRODUCT_product_id);
-  console.log(popular_ids);
   return await getByIdsOrdered(popular_ids)
 }
 
