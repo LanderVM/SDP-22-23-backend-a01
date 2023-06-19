@@ -75,6 +75,14 @@ module.exports = {
         status: "unread",
         message: "Your order has been processed",
       },
+      {
+        notification_id: 10,
+        notification_date: new Date(2023, 1, 21),
+        CUSTOMER_supplier_id: 2,
+        ORDER_order_id: null,
+        status: "new",
+        message: "Product is back in stock",
+      },
     ]);
   },
 };

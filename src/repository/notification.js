@@ -15,7 +15,7 @@ const getAllByAuthId = async (auth0Id) => {
     .where("auth0_id", auth0Id);
 
   const notifications = await getKnex()(tables.order_notification)
-    .join(
+    .leftJoin(
       tables.order,
       `${tables.order_notification}.ORDER_order_id`,
       "=",
@@ -40,7 +40,7 @@ const getNotReadByAuthId = async (auth0Id) => {
   }
 
   const notifications = await getKnex()(tables.order_notification)
-    .join(
+    .leftJoin(
       tables.order,
       `${tables.order_notification}.ORDER_order_id`,
       "=",
@@ -56,6 +56,7 @@ const getNotReadByAuthId = async (auth0Id) => {
   return notifications;
 };
 
+
 const getSortedOnDateDescByAuthId = async (auth0Id) => {
   const supplierId = await getKnex()(tables.customer)
     .select("supplier_id")
@@ -66,21 +67,27 @@ const getSortedOnDateDescByAuthId = async (auth0Id) => {
   }
 
   const notifications = await getKnex()(tables.order_notification)
-    .join(
+    .leftJoin(
       tables.order,
       `${tables.order_notification}.ORDER_order_id`,
       "=",
       `${tables.order}.order_id`
     )
-    .where(
-      `${tables.order_notification}.CUSTOMER_supplier_id`,
-      supplierId[0].supplier_id.toString()
-    )
+    .where(function () {
+      this.where(
+        `${tables.order_notification}.CUSTOMER_supplier_id`,
+        supplierId[0].supplier_id.toString()
+      )
+        .orWhereNull(`${tables.order_notification}.ORDER_order_id`); // Include null values
+    })
     .orderBy("notification_date", "desc")
     .select("*");
 
+  console.log(notifications);
+
   return notifications;
 };
+
 
 const updateById = async (
   id,

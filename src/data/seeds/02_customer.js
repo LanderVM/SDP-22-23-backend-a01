@@ -38,8 +38,7 @@ module.exports = {
         auth0_id: "auth0|648f79553cedf9f3adc7c59c",
         email: "berttimco@gmail.com",
         username: "Bert",
-        image_url:
-          "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        image_url: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         supplier_id: 2,
         SUPPLIER_supplier_id: 3,
       },
@@ -60,6 +59,16 @@ module.exports = {
         username: "Berta van Audrijzer",
         image_url:
           "https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        supplier_id: 2,
+        SUPPLIER_supplier_id: 3,
+      },
+      {
+        id: 7,
+        auth0_id: "auth0|648f7d4265dc1ff60fd3f348",
+        email: "roberto@timco.com",
+        username: "Roberto",
+        image_url:
+          "https://s.gravatar.com/avatar/d6784ae6d18b03dca6ce6869670a0a9f?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fro.png",
         supplier_id: 2,
         SUPPLIER_supplier_id: 3,
       },

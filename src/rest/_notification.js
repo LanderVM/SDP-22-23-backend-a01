@@ -35,8 +35,8 @@ updateNotification.validationScheme = {
   body: {
     notification_id: Joi.number().integer().positive(),
     notification_date: Joi.string(),
-    CUSTOMER_supplier_id: Joi.number().integer().positive(),
-    ORDER_order_id: Joi.number().integer().positive(),
+    CUSTOMER_supplier_id: Joi.number().integer().positive().optional(),
+    ORDER_order_id: Joi.number().integer().positive().optional(),
     status: Joi.string(),
     message: Joi.string(),
   },
