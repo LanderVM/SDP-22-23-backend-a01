@@ -100,6 +100,7 @@ const createOrder = async (
   },
   auth0Id
 ) => {
+  const customer = await getByAuthId(auth0Id)
   const id = await orderRepository.createOrder(
     delivery_country,
     delivery_city,
@@ -113,7 +114,7 @@ const createOrder = async (
     (CUSTOMER_supplier_id = supplier_id),
     PACKAGING_packaging_id,
     SUPPLIER_supplier_id,
-    auth0Id
+    (CUSTOMER_id = customer.items.id),
   );
 
   await orderLineService.create(order_lines, id);

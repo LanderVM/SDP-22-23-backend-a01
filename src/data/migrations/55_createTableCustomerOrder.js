@@ -23,6 +23,10 @@ module.exports = {
         .integer("CUSTOMER_supplier_id")
         .unsigned()
         .references(`${tables.customer}.supplier_id`);
+      table.integer("CUSTOMER_id")
+        .notNullable()
+        .unsigned()
+        .references(`${tables.customer}.id`);;
     });
   },
   down: (knex) => {

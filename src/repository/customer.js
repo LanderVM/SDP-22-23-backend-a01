@@ -3,6 +3,7 @@ const moment = require("moment");
 
 const getByAuthId = async (auth0Id) => {
   const formatProfile = ({
+    id,
     auth0_id,
     email,
     username,
@@ -20,6 +21,7 @@ const getByAuthId = async (auth0Id) => {
     phone_number,
     logo_URL,
   }) => ({
+    id,
     auth0_id,
     user_email: email,
     username,

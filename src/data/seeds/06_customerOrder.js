@@ -18,6 +18,7 @@ module.exports = {
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 2,
+        CUSTOMER_id: 4,
       },
       {
         order_id: 2,
@@ -34,6 +35,7 @@ module.exports = {
         PACKAGING_packaging_id: 3,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 1,
+        CUSTOMER_id: 2,
       },
       {
         order_id: 3,
@@ -50,6 +52,7 @@ module.exports = {
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 1,
+        CUSTOMER_id: 2,
       },
       {
         order_id: 4,
@@ -66,6 +69,7 @@ module.exports = {
         PACKAGING_packaging_id: 4,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 2,
+        CUSTOMER_id: 7,
       },
       {
         order_id: 5,
@@ -82,6 +86,7 @@ module.exports = {
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 2,
+        CUSTOMER_id: 5,
       },
       {
         order_id: 6,
@@ -98,6 +103,7 @@ module.exports = {
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 2,
+        CUSTOMER_id: 4,
       },
       {
         order_id: 7,
@@ -114,6 +120,7 @@ module.exports = {
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 2,
+        CUSTOMER_id: 4,
       },
       {
         order_id: 8,
@@ -130,6 +137,7 @@ module.exports = {
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 2,
+        CUSTOMER_id: 4,
       },
       {
         order_id: 9,
@@ -146,6 +154,7 @@ module.exports = {
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 2,
+        CUSTOMER_id: 4,
       },
       {
         order_id: 10,
@@ -162,6 +171,7 @@ module.exports = {
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 2,
+        CUSTOMER_id: 6,
       },
       {
         order_id: 11,
@@ -178,6 +188,7 @@ module.exports = {
         PACKAGING_packaging_id: 1,
         SUPPLIER_supplier_id: 3,
         CUSTOMER_supplier_id: 2,
+        CUSTOMER_id: 5,
       },
     ]);
   },
