@@ -83,8 +83,6 @@ const getSortedOnDateDescByAuthId = async (auth0Id) => {
     .orderBy("notification_date", "desc")
     .select("*");
 
-  console.log(notifications);
-
   return notifications;
 };
 
