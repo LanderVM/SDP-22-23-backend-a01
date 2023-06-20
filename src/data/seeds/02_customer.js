@@ -66,7 +66,7 @@ module.exports = {
         id: 7,
         auth0_id: "auth0|648f7d4265dc1ff60fd3f348",
         email: "roberto@timco.com",
-        username: "Roberto",
+        username: "Roberto Vermicelli",
         image_url:
           "https://images.pexels.com/photos/5384445/pexels-photo-5384445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         supplier_id: 2,
