@@ -7,7 +7,7 @@ module.exports = {
         tracking_code_details_id: 1,
         character_count: 13,
         is_integers_only: false,
-        tracking_code_prefix: "testprefix",
+        tracking_code_prefix: "postnl_",
         verification_type: "POST_CODE",
       },
       {
